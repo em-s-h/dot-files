@@ -1,7 +1,0 @@
-res://default_env.tres
-res://enemy/Mob.cs
-res://enemy/Mob.tscn
-res://hud/HUD.cs
-res://hud/HUD.tscn
-res://main/Main.cs
-res://main/Main.tscn

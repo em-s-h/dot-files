@@ -1,7 +1,0 @@
-679959e7917290c4d1380dafd36febcc
-::res://::1675621479
-default_env.tres::Environment::1675520968::0::1::::<><>::
-icon.png::StreamTexture::1675517435::1675517444::1::::<><>::
-Node2D.tscn::PackedScene::1675520968::0::1::::<><>::res://Player.tscn
-Player.cs::CSharpScript::1675520707::0::1::::<><>::
-Player.tscn::PackedScene::1675520968::0::1::::<><>::res://Player.cs<>res://icon.png

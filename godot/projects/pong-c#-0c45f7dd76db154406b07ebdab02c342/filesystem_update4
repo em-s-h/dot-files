@@ -1,7 +1,0 @@
-res://ball/Ball.tscn
-res://default_env.tres
-res://hud/HUD.tscn
-res://hud/blur.shader
-res://main/Main.tscn
-res://opponent/Opponent.tscn
-res://player/Player.tscn

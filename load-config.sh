@@ -16,8 +16,8 @@ echo
 cp ~/.emilly/config-files/.bash_aliases ~/.bash_aliases
 cp ~/.emilly/config-files/.clang-format ~/.emilly/
 
-cp -r ~/.emilly/config-files/godot/ ~/.config/
-cp -r ~/.emilly/config-files/xfce4/ ~/.config/
+cp ~/.emilly/config-files/editor_settings-4.tres ~/.config/godot/
+cp -r ~/.emilly/config-files/terminal ~/.config/xfce4/
 
 cp -r ~/.emilly/config-files/nvim/ ~/.config/
 cp ~/.emilly/config-files/krita* ~/.config/
