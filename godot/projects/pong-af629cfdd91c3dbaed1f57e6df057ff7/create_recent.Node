@@ -1,0 +1,12 @@
+TextureRect
+CollisionShape2D
+Area2D
+Area
+Sprite
+ColorRect
+Node
+Button
+HSlider
+Label
+CanvasLayer
+AudioStreamPlayer
