@@ -40,7 +40,6 @@ mason_null_ls.setup({
 		"stylua",
 
 		-- Linters.
-		"markdownlint",
 		"shellcheck",
 		"luacheck",
 

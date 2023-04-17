@@ -18,7 +18,6 @@ null_ls.setup({
 		formatting.beautysh,
 		formatting.stylua,
 
-		diagnostics.markdownlint,
 		diagnostics.shellcheck,
 		diagnostics.luacheck,
 

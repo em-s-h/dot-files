@@ -29,7 +29,7 @@ CanvasSize/KeepAspectRatio=false
 ColorManagement/UseSystemMonitorProfile=false
 ConvertToImageColorSpaceOnImport=false
 CreateBackupFile=true
-ExportConfiguration-image/png=<!DOCTYPE params>\n<params>\n <param name="alpha" type="internal">true</param>\n <param name="compression" type="internal">3</param>\n <param name="downsample" type="internal">false</param>\n <param name="forceSRGB" type="internal">true</param>\n <param name="indexed" type="internal">false</param>\n <param name="interlaced" type="internal">false</param>\n <param name="saveAsHDR" type="internal">false</param>\n <param name="saveSRGBProfile" type="internal">false</param>\n <param name="storeAuthor" type="internal">true</param>\n <param name="storeMetaData" type="internal">true</param>\n <param name="transparencyFillcolor" type="color"><![CDATA[<!DOCTYPE color>\n<color>\n <RGB space="sRGB-elle-V2-g10.icc" b="1" g="1" r="1"/>\n</color>\n]]></param>\n</params>\n
+ExportConfiguration-image/png=<!DOCTYPE params>\n<params>\n <param name="alpha" type="internal">true</param>\n <param name="compression" type="internal">3</param>\n <param name="downsample" type="internal">false</param>\n <param name="forceSRGB" type="internal">true</param>\n <param name="indexed" type="internal">false</param>\n <param name="interlaced" type="internal">false</param>\n <param name="saveAsHDR" type="internal">false</param>\n <param name="saveSRGBProfile" type="internal">false</param>\n <param name="storeAuthor" type="internal">true</param>\n <param name="storeMetaData" type="internal">true</param>\n <param name="transparencyFillcolor" type="color"><![CDATA[<!DOCTYPE color>\n<color>\n <RGB b="1" g="1" r="1" space="sRGB-elle-V2-g10.icc"/>\n</color>\n]]></param>\n</params>\n
 FilterSelector/LastUsedFilter=colorbalance
 GamutMasks.viewMode=0
 KineticScrollingEnabled=true
@@ -46,8 +46,8 @@ Krita/Ocio/OcioConfigPath=
 Krita/Ocio/OcioLockColorVisualRepresentation=false
 Krita/Ocio/OcioLutPath=
 Krita/Ocio/UseOcio=false
-LastBackGroundColor=<!DOCTYPE LastBackGroundColor>\n<LastBackGroundColor>\n <RGB space="sRGB-elle-V2-srgbtrc.icc" b="1" g="1" r="1"/>\n</LastBackGroundColor>\n
-LastForeGroundColor=<!DOCTYPE LastForeGroundColor>\n<LastForeGroundColor>\n <RGB space="sRGB-elle-V2-srgbtrc.icc" b="0" g="0.254901975393295" r="0.717647075653076"/>\n</LastForeGroundColor>\n
+LastBackGroundColor=<!DOCTYPE LastBackGroundColor>\n<LastBackGroundColor>\n <RGB b="1" g="1" r="1" space="sRGB-elle-V2-srgbtrc.icc"/>\n</LastBackGroundColor>\n
+LastForeGroundColor=<!DOCTYPE LastForeGroundColor>\n<LastForeGroundColor>\n <RGB b="0" g="0.254901975393295" r="0.717647075653076" space="sRGB-elle-V2-srgbtrc.icc"/>\n</LastForeGroundColor>\n
 LastPreset=u) Pixel Art
 LastPreset_-1=u) Pixel Art
 LineSmoothingDelayDistance=50
@@ -173,7 +173,7 @@ logviewer_enabled=false
 maxAllowedSpeedValue=30
 maxSwapSize=4096
 maximumBrushSize=1000
-mdiBackgroundColorXML=<!DOCTYPE color>\n<color channeldepth="U8">\n <RGB space="sRGB-elle-V2-srgbtrc.icc" g="0.301960796117783" r="0.301960796117783" b="0.301960796117783"/>\n</color>\n
+mdiBackgroundColorXML=<!DOCTYPE color>\n<color channeldepth="U8">\n <RGB b="0.301960796117783" g="0.301960796117783" r="0.301960796117783" space="sRGB-elle-V2-srgbtrc.icc"/>\n</color>\n
 mdiBackgroundImage=
 mdi_viewmode=1
 memoryHardLimitPercent=50
@@ -181,8 +181,8 @@ memoryPoolLimitPercent=0
 memorySoftLimitPercent=2
 monitorProfile=sRGB-elle-V2-srgbtrc.icc
 monitorProfile/OverrideX11=false
-moveToolChangedValueX=779
-moveToolChangedValueY=8
+moveToolChangedValueX=7
+moveToolChangedValueY=52
 moveToolStep=1
 moveToolUnit=0
 needsPixmapCacheWorkaround=false
@@ -238,7 +238,7 @@ onionSkinTintColorBackward=255,0,0
 onionSkinTintFactor=191
 pasteBehaviour=2
 pasteFormat=0
-pixelGridColor=126,68,171
+pixelGridColor=68,42,87
 pixelGridDrawingThralunoold=10
 popuppalette/selectorSize=140
 popuppalette/showColorHistory=true
@@ -288,8 +288,8 @@ active-profile=Emilly
 
 [File Dialogs]
 DontUseNativeFileDialog=true
-OpenDocument=/home/aluno/dev/godot/oteia/npcs/snail
-SaveAs=/home/aluno/dev/godot/oteia/npcs/snail
+OpenDocument=/home/aluno/dev/godot/oteia/actors/player
+SaveAs=/home/aluno/dev/godot/oteia/actors/player/enemy-death
 
 [GradientChooser]
 global/itemSize=medium
@@ -627,15 +627,15 @@ pinControls=true
 
 [RecentFiles]
 File1[$e]=$HOME/dev/godot/oteia/environment/sunnyLand-assets/tree-og.png
-File10[$e]=$HOME/dev/godot/oteia/enemies/bee/bee-fly.png
-File11[$e]=$HOME/dev/godot/oteia/enemies/bee/bee-attack.png
-File12[$e]=$HOME/dev/godot/oteia/enemies/bee/bee-hit.png
-File13[$e]=$HOME/dev/godot/oteia/enemies/bee/bee-sheet.png
-File14[$e]=$HOME/dev/godot/oteia/enemies/snail/Hide-Sheet.png
-File15[$e]=$HOME/dev/godot/oteia/npcs/snail/walk-Sheet.png
-File16[$e]=$HOME/dev/godot/oteia/npcs/snail/Hide-Sheet.png
-File17[$e]=$HOME/dev/godot/oteia/npcs/snail/Dead-Sheet.png
-File18[$e]=$HOME/dev/godot/oteia/npcs/snail/snail-sheet.png
+File10[$e]=$HOME/dev/godot/oteia/actors/player/enemy-death/enemy-death-1.png
+File11[$e]=$HOME/dev/godot/oteia/actors/player/enemy-death/enemy-death-2.png
+File12[$e]=$HOME/dev/godot/oteia/actors/player/enemy-death/enemy-death-3.png
+File13[$e]=$HOME/dev/godot/oteia/actors/player/enemy-death/enemy-death-4.png
+File14[$e]=$HOME/dev/godot/oteia/actors/player/enemy-death/enemy-death-5.png
+File15[$e]=$HOME/dev/godot/oteia/actors/player/enemy-death/enemy-death-6.png
+File16[$e]=$HOME/dev/godot/oteia/actors/player/enemy-death/transformation-sheet.png
+File17[$e]=$HOME/dev/godot/oteia/actors/player/warrior-sheet.png
+File18[$e]=$HOME/dev/godot/oteia/actors/player/fox-sheet.png
 File2[$e]=$HOME/dev/godot/oteia/environment/sunnyLand-assets/house-og.png
 File3[$e]=$HOME/dev/godot/oteia/environment/sunnyLand-assets/dark-vines.png
 File4[$e]=$HOME/dev/godot/oteia/environment/sunnyLand-assets/dark-shelf.png
@@ -643,17 +643,17 @@ File5[$e]=$HOME/dev/godot/oteia/environment/sunnyLand-assets/door.png
 File6[$e]=$HOME/dev/godot/oteia/environment/sunnyLand-assets/demon-block.png
 File7[$e]=$HOME/dev/godot/oteia/environment/sunnyLand-assets/tileset.png
 File8[$e]=$HOME/dev/godot/oteia/environment/sunnyLand-assets/bush.png
-File9[$e]=$HOME/dev/godot/oteia/enemies/boar/boar-sheet.png
+File9[$e]=$HOME/dev/godot/assets-oteia/sunny-land-assets-files/PNG/sprites/player/run/player-run-1.png
 Name1=tree-og.png
-Name10=bee-fly.png
-Name11=bee-attack.png
-Name12=bee-hit.png
-Name13=bee-sheet.png
-Name14=Hide-Sheet.png
-Name15=walk-Sheet.png
-Name16=Hide-Sheet.png
-Name17=Dead-Sheet.png
-Name18=snail-sheet.png
+Name10=enemy-death-1.png
+Name11=enemy-death-2.png
+Name12=enemy-death-3.png
+Name13=enemy-death-4.png
+Name14=enemy-death-5.png
+Name15=enemy-death-6.png
+Name16=transformation-sheet.png
+Name17=warrior-sheet.png
+Name18=fox-sheet.png
 Name2=house-og.png
 Name3=dark-vines.png
 Name4=dark-shelf.png
@@ -661,7 +661,7 @@ Name5=door.png
 Name6=demon-block.png
 Name7=tileset.png
 Name8=bush.png
-Name9=boar-sheet.png
+Name9=player-run-1.png
 maxRecentFileItems=100
 
 [SelectedTags]
