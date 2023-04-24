@@ -25,6 +25,10 @@ mason_lspconfig.setup({
 		"omnisharp",
 		"clangd",
 
+		"tsserver",
+		"cssls",
+		"html",
+
 		"lua_ls",
 		"bashls",
 	},
@@ -45,6 +49,9 @@ mason_null_ls.setup({
 
 		"cpplint",
 		"semgrep",
+
+		-- Both.
+		"eslint_d",
 	},
 	automatic_installation = true,
 })

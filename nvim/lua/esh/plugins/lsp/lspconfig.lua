@@ -56,6 +56,26 @@ for type, icon in pairs(signs) do
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
+-- Html server.
+lspconfig.html.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
+-- Js Ts server.
+lspconfig.tsserver.setup({
+	server = {
+		capabilities = capabilities,
+		on_attach = on_attach,
+	},
+})
+
+-- Css server.
+lspconfig.cssls.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
 -- Rust server.
 lspconfig.rust_analyzer.setup({
 	capabilities = capabilities,

@@ -23,6 +23,13 @@ null_ls.setup({
 
 		diagnostics.cpplint,
 		diagnostics.semgrep,
+
+		diagnostics.eslint_d.with({
+			-- Only enable eslint if root has .eslintrc.js.
+			condition = function(utils)
+				return utils.root_has_file(".eslintrc.js")
+			end,
+		}),
 	},
 
 	-- Configure format on save.

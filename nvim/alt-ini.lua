@@ -7,7 +7,6 @@ require("esh.core.options")
 require("esh.core.keymaps")
 
 -- Plugins.
-require("esh.plugins.auto-save")
 require("esh.plugins.autopairs")
 require("esh.plugins.nvim-tree")
 require("esh.plugins.comment")

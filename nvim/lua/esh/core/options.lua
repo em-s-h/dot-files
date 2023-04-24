@@ -21,7 +21,7 @@ opt.relativenumber = true
 opt.number = true
 opt.wrap = false
 
--- 5. Syntax, highlighting and spelling
+-- 5. Syntax, highlighting and spelling.
 opt.termguicolors = true
 opt.cursorline = true
 
