@@ -1,3 +1,5 @@
+-- luacheck: ignore 113
+
 -- Auto install packer if not installed.
 local ensure_packer = function()
 	local fn = vim.fn

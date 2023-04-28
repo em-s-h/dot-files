@@ -1,3 +1,5 @@
+-- luacheck: ignore 113
+
 math.randomseed(os.time())
 local colorschemes = {
 	[1] = "colorscheme tokyonight",

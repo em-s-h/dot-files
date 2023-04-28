@@ -1,5 +1,5 @@
--- luacheck: ignore 212
--- luacheck: ignore 113
+-- -- luacheck: ignore 212
+-- -- luacheck: ignore 113
 
 local lspconfig_status, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status then
@@ -112,12 +112,6 @@ lspconfig.lua_ls.setup({
 				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim).
 				version = "LuaJIT",
 				path = lua_rtp,
-			},
-
-			-- Make the language server recognize "vim" global.
-			diagnostics = {
-				-- Get the language server to recognize the `vim` global
-				globals = { "vim" },
 			},
 
 			-- Make language server aware of runtime files.

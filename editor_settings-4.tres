@@ -1,4 +1,4 @@
-[gd_resource type="EditorSettings" load_steps=6 format=3]
+[gd_resource type="EditorSettings" load_steps=7 format=3]
 
 [sub_resource type="InputEventKey" id="InputEventKey_hyrrn"]
 device = -1
@@ -29,11 +29,17 @@ ctrl_pressed = true
 keycode = 52
 unicode = 52
 
+[sub_resource type="InputEventKey" id="InputEventKey_yuuy6"]
+device = -1
+ctrl_pressed = true
+keycode = 4194323
+
 [resource]
 interface/theme/preset = "Godot 2"
 interface/theme/base_color = Color(0.24, 0.23, 0.27, 1)
 interface/theme/accent_color = Color(0.53, 0.67, 0.89, 1)
 interface/theme/contrast = 0.3
+filesystem/directories/default_project_path = "/home/aluno/.emilly/apps"
 text_editor/theme/highlighting/symbol_color = Color(0.67, 0.79, 1, 1)
 text_editor/theme/highlighting/keyword_color = Color(1, 0.44, 0.52, 1)
 text_editor/theme/highlighting/control_flow_keyword_color = Color(1, 0.55, 0.8, 1)
@@ -63,6 +69,10 @@ text_editor/theme/highlighting/mark_color = Color(1, 0.47, 0.42, 0.3)
 text_editor/theme/highlighting/breakpoint_color = Color(1, 0.47, 0.42, 1)
 text_editor/theme/highlighting/code_folding_color = Color(1, 1, 1, 0.27)
 text_editor/theme/highlighting/search_result_color = Color(1, 1, 1, 0.07)
+text_editor/behavior/navigation/scroll_past_end_of_file = true
+text_editor/behavior/indent/type = 1
+text_editor/behavior/files/restore_scripts_on_load = false
+text_editor/behavior/files/auto_reload_scripts_on_external_change = true
 asset_library/available_urls = {
 "godotengine.org (Official)": "https://godotengine.org/asset-library/api"
 }
@@ -118,7 +128,7 @@ editors/3d/navigation/show_viewport_navigation_gizmo = false
 text_editor/behavior/files/auto_reload_and_parse_scripts_on_save = true
 text_editor/behavior/files/open_dominant_script_on_scene_change = true
 text_editor/external/use_external_editor = true
-text_editor/external/exec_path = "/home/aluno/.emilly/apps/gdvim.sh"
+text_editor/external/exec_path = ""
 text_editor/script_list/script_temperature_enabled = true
 text_editor/script_list/script_temperature_history_size = 15
 text_editor/script_list/group_help_pages = true
@@ -177,6 +187,7 @@ text_editor/theme/highlighting/gdscript/node_path_color = Color(0.72, 0.77, 0.49
 text_editor/theme/highlighting/gdscript/node_reference_color = Color(0.39, 0.76, 0.35, 1)
 text_editor/theme/highlighting/gdscript/annotation_color = Color(1, 0.7, 0.45, 1)
 text_editor/theme/highlighting/gdscript/string_name_color = Color(1, 0.76, 0.65, 1)
+text_editor/help/sort_functions_alphabetically = true
 shortcuts = [{
 "name": "editor/next_tab",
 "shortcuts": [SubResource("InputEventKey_hyrrn")]
@@ -192,6 +203,9 @@ shortcuts = [{
 }, {
 "name": "editor/editor_assetlib",
 "shortcuts": [SubResource("InputEventKey_taib4")]
+}, {
+"name": "editor/prev_tab",
+"shortcuts": [SubResource("InputEventKey_yuuy6")]
 }]
 metadata/script_setup_templates_dictionary = {
 "Area2D": "0NodeDefault",
