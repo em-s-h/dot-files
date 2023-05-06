@@ -1,26 +1,25 @@
 -- Plugin setup.
-require("esh.setup")
+require("setup")
 
 -- My configs.
-require("esh.core.colorscheme")
-require("esh.core.options")
-require("esh.core.keymaps")
+require("core.colorscheme")
+require("core.options")
+require("core.keymaps")
 
 -- Plugins.
-require("esh.plugins.treesitter")
-require("esh.plugins.nvim-tree")
-require("esh.plugins.telescope")
+require("plugins.treesitter")
+require("plugins.nvim-tree")
+require("plugins.telescope")
 
-require("esh.plugins.autopairs")
-require("esh.plugins.auto-save")
+require("plugins.autopairs")
+require("plugins.auto-save")
 
-require("esh.plugins.nvim-cmp")
-require("esh.plugins.gitsigns")
-require("esh.plugins.lualine")
-require("esh.plugins.comment")
+require("plugins.nvim-cmp")
+require("plugins.lualine")
+require("plugins.comment")
 
 -- LSP.
-require("esh.plugins.lsp.lspconfig")
-require("esh.plugins.lsp.lspsaga")
-require("esh.plugins.lsp.null-ls")
-require("esh.plugins.lsp.mason")
+require("plugins.lsp.lspconfig")
+require("plugins.lsp.lspsaga")
+require("plugins.lsp.null-ls")
+require("plugins.lsp.mason")

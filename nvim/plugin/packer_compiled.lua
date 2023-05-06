@@ -109,11 +109,6 @@ _G.packer_plugins = {
     path = "/home/esh/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
-  ["everforest-nvim"] = {
-    loaded = true,
-    path = "/home/esh/.local/share/nvim/site/pack/packer/start/everforest-nvim",
-    url = "https://github.com/neanias/everforest-nvim"
-  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/home/esh/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -163,11 +158,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/esh/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
     url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
-  },
-  nvim = {
-    loaded = true,
-    path = "/home/esh/.local/share/nvim/site/pack/packer/start/nvim",
-    url = "https://github.com/catppuccin/nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -225,11 +215,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/esh/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
-  },
-  ["tokyonight.nvim"] = {
-    loaded = true,
-    path = "/home/esh/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
-    url = "https://github.com/folke/tokyonight.nvim"
   },
   ["vim-surround"] = {
     loaded = true,

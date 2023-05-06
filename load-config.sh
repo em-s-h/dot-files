@@ -13,18 +13,13 @@ fi
 printf "Loading configuration...\n"
 echo
 
+curl --proto '=https' --tlsv1.3 https://sh.rustup.rs -sSf | sh
+
 cp ~/.emilly/config-files/.bash_aliases ~/.bash_aliases
-cp ~/.emilly/config-files/.clang-format ~/.emilly/
+cp ~/.emilly/config-files/.clang-format ~/
 
-cp ~/.emilly/config-files/editor_settings-4.tres ~/.config/godot/
 cp -r ~/.emilly/config-files/terminal ~/.config/xfce4/
-
 cp -r ~/.emilly/config-files/nvim/ ~/.config/
-cp ~/.emilly/config-files/krita* ~/.config/
-
-if [ ! -f ~/.emilly/apps/gdvim.sh ]; then
-    mv ~/.emilly/config-files/gdvim.sh ~/.emilly/apps/
-fi
 
 touch /tmp/config-loaded
 printf "All done!\n"
