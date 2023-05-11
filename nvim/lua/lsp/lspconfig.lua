@@ -1,5 +1,5 @@
--- -- luacheck: ignore 212
--- -- luacheck: ignore 113
+-- luacheck: ignore 212
+-- luacheck: ignore 113
 
 local lspconfig_status, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status then
@@ -13,6 +13,7 @@ if not cmp_lsp_status then
 	return
 end
 
+-- Keymaps. {{{
 -- More concise.
 local keymap = vim.keymap
 
@@ -44,6 +45,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- stylua: ignore end
+-- }}}
 
 -- Used to enable autocompletion.
 local capabilities = cmp_nvim_lsp.default_capabilities()
@@ -62,7 +64,7 @@ lspconfig.html.setup({
 	on_attach = on_attach,
 })
 
--- Js Ts server.
+-- Js, Ts server.
 lspconfig.tsserver.setup({
 	server = {
 		capabilities = capabilities,
@@ -89,14 +91,21 @@ lspconfig.omnisharp.setup({
 	on_attach = on_attach,
 })
 
+-- GDscript server.
+lspconfig.gdscript.setup({
+
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
 -- C/C++ server.
 lspconfig.clangd.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
 
--- Bash server.
-lspconfig.bashls.setup({
+-- Python server.
+lspconfig.pyright.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })

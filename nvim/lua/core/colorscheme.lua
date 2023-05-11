@@ -1,5 +1,4 @@
 -- luacheck: ignore 113
--- Settings.
 require("kanagawa").setup({
 	background = { dark = "wave" },
 	typeStyle = { italic = true },

@@ -15,17 +15,18 @@ treesitter.setup({
 
 	-- Ensure these language parsers are installed.
 	ensure_installed = {
-		"markdown_inline",
-		"markdown",
-
+		"gdscript",
 		"c_sharp",
+		"rust",
+
 		"cpp",
 		"c",
 
-		"gitignore",
-		"gdscript",
-		"rust",
+		"markdown_inline",
+		"markdown",
+		"toml",
 
+		"python",
 		"bash",
 		"lua",
 		"vim",

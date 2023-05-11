@@ -7,6 +7,7 @@ opt.compatible = false
 opt.ignorecase = true
 opt.smartcase = true
 opt.incsearch = true
+opt.magic = true
 
 -- 4. Displaying text.
 opt.sidescrolloff = 10
@@ -15,8 +16,9 @@ opt.scrolloff = 20
 opt.scroll = 15
 
 opt.relativenumber = true
+opt.lazyredraw = true
 opt.number = true
-opt.wrap = true
+opt.wrap = false
 
 -- 5. Syntax, highlighting and spelling.
 opt.termguicolors = true
@@ -28,6 +30,9 @@ opt.splitbelow = true
 opt.splitright = true
 
 -- 11. Messages and info.
+opt.showmode = true
+opt.showcmd = true
+opt.ruler = true
 opt.more = true
 
 -- 12. Clipboard.
@@ -35,8 +40,6 @@ opt.clipboard = "unnamedplus"
 
 -- 13. Editing text.
 opt.backspace = "indent,eol,start"
-opt.undoreload = 5000
-opt.undofile = true
 
 -- 14. Tabs & indenting.
 opt.smartindent = true
@@ -50,10 +53,9 @@ opt.tabstop = 4
 
 -- 15. Folding.
 opt.foldmethod = "marker"
-opt.foldlevelstart = 1
 
 -- 19. The swap file.
-opt.updatetime = 1225
+opt.updatetime = 250
 
 -- 20. Command line editing.
 opt.wildignore = "*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx"

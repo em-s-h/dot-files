@@ -1,20 +1,24 @@
 -- luacheck: ignore 113
 
--- More concise.
-local keymap = vim.keymap
+local keymap = vim.keymap -- More concise.
 vim.g.mapleader = " "
 
 -- General keymaps. {{{
 
--- Clear search highlights.
-keymap.set("n", "<leader>nh", ":nohl<CR>")
+-- stylua: ignore start
+keymap.set("n", "<leader>nh", ":nohl<CR>")  -- Clear search highlights.
+keymap.set("n", "<leader>w", ":w<CR>")      -- Easier writting.
+
+keymap.set("n", "zO", ":%foldopen<CR>")     -- Open all folders.
+keymap.set("n", "zC", "zM")                 -- Close all folders.
+
+-- stylua: ignore end
+
+-- Select all the text in the file.
+keymap.set("n", "<c-a>", "ggVG")
 
 -- Delete single characters w/o copying into register.
 keymap.set("n", "x", '"_x')
-
--- Open & close all folders.
-keymap.set("n", "zO", ":%foldopen<CR>")
-keymap.set("n", "zC", "zM")
 
 -- Center the cursor vertically when moving to the next word during a search.
 keymap.set("n", "n", "nzz")
@@ -53,9 +57,6 @@ keymap.set("n", "<leader>tn", ":tabn<CR>")
 -- }}}
 
 -- Plugin keymaps. {{{
-keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- Togge file explorer.
-keymap.set("n", "<leader>as", ":ASToggle<CR>", {}) -- Toggle auto-save.
-
 -- Telescope.
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- Find files in current directory, respects .gitignore.
 keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- Find string in current directory.

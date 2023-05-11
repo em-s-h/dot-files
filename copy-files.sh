@@ -13,7 +13,7 @@ echo
 
 printf "Adapting config files for use in school PC labs...\n"
 
-sed -i "s/esh/aluno/" ./nvim/lua/esh/plugins/lsp/lspconfig.lua
-sed -i "/gitignore/d" ./nvim/lua/esh/plugins/treesitter.lua
+sed -i "s/esh/aluno/" ./nvim/lua/lsp/lspconfig.lua
+sed -i "/gitignore/d" ./nvim/lua/plugins/treesitter.lua
 
 printf "Done!\n"

@@ -29,8 +29,8 @@ mason_lspconfig.setup({
 		"cssls",
 		"html",
 
+		"pyright",
 		"lua_ls",
-		"bashls",
 	},
 	automatic_installation = true,
 })
@@ -40,13 +40,11 @@ mason_null_ls.setup({
 	ensure_installed = {
 		-- Formatters.
 		"clang-format",
-		"beautysh",
+		"rustfmt",
 		"stylua",
 
 		-- Linters.
-		"shellcheck",
 		"luacheck",
-
 		"cpplint",
 		"semgrep",
 

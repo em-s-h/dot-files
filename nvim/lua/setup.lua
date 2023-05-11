@@ -37,19 +37,12 @@ return packer.startup(function(use)
 	-- Lua functions used by other plugins.
 	use("nvim-lua/plenary.nvim")
 
-	-- Auto saving.
-	use("Pocco81/auto-save.nvim")
+	-- Visuals.
+	use("nvim-lualine/lualine.nvim") -- Statusline.
+	use("rebelot/kanagawa.nvim") -- Colorscheme.
 
     -- stylua: ignore start
-	-- Visuals.
-	use("nvim-tree/nvim-web-devicons")  -- Icons.
-	use("nvim-lualine/lualine.nvim")    -- Statusline.
-
-	-- Colorscheme.
-	use("rebelot/kanagawa.nvim")
-
 	-- Useful.
-	use("nvim-tree/nvim-tree.lua")  -- File explorer.
 	use("numToStr/Comment.nvim")    -- Easier commenting.
 	use("tpope/vim-surround")       -- Word surrounding.
 
@@ -98,7 +91,6 @@ return packer.startup(function(use)
 	})
 
 	-- Autoclosing.
-	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" })
 	use("windwp/nvim-autopairs")
 
 	-- stylua: ignore end
