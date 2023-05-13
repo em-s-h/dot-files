@@ -32,6 +32,8 @@ opt.splitright = true
 -- 11. Messages and info.
 opt.showmode = true
 opt.showcmd = true
+
+opt.confirm = true
 opt.ruler = true
 opt.more = true
 
@@ -39,6 +41,7 @@ opt.more = true
 opt.clipboard = "unnamedplus"
 
 -- 13. Editing text.
+opt.completeopt = "menu,menuone,noinsert,noselect,preview"
 opt.backspace = "indent,eol,start"
 
 -- 14. Tabs & indenting.

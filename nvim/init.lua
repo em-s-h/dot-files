@@ -2,21 +2,22 @@
 require("setup")
 
 -- My configs.
-require("core.colorscheme")
-require("core.options")
-require("core.keymaps")
+require("dev.core.colorscheme")
+require("dev.core.options")
+require("dev.core.keymaps")
+require("dev.core.scripts")
 
 -- Plugins.
-require("plugins.treesitter")
-require("plugins.telescope")
-require("plugins.autopairs")
+require("dev.plugins.treesitter")
+require("dev.plugins.telescope")
+require("dev.plugins.autopairs")
 
-require("plugins.nvim-cmp")
-require("plugins.lualine")
-require("plugins.comment")
+require("dev.plugins.nvim-cmp")
+require("dev.plugins.lualine")
+require("dev.plugins.comment")
 
 -- LSP.
-require("lsp.lspconfig")
-require("lsp.lspsaga")
-require("lsp.null-ls")
-require("lsp.mason")
+require("dev.lsp.lspconfig")
+require("dev.lsp.lspsaga")
+require("dev.lsp.null-ls")
+require("dev.lsp.mason")

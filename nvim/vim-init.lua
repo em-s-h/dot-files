@@ -2,11 +2,13 @@
 require("setup")
 
 -- My configs.
-require("core.colorscheme")
-require("core.options")
-require("core.keymaps")
+require("vim.core.colorscheme")
+require("dev.core.options")
+require("vim.core.keymaps")
+require("dev.core.scripts")
 
 -- Plugins.
-require("plugins.autopairs")
-require("plugins.lualine")
-require("plugins.comment")
+require("dev.plugins.autopairs")
+require("vim.plugins.nvim-cmp")
+require("dev.plugins.lualine")
+require("dev.plugins.comment")
