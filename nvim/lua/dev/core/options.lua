@@ -29,6 +29,9 @@ opt.hlsearch = true
 opt.splitbelow = true
 opt.splitright = true
 
+-- 9. Using the mouse.
+opt.mouse = ""
+
 -- 11. Messages and info.
 opt.showmode = true
 opt.showcmd = true
@@ -55,6 +58,7 @@ opt.shiftwidth = 4
 opt.tabstop = 4
 
 -- 15. Folding.
+opt.foldmarker = "{{{,}}}"
 opt.foldmethod = "marker"
 
 -- 19. The swap file.

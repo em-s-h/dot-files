@@ -86,7 +86,7 @@ lspconfig.rust_analyzer.setup({
 
 -- C# server.
 lspconfig.omnisharp.setup({
-	cmd = { "dotnet", "/home/aluno/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll" },
+	cmd = { "dotnet", "/home/esh/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll" },
 	capabilities = capabilities,
 	on_attach = on_attach,
 })

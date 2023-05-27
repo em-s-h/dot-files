@@ -1,28 +1,25 @@
-# Apply wallpaper.
-xfconf-query -c xfce4-desktop \
-    -p /backdrop/screen0/monitorVGA-0/workspace0/last-image \
-    -s ~/.emilly/media/wallpaper.png
+# yt-dlp aliases.
+alias yt-mp4='yt-dlp -f mp4 -o'
 
-# Other.
-~/.emilly/config-files/load-config.sh
-setxkbmap -option "caps:escape"
-set -o vi
+# Python aliases.
+alias python='python3'
 
-export VISUAL="nvim -u ~/.config/nvim/vim-init.lua"
-export EDITOR="$VISUAL"
-
-export BASH_ENV="$HOME/.bashenv"
-. "$HOME/.cargo/env"
-
+# App aliases.
+alias ppsspp='MESA_LOADER_DRIVER_OVERRIDE=i965 ppsspp'
 alias vim='nvim -u ~/.config/nvim/vim-init.lua'
+
+alias restore-trash='trash-restore'
+alias empty-trash='trash-empty'
+alias ls-trash='trash-list'
 
 # ls aliases.
 alias la='ls -lha'
 alias l='ls -lh'
 
 # Other aliases.
-alias rm='rm -i'
+alias where='whereis'
+alias rm='rm -I'
+
 alias c='clear'
 alias q='exit'
 alias x='exit'
-

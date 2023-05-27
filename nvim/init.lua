@@ -2,9 +2,11 @@
 require("setup")
 
 -- My configs.
-require("dev.core.colorscheme")
 require("dev.core.options")
-require("dev.core.keymaps")
+require("vim.core.keymaps") -- General keymaps.
+require("dev.core.keymaps") -- Plugin keymaps.
+
+require("dev.core.colorscheme")
 require("dev.core.scripts")
 
 -- Plugins.

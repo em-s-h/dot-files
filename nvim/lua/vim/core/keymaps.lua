@@ -7,21 +7,12 @@ vim.g.mapleader = " "
 keymap.set("n", "n", "nzz")
 keymap.set("n", "N", "Nzz")
 
--- Auto indent current line.
-keymap.set("n", "i", function()
-	if #vim.fn.getline(".") == 0 then
-		return [["_cc]]
-	else
-		return "i"
-	end
-end, { expr = true })
-
 -- stylua: ignore start
 
 keymap.set("n", "<leader>nh", ":nohl<CR>")  -- Clear search highlights.
 keymap.set("n", "<leader>w", ":w<CR>")      -- Easier writting.
 
-keymap.set("n", "zO", ":%foldopen<CR>") -- Open all folders.
+keymap.set("n", "zA", ":%foldopen<CR>") -- Open all folders.
 keymap.set("n", "zC", "zM")             -- Close all folders.
 
 keymap.set("n", "<c-a>", "ggVG") -- Select all the text in the file.

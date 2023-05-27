@@ -18,11 +18,16 @@ null_ls.setup({
 		formatting.rustfmt,
 		formatting.stylua,
 
+		diagnostics.shellcheck,
 		diagnostics.luacheck,
 		diagnostics.cpplint,
 		diagnostics.semgrep,
 
-		diagnostics.eslint_d,
+		diagnostics.eslint_d.with({
+			condition = function(utils)
+				return utils.root_has_file(".eslintrc.yml")
+			end,
+		}),
 	},
 
 	-- Configure format on save. {{{

@@ -1,6 +1,6 @@
 -- luacheck: ignore 113
 require("kanagawa").setup({
-	background = { dark = "wave" },
+	background = { dark = "dragon" },
 	typeStyle = { italic = true },
 })
 

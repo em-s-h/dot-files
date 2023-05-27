@@ -23,6 +23,7 @@ treesitter.setup({
 		"c",
 
 		"markdown_inline",
+		"gitignore",
 		"markdown",
 		"toml",
 

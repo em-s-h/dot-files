@@ -24,6 +24,7 @@ mason_lspconfig.setup({
 		"rust_analyzer",
 		"omnisharp",
 		"clangd",
+		"bashls",
 
 		"tsserver",
 		"cssls",
@@ -44,12 +45,12 @@ mason_null_ls.setup({
 		"stylua",
 
 		-- Linters.
+		"shellcheck",
 		"luacheck",
+		"eslint_d",
+
 		"cpplint",
 		"semgrep",
-
-		-- Both.
-		"eslint_d",
 	},
 	automatic_installation = true,
 })
