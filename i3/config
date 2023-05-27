@@ -209,9 +209,8 @@ assign [class="Hiro"] $ws4
 
 assign [class="retroarch"] $ws4
 
-# Workspace 5 - Settings.
-assign [class="Xfce4-settings-manager"] $ws5
-assign [class="Pavucontrol"] $ws5
+# Workspace 9 - Settings.
+assign [class="Xfce4-settings-manager"] $ws9
 
 # Workspace 10 - VMs.
 assign [class="VirtualBox Manager"] $ws10
