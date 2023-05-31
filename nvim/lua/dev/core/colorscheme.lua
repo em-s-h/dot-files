@@ -1,10 +1,11 @@
 -- luacheck: ignore 113
 require("kanagawa").setup({
-	background = { dark = "wave" },
+	statementStyle = { italic = true },
 	typeStyle = { italic = true },
+	dimInactive = true,
 })
 
-local theme = "colorscheme kanagawa"
+local theme = "colorscheme kanagawa-wave"
 
 local status, _ = pcall(vim.cmd, theme)
 if not status then

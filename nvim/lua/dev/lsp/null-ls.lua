@@ -20,7 +20,6 @@ null_ls.setup({
 
 		diagnostics.shellcheck,
 		diagnostics.luacheck,
-		diagnostics.cpplint,
 		diagnostics.semgrep,
 
 		diagnostics.eslint_d.with({

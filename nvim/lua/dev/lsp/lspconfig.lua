@@ -14,10 +14,9 @@ if not cmp_lsp_status then
 end
 
 -- Keymaps. {{{
+-- stylua: ignore start
 -- More concise.
 local keymap = vim.keymap
-
--- stylua: ignore start
 
 -- Enable keybindings when a LSP server is available.
 local on_attach = function(client, bufnr)
@@ -86,9 +85,13 @@ lspconfig.rust_analyzer.setup({
 
 -- C# server.
 lspconfig.omnisharp.setup({
-	cmd = { "dotnet", "/home/esh/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll" },
 	capabilities = capabilities,
 	on_attach = on_attach,
+
+	cmd = {
+		"dotnet",
+		"/home/esh/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll",
+	},
 })
 
 -- GDscript server.

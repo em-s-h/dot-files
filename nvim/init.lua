@@ -3,7 +3,6 @@ require("setup")
 
 -- My configs.
 require("dev.core.options")
-require("vim.core.keymaps") -- General keymaps.
 require("dev.core.keymaps") -- Plugin keymaps.
 
 require("dev.core.colorscheme")

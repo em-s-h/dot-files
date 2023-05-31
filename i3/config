@@ -10,9 +10,23 @@
 # Main configs.
 
 font pango:Meslo LG M DZ Regular Nerd Font Complete 9
+title_align center
 
 # Variables. {{{
+set $refresh_i3status killall -SIGUSR1 i3status -c ~/.config/i3/i3status.conf
 set $mod Mod1
+
+# Workspaces.
+set $ws1 "1: 󰈹"
+set $ws2 "2: "
+set $ws3 "3: "
+set $ws4 "4: 󰮂"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9: "
+set $ws10 "10: VM"
 
 # Colors.
 set $bg-color 	         #423c4f
@@ -25,17 +39,21 @@ set $urgent-bg-color     #E53935
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+default_floating_border pixel 4
+hide_edge_borders both
+
 focus_follows_mouse no
 mouse_warping none
-
-title_align center
 focus_wrapping no
+
+smart_gaps on
+gaps inner 0
+gaps outer 0
 
 # exec {{{
 
 # Set display layout.
-exec xrandr --output eDP1 --off --output HDMI1 --primary \
-    --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off
+exec ~/.screenlayout/main.sh
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -43,7 +61,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.config/i3/screen-lock.sh --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -53,15 +71,16 @@ exec --no-startup-id nm-applet
 exec feh --bg-fill --randomize ~/media/wallpapers/*
 
 exec xfce4-terminal
-exec firefox
 exec compton
 # }}}
 
 # Bindings. {{{
 
-# Start rofi (program launcher).
-bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$bg-color" \
-    -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "Meslo LG M DZ Regular Nerd Font Complete 9"
+# Start program launcher.
+bindsym $mod+d exec rofi -show run
+
+# Start power manager.
+bindsym $mod+Shift+e exec ~/.config/i3/power-menu.sh
 
 # Start a terminal.
 bindsym $mod+Shift+Return exec xfce4-terminal --drop-down
@@ -80,14 +99,14 @@ bindsym $mod+r mode "resize"
 # Enter fullscreen mode for the focused container.
 bindsym $mod+f fullscreen toggle
 
-# Split in horizontal orientation.
-bindsym $mod+v split h
+# Split to the side.
+bindsym $mod+s split h
 
-# Split in vertical orientation.
+# Split bellow.
 bindsym $mod+b split v
 
 # Change container layout.
-bindsym $mod+s layout stacking
+# bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -98,7 +117,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 #}}}
 
-# Movement & focus. {{{
+# Movement. {{{
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -108,52 +127,16 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left  focus left
-bindsym $mod+Down  focus down
-bindsym $mod+Up    focus up
-bindsym $mod+Right focus right
-
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# Alternatively, use the cursor keys:
-bindsym $mod+Shift+Left  move left
-bindsym $mod+Shift+Down  move down
-bindsym $mod+Shift+Up    move up
-bindsym $mod+Shift+Right move right
 # }}}
 
-# Lock screen.
-bindsym $mod+Shift+x exec ~/.config/i3/screen-lock.sh
-
-# Suspend.
-bindsym $mod+Shift+s exec "i3-nagbar -t warning -m 'Suspend computer?' -B 'Yes, suspend' 'systemctl suspend'"
-
-# Exit i3.
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes, exit i3' 'i3-msg exit'"
-
-# Poweroff.
-bindsym $mod+Shift+p exec "i3-nagbar -t warning -m 'Poweroff computer?' -B 'Yes, poweroff' 'systemctl poweroff'"
 # }}}
 
 # Workspaces. {{{
-
-# Variables. {{{
-set $ws1 "1: 󰈹"
-set $ws2 "2: "
-set $ws3 "3: "
-set $ws4 "4: 󰮂"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9: "
-set $ws10 "10: VM"
-# }}}
 
 # Switch to workspace. {{{
 bindsym $mod+1 workspace number $ws1
@@ -181,6 +164,13 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 # }}}
 
+# Settings.
+workspace 2 gaps inner 10
+
+# }}}
+
+# Windows. {{{
+
 # Force windows to certain workspaces. {{{
 # Workspace 1 - Web browsers.
 assign [class="Brave-browser"] $ws1
@@ -188,11 +178,17 @@ assign [class="firefox"] $ws1
 
 # Workspace 2 - Terminals.
 assign [class="Xfce4-terminal"] $ws2
+assign [class="UXTerm"] $ws2
+assign [class="XTerm"] $ws2
 
-# Workspace 3 - Dev apps.
+# Workspace 3 - Apps.
+assign [class="Thunar"] $ws3
 assign [class="Godot"] $ws3
 
-# Workspace 4 - Games.
+assign [class="Audacity"] $ws3
+assign [class="krita"] $ws3
+
+# Workspace 4 - Games. {{{
 assign [class="Shattered Pixel Dungeon"] $ws4
 assign [class="duckstation-qt"] $ws4
 assign [class="PPSSPPSDL"] $ws4
@@ -208,14 +204,24 @@ assign [class="redream"] $ws4
 assign [class="Hiro"] $ws4
 
 assign [class="retroarch"] $ws4
+# }}}
+
+# Workspace 8 - Media.
+assign [class="Ristretto"] $ws8
+assign [class="Rhythmbox"] $ws8
+assign [class="Parole"] $ws8
 
 # Workspace 9 - Settings.
 assign [class="Xfce4-settings-manager"] $ws9
+assign [class="Arandr"] $ws9
 
 # Workspace 10 - VMs.
 assign [class="VirtualBox Manager"] $ws10
 assign [class="VirtualBox Machine"] $ws10
 # }}}
+
+# Settings.
+for_window [class="VirtualBox Machine"] floating enable
 
 # }}}
 
@@ -224,23 +230,17 @@ assign [class="VirtualBox Machine"] $ws10
 # resize window (you can also use the mouse for that)
 mode "resize" {
     # These bindings trigger as soon as you enter the resize mode
+    # Pressing h will shrink the window’s width.
+    # Pressing l will grow   the window’s width.
 
-    # Pressing left  will shrink the window’s width.
-    # Pressing right will grow   the window’s width.
-    # Pressing down  will shrink the window’s height.
-    # Pressing up    will grow   the window’s height.
+    # Pressing j will shrink the window’s height.
+    # Pressing k will grow   the window’s height.
+
     bindsym j resize shrink height 10 px or 10 ppt
     bindsym k resize grow   height 10 px or 10 ppt
 
     bindsym h resize shrink width  10 px or 10 ppt
     bindsym l resize grow   width  10 px or 10 ppt
-
-    # same bindings, but for the arrow keys
-    bindsym Down  resize shrink height 10 px or 10 ppt
-    bindsym Up    resize grow   height 10 px or 10 ppt
-
-    bindsym Left  resize shrink width  10 px or 10 ppt
-    bindsym Right resize grow   width  10 px or 10 ppt
 
     # back to normal: Enter or Escape or $mod+r
     bindsym Return mode "default"
@@ -268,8 +268,8 @@ bar {
 
     # Volume controls.
     bindsym --release button3 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-    bindsym button4 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-    bindsym button5 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+    bindsym button4 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+    bindsym button5 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 
     colors {
 		background $inactive-bg-color
@@ -281,16 +281,14 @@ bar {
 		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
 	}
 }
-
-hide_edge_borders both
-
 # }}}
 
 # Other. {{{
 # Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 # }}}

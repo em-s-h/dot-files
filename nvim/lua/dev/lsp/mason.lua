@@ -47,9 +47,8 @@ mason_null_ls.setup({
 		-- Linters.
 		"shellcheck",
 		"luacheck",
-		"eslint_d",
 
-		"cpplint",
+		"eslint_d",
 		"semgrep",
 	},
 	automatic_installation = true,

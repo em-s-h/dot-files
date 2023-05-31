@@ -4,6 +4,8 @@
 local keymap = vim.keymap -- More concise.
 vim.g.mapleader = " "
 
+require("vim.core.keymaps") -- General keymaps.
+
 -- Plugin keymaps. {{{
 -- Telescope.
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- Find files in current directory, respects .gitignore.

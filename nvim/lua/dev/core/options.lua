@@ -21,6 +21,7 @@ opt.number = true
 opt.wrap = false
 
 -- 5. Syntax, highlighting and spelling.
+opt.colorcolumn = "120,125"
 opt.termguicolors = true
 opt.cursorline = true
 opt.hlsearch = true

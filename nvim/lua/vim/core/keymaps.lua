@@ -23,8 +23,11 @@ keymap.set("n", "Y", "y$")       -- Yank from cursor to line end.
 keymap.set("n", "<leader>tx", ":tabclose<CR>") -- Close tab.
 keymap.set("n", "<leader>to", ":tabnew<CR>")   -- Open tab.
 
-keymap.set("n", "<leader>sr", ":vsplit<CR>") -- Split vertically.
-keymap.set("n", "<leader>sb", ":split<CR>")  -- Split horizontally.
+keymap.set("n", "<leader>tp", ":tabp<CR>") -- Next tab.
+keymap.set("n", "<leader>tn", ":tabn<CR>") -- Prev tab.
+
+keymap.set("n", "<leader>ss", ":vsplit<CR>") -- Split to the side.
+keymap.set("n", "<leader>sb", ":split<CR>")  -- Split bellow.
 
 keymap.set("n", "<leader>sx", ":close<CR>") -- Close split
 keymap.set("n", "<leader>se", "<C-w>=")     -- Make splits equal width.
@@ -34,9 +37,6 @@ keymap.set("n", "<c-up>", "<C-w>+")     -- Increase split height.
 
 keymap.set("n", "<c-left>", "<C-w><")   -- Decrease split width.
 keymap.set("n", "<c-down>", "<C-w>-")   -- Decrease split height.
-
-keymap.set("n", "<leader>tp", ":tabp<CR>") -- Next tab.
-keymap.set("n", "<leader>tn", ":tabn<CR>") -- Prev tab.
 
 keymap.set("n", "<leader>sh", "<C-w>h") -- Left split.
 keymap.set("n", "<leader>sk", "<C-w>k") -- Top split.
