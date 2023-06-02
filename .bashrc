@@ -151,3 +151,4 @@ fi
 
 . "$HOME/.cargo/env"
 
+source /home/esh/git-repos/alacritty/extra/completions/alacritty.bash

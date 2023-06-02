@@ -1,6 +1,6 @@
 configuration {
 /*	modi: "window,run,ssh";*/
-    font: "Meslo LG M DZ Regular Nerd Font Complete 10";
+    font: "MesloLGMDZ Nerd Font 10";
 /*	location: 0;*/
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/

@@ -9,11 +9,23 @@
 
 # Main configs.
 
-font pango:Meslo LG M DZ Regular Nerd Font Complete 9
+font pango:MesloLGMDZ Nerd Font 9
 title_align center
+
+default_floating_border pixel 4
+hide_edge_borders both
+
+focus_follows_mouse no
+mouse_warping none
+focus_wrapping no
+
+smart_gaps on
+gaps inner 0
+gaps outer 0
 
 # Variables. {{{
 set $refresh_i3status killall -SIGUSR1 i3status -c ~/.config/i3/i3status.conf
+set $term alacritty
 set $mod Mod1
 
 # Workspaces.
@@ -39,20 +51,9 @@ set $urgent-bg-color     #E53935
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-default_floating_border pixel 4
-hide_edge_borders both
-
-focus_follows_mouse no
-mouse_warping none
-focus_wrapping no
-
-smart_gaps on
-gaps inner 0
-gaps outer 0
-
 # exec {{{
 
-# Set display layout.
+# Set display layout && load random wallpaper.
 exec ~/.screenlayout/main.sh
 
 # Start XDG autostart .desktop files using dex. See also
@@ -67,11 +68,8 @@ exec --no-startup-id dex --autostart --environment i3
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-# Load different wallpaper on log-in.
-exec feh --bg-fill --randomize ~/media/wallpapers/*
-
-exec xfce4-terminal
 exec compton
+exec $term
 # }}}
 
 # Bindings. {{{
@@ -84,7 +82,11 @@ bindsym $mod+Shift+e exec ~/.config/i3/power-menu.sh
 
 # Start a terminal.
 bindsym $mod+Shift+Return exec xfce4-terminal --drop-down
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec $term
+
+# Screen capture.
+bindsym --release $mod+Print exec xfce4-screenshooter -r
+bindsym --release Print exec xfce4-screenshooter -f
 
 # Reload the configuration file.
 bindsym $mod+Shift+c reload
@@ -176,10 +178,13 @@ workspace 2 gaps inner 10
 assign [class="Brave-browser"] $ws1
 assign [class="firefox"] $ws1
 
-# Workspace 2 - Terminals.
+# Workspace 2 - Terminals. {{{
 assign [class="Xfce4-terminal"] $ws2
+assign [class="Alacritty"] $ws2
+
 assign [class="UXTerm"] $ws2
 assign [class="XTerm"] $ws2
+# }}}
 
 # Workspace 3 - Apps.
 assign [class="Thunar"] $ws3
