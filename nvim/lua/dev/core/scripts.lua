@@ -39,10 +39,8 @@ api.nvim_create_autocmd("FileType", {
 		elseif file_type == "markdown" then
 			opt.colorcolumn = "95,100"
 		--
-		else
-			opt.colorcolumn = "120,125"
-			opt.foldmarker = "{{{,}}}"
-			opt.foldmethod = "marker"
+		elseif file_type == "rust" then
+			opt.colorcolumn = "95,100"
 		end
 	end,
 })

@@ -1,3 +1,6 @@
+-- luacheck: ignore 212
+-- luacheck: ignore 113
+
 local opt = vim.opt -- More concise.
 
 -- 1. Important.

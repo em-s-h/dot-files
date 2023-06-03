@@ -3,7 +3,7 @@ require("setup")
 
 -- My configs.
 require("dev.core.options")
-require("dev.core.keymaps") -- Plugin keymaps.
+require("dev.core.keymaps")
 
 require("dev.core.colorscheme")
 require("dev.core.scripts")

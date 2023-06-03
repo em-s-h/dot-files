@@ -2,7 +2,7 @@
 require("setup")
 
 -- My configs.
-require("vim.core.colorscheme")
+require("dev.core.colorscheme")
 require("dev.core.options")
 require("vim.core.keymaps")
 require("dev.core.scripts")

@@ -36,7 +36,7 @@ set $ws4 "4: 󰮂"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
-set $ws8 "8"
+set $ws8 "8: "
 set $ws9 "9: "
 set $ws10 "10: VM"
 
@@ -211,10 +211,13 @@ assign [class="Hiro"] $ws4
 assign [class="retroarch"] $ws4
 # }}}
 
-# Workspace 8 - Media.
+# Workspace 8 - Media. {{{
+assign [class="libreoffice-startcenter"] $ws8
 assign [class="Ristretto"] $ws8
 assign [class="Rhythmbox"] $ws8
 assign [class="Parole"] $ws8
+
+# }}}
 
 # Workspace 9 - Settings.
 assign [class="Xfce4-settings-manager"] $ws9
