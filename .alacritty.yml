@@ -202,9 +202,6 @@ selection:
   semantic_escape_chars: ",.│`\\|/:;\"' _-()[]{}<>\t"
   save_to_clipboard: true
 
-shell:
-  program: /bin/fish
-
 cursor:
   style:
     blinking: On
