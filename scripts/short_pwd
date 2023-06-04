@@ -1,0 +1,69 @@
+#!/bin/python3
+
+import argparse
+import os
+
+def shorten_path(num_names, current_path):
+    for i in range(1, num_names):
+        path: str = current_path[i]
+        current_path[i] = path[0]
+
+    return current_path
+
+#
+parser = argparse.ArgumentParser(
+    description="A Python script that shortens the path printed by pwd",
+    epilog="Written by Emilly S.H. / M.S. @ https://github.com/em-s-h",
+    formatter_class=argparse.MetavarTypeHelpFormatter,
+)
+
+parser.add_argument(
+    "--full-names",
+    "-f",
+
+    default=1,
+    type=int,
+
+    help="How many directories don't have their name shortened. (default 1)",
+)
+
+parser.add_argument(
+    "--short-home",
+    "-s",
+
+    action="store_false",
+    help="Print /home/user/ as ~/ (default)"
+)
+
+#
+args = parser.parse_args()
+num_full_names = args.full_names
+short_home = args.short_home
+
+#
+current_path = os.popen('pwd')
+user = os.popen('whoami')
+
+#
+current_path = current_path.read().strip()
+user = user.read().strip()
+
+#
+if short_home:
+    current_path = current_path.replace(f"/home/{user}", "~")
+
+tmp_path = current_path.split("/")
+
+#
+if len(tmp_path) <= num_full_names:
+    current_path = '/'.join(tmp_path)
+    print(current_path)
+    exit(0)
+
+#
+num_short_names = len(tmp_path) - num_full_names
+tmp_path = shorten_path(num_short_names, tmp_path)
+
+#
+current_path = '/'.join(tmp_path)
+print(current_path)

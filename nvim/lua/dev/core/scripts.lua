@@ -33,10 +33,7 @@ api.nvim_create_autocmd("FileType", {
 	callback = function()
 		local file_type = vim.bo.filetype
 
-		if file_type == "python" then
-			opt.foldmethod = "indent"
-		--
-		elseif file_type == "markdown" then
+		if file_type == "markdown" then
 			opt.colorcolumn = "95,100"
 		--
 		elseif file_type == "rust" then

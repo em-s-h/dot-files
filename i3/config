@@ -74,25 +74,33 @@ exec $term
 
 # Bindings. {{{
 
-# Start program launcher.
-bindsym $mod+d exec rofi -show run
-
-# Start power manager.
-bindsym $mod+Shift+e exec ~/.config/i3/power-menu.sh
-
 # Start a terminal.
 bindsym $mod+Shift+Return exec xfce4-terminal --drop-down
 bindsym $mod+Return exec $term
 
 # Screen capture.
-bindsym --release $mod+Print exec xfce4-screenshooter -r
-bindsym --release Print exec xfce4-screenshooter -f
+bindsym --release Control+Print exec xfce4-screenshooter --region
+bindsym --release Shift+Print exec xfce4-screenshooter --window
+bindsym --release Print exec xfce4-screenshooter --fullscreen
 
 # Reload the configuration file.
 bindsym $mod+Shift+c reload
 
 # Restart i3 inplace.
 bindsym $mod+Shift+r restart
+
+# Menus. {{{
+
+# Start program launcher.
+bindsym $mod+d exec rofi -show run
+
+# Start power manager.
+bindsym $mod+Shift+e exec ~/.config/i3/power-menu.sh
+
+# Start keyboard layout menu.
+bindsym $mod+Control+k exec ~/.config/i3/kb-layout-menu.sh
+
+# }}}
 
 # Layout. {{{
 # Resize mode.
@@ -244,11 +252,17 @@ mode "resize" {
     # Pressing j will shrink the window’s height.
     # Pressing k will grow   the window’s height.
 
-    bindsym j resize shrink height 10 px or 10 ppt
-    bindsym k resize grow   height 10 px or 10 ppt
+    bindsym Control+j resize shrink height 10 px or 10 ppt
+    bindsym Control+k resize grow   height 10 px or 10 ppt
 
-    bindsym h resize shrink width  10 px or 10 ppt
-    bindsym l resize grow   width  10 px or 10 ppt
+    bindsym Control+h resize shrink width  10 px or 10 ppt
+    bindsym Control+l resize grow   width  10 px or 10 ppt
+
+    bindsym j resize shrink height 5 px or 5 ppt
+    bindsym k resize grow   height 5 px or 5 ppt
+
+    bindsym h resize shrink width  5 px or 5 ppt
+    bindsym l resize grow   width  5 px or 5 ppt
 
     # back to normal: Enter or Escape or $mod+r
     bindsym Return mode "default"

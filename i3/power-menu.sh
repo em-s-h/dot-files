@@ -3,7 +3,7 @@
 options=" - Lock screen \n⏾- Suspend \n󰍃 - Log out \n - Reboot \n󰐥 - Poweroff"
 input_file="/tmp/dmenu-input"
 
-echo -e "$options" | rofi -dmenu -i -l 5 -p "Power options" > "$input_file"
+echo -e "$options" | rofi -dmenu -i -l 5 -p "Power options:" > "$input_file"
 
 if  grep -q -i "lock" "$input_file" ; then
     ~/.config/i3/screen-lock.sh
