@@ -18,7 +18,6 @@ null_ls.setup({
 		formatting.rustfmt,
 		formatting.stylua,
 
-		diagnostics.shellcheck,
 		diagnostics.luacheck,
 		diagnostics.semgrep,
 

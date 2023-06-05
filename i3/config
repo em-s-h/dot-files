@@ -68,6 +68,7 @@ exec --no-startup-id dex --autostart --environment i3
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+exec setxkbmap -layout 'br(nodeadkeys)'
 exec compton
 exec $term
 # }}}
@@ -251,12 +252,6 @@ mode "resize" {
 
     # Pressing j will shrink the window’s height.
     # Pressing k will grow   the window’s height.
-
-    bindsym Control+j resize shrink height 10 px or 10 ppt
-    bindsym Control+k resize grow   height 10 px or 10 ppt
-
-    bindsym Control+h resize shrink width  10 px or 10 ppt
-    bindsym Control+l resize grow   width  10 px or 10 ppt
 
     bindsym j resize shrink height 5 px or 5 ppt
     bindsym k resize grow   height 5 px or 5 ppt

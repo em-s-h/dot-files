@@ -45,9 +45,7 @@ mason_null_ls.setup({
 		"stylua",
 
 		-- Linters.
-		"shellcheck",
 		"luacheck",
-
 		"eslint_d",
 		"semgrep",
 	},

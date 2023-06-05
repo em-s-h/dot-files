@@ -8,6 +8,8 @@ case $- in
       *) return;;
 esac
 
+clear
+# ssh {{{
 env=~/.ssh/agent.env
 
 agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
@@ -32,8 +34,16 @@ elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
 fi
 
 unset env
+# }}}
 
-clear
+# Weather forecast {{{
+if [ -f /tmp/weather-printed ]; then
+    touch /tmp/weather-printed
+    curl wttr.in
+    sleep 2s
+fi
+# }}}
+
 cd "$HOME/notes/" || echo "Unable to enter '$HOME/notes/'"
 
 glow ./to-do.md
@@ -45,6 +55,7 @@ export VISUAL="nvim -u $HOME/.config/nvim/vim-init.lua"
 export EDITOR="$VISUAL"
 
 export BASH_ENV="$HOME/.bashenv"
+
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -96,7 +107,7 @@ fi
 
 if [ "$color_prompt" = yes ]; then
     # PS1='${debian_chroot:+($debian_chroot)}\[\e[0;38;5;81m\]\w\[\e[0m\]: \[\e[0;38;5;86m\]\u\[\e[0;38;5;140m\]\$\[\e[0m\] '
-    PS1='${debian_chroot:+($debian_chroot)}\[\e[38;5;81m\]$(short_pwd -f 3)\[\e[0m\]: \[\e[38;5;86m\]\u\[\e[38;5;140m\]\$ \[\e[0m\]'
+    PS1='${debian_chroot:+($debian_chroot)}\[\e[38;5;81m\]$(short_pwd -f 2)\[\e[0m\]: \[\e[38;5;86m\]\u\[\e[38;5;140m\]\$ \[\e[0m\]'
 else
     PS1='${debian_chroot:+($debian_chroot)}\w: \u\$ '
 fi
