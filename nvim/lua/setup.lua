@@ -40,6 +40,7 @@ return packer.startup(function(use)
 	-- Visuals.
 	use("nvim-lualine/lualine.nvim") -- Statusline.
 	use("rebelot/kanagawa.nvim") -- Colorscheme.
+	use("lukas-reineke/indent-blankline.nvim")
 
     -- stylua: ignore start
 	-- Useful.
@@ -92,6 +93,9 @@ return packer.startup(function(use)
 
 	-- Autoclosing.
 	use("windwp/nvim-autopairs")
+
+    -- Kitty.
+    use("fladson/vim-kitty")
 
 	-- stylua: ignore end
 	if packer_bootstrap then

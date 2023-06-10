@@ -9,6 +9,7 @@ require("dev.core.colorscheme")
 require("dev.core.scripts")
 
 -- Plugins.
+require("dev.plugins.indent-blankline")
 require("dev.plugins.treesitter")
 require("dev.plugins.telescope")
 require("dev.plugins.autopairs")

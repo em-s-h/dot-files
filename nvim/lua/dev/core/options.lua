@@ -52,8 +52,10 @@ opt.completeopt = "menu,menuone,noinsert,noselect,preview"
 opt.backspace = "indent,eol,start"
 
 -- 14. Tabs & indenting.
+opt.preserveindent = true
 opt.smartindent = true
 opt.autoindent = true
+
 opt.expandtab = true
 opt.cindent = true
 

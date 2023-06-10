@@ -2,6 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 #
+# bashrc {{{
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -9,53 +10,6 @@ case $- in
 esac
 
 clear
-# ssh {{{
-env=~/.ssh/agent.env
-
-agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
-
-agent_start ()
-{
-    (umask 077; ssh-agent >| "$env")
-    . "$env" >| /dev/null ;
-}
-
-agent_load_env
-
-# agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2=agent not running
-agent_run_state=$(ssh-add -l >| /dev/null 2>&1; echo $?)
-
-if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
-    agent_start
-    ssh-add
-
-elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
-    ssh-add
-fi
-
-unset env
-# }}}
-
-# Weather forecast {{{
-if [ -f /tmp/weather-printed ]; then
-    touch /tmp/weather-printed
-    curl wttr.in
-    sleep 2s
-fi
-# }}}
-
-cd "$HOME/notes/" || echo "Unable to enter '$HOME/notes/'"
-
-glow ./to-do.md
-cd - > /dev/null
-
-setxkbmap -option "caps:swapescape"
-
-export VISUAL="nvim -u $HOME/.config/nvim/vim-init.lua"
-export EDITOR="$VISUAL"
-
-export BASH_ENV="$HOME/.bashenv"
-
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -89,9 +43,7 @@ case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
+# uncomment for a colored prompt, if the terminal has the capability.
 force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
@@ -106,7 +58,6 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    # PS1='${debian_chroot:+($debian_chroot)}\[\e[0;38;5;81m\]\w\[\e[0m\]: \[\e[0;38;5;86m\]\u\[\e[0;38;5;140m\]\$\[\e[0m\] '
     PS1='${debian_chroot:+($debian_chroot)}\[\e[38;5;81m\]$(short_pwd -f 2)\[\e[0m\]: \[\e[38;5;86m\]\u\[\e[38;5;140m\]\$ \[\e[0m\]'
 else
     PS1='${debian_chroot:+($debian_chroot)}\w: \u\$ '
@@ -114,13 +65,13 @@ fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
+# case "$TERM" in
+# xterm*|rxvt*)
+#     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+#     ;;
+# *)
+#     ;;
+# esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -137,13 +88,10 @@ fi
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
+# Add an "alert" alias for long running commands.
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.bash_aliases ]; then
@@ -156,10 +104,40 @@ fi
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
+
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
 fi
+
+# }}}
+
+# On first section. {{{
+term_count=$(ls /dev/pts/ | grep -ve '[[:alpha:]]' | wc -l)
+
+if [[ $term_count -le 1 ]] ; then
+    # Start ssh-agent.
+    ~/dev/scripts/ssh_start.sh
+
+    # Print weather.
+    ~/dev/scripts/weather.sh
+fi
+
+if [[ $term_count -le 2 ]]; then
+    # Print to-do.
+    cd "$HOME/notes/" || echo "Unable to enter '$HOME/notes/'"
+
+    glow ./to-do.md
+    cd - > /dev/null
+fi
+
+unset term_count
+# }}}
+
+export BASH_ENV="$HOME/.bashenv"
+
+export VISUAL="nvim -u $HOME/.config/nvim/vim_init.lua"
+export EDITOR="nvim"
 
 . "$HOME/.cargo/env"
 

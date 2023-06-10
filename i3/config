@@ -25,7 +25,7 @@ gaps outer 0
 
 # Variables. {{{
 set $refresh_i3status killall -SIGUSR1 i3status -c ~/.config/i3/i3status.conf
-set $term alacritty
+set $term kitty
 set $mod Mod1
 
 # Workspaces.
@@ -68,7 +68,8 @@ exec --no-startup-id dex --autostart --environment i3
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-exec setxkbmap -layout 'br(nodeadkeys)'
+exec setxkbmap -layout "'br(nodeadkeys)' -option 'caps:swapescape'"
+
 exec compton
 exec $term
 # }}}
@@ -92,14 +93,14 @@ bindsym $mod+Shift+r restart
 
 # Menus. {{{
 
-# Start program launcher.
+# Program launcher.
 bindsym $mod+d exec rofi -show run
 
-# Start power manager.
-bindsym $mod+Shift+e exec ~/.config/i3/power-menu.sh
+# Power manager.
+bindsym $mod+Shift+e exec ~/dev/scripts/power_menu.sh
 
-# Start keyboard layout menu.
-bindsym $mod+Control+k exec ~/.config/i3/kb-layout-menu.sh
+# Keyboard layout menu.
+bindsym $mod+Control+k exec ~/dev/scripts/kb_layout_menu.sh
 
 # }}}
 
@@ -236,9 +237,6 @@ assign [class="Arandr"] $ws9
 assign [class="VirtualBox Manager"] $ws10
 assign [class="VirtualBox Machine"] $ws10
 # }}}
-
-# Settings.
-for_window [class="VirtualBox Machine"] floating enable
 
 # }}}
 
