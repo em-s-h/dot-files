@@ -116,8 +116,33 @@ fi
 term_count=$(ls /dev/pts/ | grep -ve '[[:alpha:]]' | wc -l)
 
 if [[ $term_count -le 1 ]] ; then
-    # Start ssh-agent.
-    ~/dev/scripts/ssh_start.sh
+    # Start ssh-agent. {{{
+    env=~/.ssh/agent.env
+
+    agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
+
+    agent_start ()
+    {
+        (umask 077; ssh-agent >| "$env")
+        . "$env" >| /dev/null ;
+    }
+
+    agent_load_env
+
+    # agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2=agent not running
+    agent_run_state=$(ssh-add -l >| /dev/null 2>&1; echo $?)
+
+    if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
+        agent_start
+        ssh-add
+
+    elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
+        ssh-add
+    fi
+
+    unset input
+    unset env
+    # }}}
 
     # Print weather.
     ~/dev/scripts/weather.sh
@@ -141,4 +166,5 @@ export EDITOR="nvim"
 
 . "$HOME/.cargo/env"
 
-source /home/esh/git-repos/alacritty/extra/completions/alacritty.bash
+source $HOME/.local/kitty.app/lib/kitty/shell-integration/bash/kitty.bash
+source $HOME/git-repos/alacritty/extra/completions/alacritty.bash
