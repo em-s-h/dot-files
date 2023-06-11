@@ -3,13 +3,6 @@
 import argparse
 import os
 
-def shorten_path(num_names, current_path):
-    for i in range(1, num_names):
-        path: str = current_path[i]
-        current_path[i] = path[0]
-
-    return current_path
-
 #
 parser = argparse.ArgumentParser(
     description="A Python script that shortens the path printed by pwd",
@@ -21,10 +14,10 @@ parser.add_argument(
     "--full-names",
     "-f",
 
-    default=1,
+    default=2,
     type=int,
 
-    help="How many directories don't have their name shortened. (default 1)",
+    help="How many directories don't have their names shortened. (default 2)",
 )
 
 parser.add_argument(
@@ -68,6 +61,17 @@ if print_licence:
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
     ''')
     exit(0)
+
+def shorten_path(num_names, current_path):
+    for i in range(1, num_names):
+        dir: str = current_path[i]
+
+        if dir[0] == '.':
+            current_path[i] = dir[:2]
+        else:
+            current_path[i] = dir[0]
+
+    return current_path
 
 #
 current_path = os.popen('pwd')

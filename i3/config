@@ -191,6 +191,7 @@ assign [class="firefox"] $ws1
 # Workspace 2 - Terminals. {{{
 assign [class="Xfce4-terminal"] $ws2
 assign [class="Alacritty"] $ws2
+assign [class="kitty"] $ws2
 
 assign [class="UXTerm"] $ws2
 assign [class="XTerm"] $ws2

@@ -161,7 +161,7 @@ unset term_count
 
 export BASH_ENV="$HOME/.bashenv"
 
-export VISUAL="nvim -u $HOME/.config/nvim/vim_init.lua"
+export VISUAL="nvim -u $HOME/.config/nvim/view_init.lua"
 export EDITOR="nvim"
 
 . "$HOME/.cargo/env"
