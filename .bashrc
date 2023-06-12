@@ -112,8 +112,13 @@ fi
 
 # }}}
 
-# On first section. {{{
 term_count=$(ls /dev/pts/ | grep -ve '[[:alpha:]]' | wc -l)
+
+# Welcome.
+if [[ $term_count -le 3 ]]; then
+    please
+    ~/dev/scripts/other_to_do.sh
+fi
 
 if [[ $term_count -le 1 ]] ; then
     # Start ssh-agent. {{{
@@ -147,24 +152,13 @@ if [[ $term_count -le 1 ]] ; then
     # Print weather.
     ~/dev/scripts/weather.sh
 fi
-
-if [[ $term_count -le 2 ]]; then
-    # Print to-do.
-    cd "$HOME/notes/" || echo "Unable to enter '$HOME/notes/'"
-
-    glow ./to-do.md
-    cd - > /dev/null
-fi
-
 unset term_count
-# }}}
-
-export BASH_ENV="$HOME/.bashenv"
 
 export VISUAL="nvim -u $HOME/.config/nvim/view_init.lua"
 export EDITOR="nvim"
 
-. "$HOME/.cargo/env"
+export BASH_ENV="$HOME/.bashenv"
 
-source $HOME/.local/kitty.app/lib/kitty/shell-integration/bash/kitty.bash
-source $HOME/git-repos/alacritty/extra/completions/alacritty.bash
+source "$HOME/.local/kitty.app/lib/kitty/shell-integration/bash/kitty.bash"
+source "$HOME/git-repos/alacritty/extra/completions/alacritty.bash"
+source "$HOME/.cargo/env"
