@@ -10,6 +10,11 @@ cmd([[highlight IndentBlanklineContextChar guifg=#C678DD gui=nocombine]])
 cmd([[highlight IndentBlanklineContextStart guisp=#C678DD gui=underline]])
 
 indent.setup({
+	filetype_exclude = {
+		"markdown",
+	},
+	char = "▎",
+
 	use_treesitter_scope = true,
 	show_current_context = true,
 	show_current_context_start = true,

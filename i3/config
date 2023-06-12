@@ -9,7 +9,7 @@
 
 # Main configs.
 
-font pango:MesloLGMDZ Nerd Font 9
+font pango:FiraCode Nerd Font Mono 9
 title_align center
 
 default_floating_border pixel 4
@@ -59,10 +59,6 @@ exec ~/.screenlayout/main.sh
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -160,7 +156,7 @@ bindsym $mod+6 workspace number $ws6
 bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
+bindsym $mod+0 workspace number $ws10; layout tabbed
 # }}}
 
 # Move focused container to workspace. {{{
@@ -202,6 +198,7 @@ assign [class="Thunar"] $ws3
 assign [class="Godot"] $ws3
 
 assign [class="Audacity"] $ws3
+assign [class="kdenlive"] $ws3
 assign [class="krita"] $ws3
 
 # Workspace 4 - Games. {{{
@@ -276,6 +273,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+    font pango:FiraCode Nerd Font 9.5
     status_command i3status -c ~/.config/i3/i3status.conf
     separator_symbol " :: "
 

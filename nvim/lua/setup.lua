@@ -38,9 +38,9 @@ return packer.startup(function(use)
 	use("nvim-lua/plenary.nvim")
 
 	-- Visuals.
+	use("lukas-reineke/indent-blankline.nvim")
 	use("nvim-lualine/lualine.nvim") -- Statusline.
 	use("rebelot/kanagawa.nvim") -- Colorscheme.
-	use("lukas-reineke/indent-blankline.nvim")
 
     -- stylua: ignore start
 	-- Useful.
