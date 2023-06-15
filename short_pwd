@@ -3,7 +3,7 @@
 import argparse
 import os
 
-#
+# args. {{{
 parser = argparse.ArgumentParser(
     description="A Python script that shortens the path printed by pwd",
     epilog="Written by Emilly S.H. / M.S. @ https://github.com/em-s-h",
@@ -61,6 +61,8 @@ if print_licence:
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
     ''')
     exit(0)
+
+# }}}
 
 def shorten_path(num_names, current_path):
     for i in range(1, num_names):

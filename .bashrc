@@ -115,7 +115,13 @@ fi
 term_count=$(ls /dev/pts/ | grep -ve '[[:alpha:]]' | wc -l)
 
 # Welcome.
-if [[ $term_count -le 3 ]]; then
+if [[ $term_count -le 2 ]]; then
+
+    # Clear done tasks.
+    if grep -iq '"done": true' ~/.config/please/config.json ; then
+        please clean
+    fi
+
     please
     ~/dev/scripts/other_to_do.sh
 fi
@@ -160,5 +166,4 @@ export EDITOR="nvim"
 export BASH_ENV="$HOME/.bashenv"
 
 source "$HOME/.local/kitty.app/lib/kitty/shell-integration/bash/kitty.bash"
-source "$HOME/git-repos/alacritty/extra/completions/alacritty.bash"
 source "$HOME/.cargo/env"
