@@ -16,6 +16,8 @@ keymap.set("n", "zA", ":%foldopen<CR>") -- Open all folders.
 keymap.set("n", "zC", "zM")             -- Close all folders.
 
 keymap.set("n", "<c-a>", "ggVG") -- Select all.
+keymap.set("n", "P", "O<esc>p")  -- Paste above current line.
+
 keymap.set("n", "x", '"_x')      -- Remove character w/o copying into register.
 keymap.set("n", "Y", "y$")       -- Yank from cursor to line end.
 
@@ -28,22 +30,22 @@ keymap.set("n", "<leader>tn", ":tabn<CR>") -- Prev tab.
 -- }}}
 
 -- Splits {{{
--- keymap.set("n", "<leader>ss", ":vsplit<CR>") -- Split to the side.
--- keymap.set("n", "<leader>sb", ":split<CR>")  -- Split bellow.
---
--- keymap.set("n", "<leader>sx", ":close<CR>") -- Close split
--- keymap.set("n", "<leader>se", "<C-w>=")     -- Make splits equal width.
---
--- keymap.set("n", "<c-right>", "<C-w>>")  -- Increase split width.
--- keymap.set("n", "<c-up>", "<C-w>+")     -- Increase split height.
---
--- keymap.set("n", "<c-left>", "<C-w><")   -- Decrease split width.
--- keymap.set("n", "<c-down>", "<C-w>-")   -- Decrease split height.
---
--- keymap.set("n", "<leader>sh", "<C-w>h") -- Left split.
--- keymap.set("n", "<leader>sk", "<C-w>k") -- Top split.
--- keymap.set("n", "<leader>sj", "<C-w>j") -- Bottom split.
--- keymap.set("n", "<leader>sl", "<C-w>l") -- Right split.
+keymap.set("n", "<leader>ss", ":vsplit<CR>") -- Split to the side.
+keymap.set("n", "<leader>sb", ":split<CR>")  -- Split bellow.
+
+keymap.set("n", "<leader>sx", ":close<CR>") -- Close split
+keymap.set("n", "<leader>se", "<C-w>=")     -- Make splits equal width.
+
+keymap.set("n", "<c-right>", "<C-w>>")  -- Increase split width.
+keymap.set("n", "<c-up>", "<C-w>+")     -- Increase split height.
+
+keymap.set("n", "<c-left>", "<C-w><")   -- Decrease split width.
+keymap.set("n", "<c-down>", "<C-w>-")   -- Decrease split height.
+
+keymap.set("n", "<leader>sh", "<C-w>h") -- Left split.
+keymap.set("n", "<leader>sk", "<C-w>k") -- Top split.
+keymap.set("n", "<leader>sj", "<C-w>j") -- Bottom split.
+keymap.set("n", "<leader>sl", "<C-w>l") -- Right split.
 
 -- stylua: ignore end
 -- }}}

@@ -30,7 +30,7 @@ api.nvim_create_autocmd("FileType", {
 
 			opt.smartindent = false
 			opt.autoindent = false
-		--
+			opt.shiftwidth = 0
 		elseif file_type == "rust" then
 			opt.colorcolumn = "95,100"
 		end

@@ -214,6 +214,8 @@ assign [class="mGBA"] $ws4
 assign [class="dolphin-emu"] $ws4
 assign [class="Mednaffe"] $ws4
 assign [class="redream"] $ws4
+
+assign [title="Mesen"] $ws4
 assign [class="Hiro"] $ws4
 
 assign [class="retroarch"] $ws4
