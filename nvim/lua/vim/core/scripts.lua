@@ -25,14 +25,19 @@ api.nvim_create_autocmd("FileType", {
 		local file_type = vim.bo.filetype
 
 		if file_type == "markdown" then
-			opt.preserveindent = false
-			opt.colorcolumn = "95,100"
+			opt.colorcolumn = "100"
 
+			opt.preserveindent = false
 			opt.smartindent = false
 			opt.autoindent = false
 			opt.shiftwidth = 0
+
+			opt.foldmarker = "{{{,}}}"
+			opt.foldmethod = "marker"
+			opt.foldlevel = 0
+		--
 		elseif file_type == "rust" then
-			opt.colorcolumn = "95,100"
+			opt.colorcolumn = "100"
 		end
 	end,
 })

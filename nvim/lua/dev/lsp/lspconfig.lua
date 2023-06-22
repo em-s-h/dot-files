@@ -13,7 +13,6 @@ if not cmp_lsp_status then
 	return
 end
 
--- Keymaps. {{{
 -- stylua: ignore start
 -- More concise.
 local keymap = vim.keymap
@@ -44,7 +43,6 @@ local on_attach = function(client, bufnr)
 end
 
 -- stylua: ignore end
--- }}}
 
 -- Used to enable autocompletion.
 local capabilities = cmp_nvim_lsp.default_capabilities()

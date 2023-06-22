@@ -237,6 +237,7 @@ assign [class="Arandr"] $ws9
 # Workspace 10 - VMs.
 assign [class="VirtualBox Manager"] $ws10
 assign [class="VirtualBox Machine"] $ws10
+assign [title="VirtualBox"] $ws10
 # }}}
 
 # Resize mode. {{{

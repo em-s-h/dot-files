@@ -24,17 +24,14 @@ opt.number = true
 opt.wrap = false
 
 -- 5. Syntax, highlighting and spelling.
-opt.colorcolumn = "120,125"
 opt.termguicolors = true
+opt.colorcolumn = "120"
 opt.cursorline = true
 opt.hlsearch = true
 
 -- 6. Multiple windows.
 opt.splitbelow = true
 opt.splitright = true
-
--- 9. Using the mouse.
-opt.mouse = ""
 
 -- 11. Messages and info.
 opt.showmode = true
@@ -64,8 +61,8 @@ opt.shiftwidth = 4
 opt.tabstop = 4
 
 -- 15. Folding.
-opt.foldmarker = "{{{,}}}"
-opt.foldmethod = "marker"
+opt.foldmethod = "indent"
+opt.foldlevelstart = 99
 
 -- 19. The swap file.
 opt.updatetime = 250
@@ -75,3 +72,7 @@ opt.wildignore = "*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx"
 
 -- 25. Various.
 opt.signcolumn = "yes"
+
+-- Netrw.
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrw = 1

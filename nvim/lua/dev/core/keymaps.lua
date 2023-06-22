@@ -15,10 +15,10 @@ keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- List available 
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- List open buffers in current neovim instance.
 
 -- Telescope git commands.
-keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer.
-keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches.
-keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits.
-keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview.
+-- keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer.
+-- keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches.
+-- keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits.
+-- keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview.
 
 -- Restart lsp server.
 keymap.set("n", "<leader>rs", ":LspRestart<CR>")

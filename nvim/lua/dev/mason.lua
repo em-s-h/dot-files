@@ -4,22 +4,28 @@ if not mason_status then
 	return
 end
 
-local mason_lspconf_status, mason_lspconfig = pcall(require, "mason-lspconfig")
-if not mason_lspconf_status then
+local lspconf_status, lspconfig = pcall(require, "mason-lspconfig")
+if not lspconf_status then
 	print("mason-lspconfig is not installed!")
 	return
 end
 
-local mason_null_ls_status, mason_null_ls = pcall(require, "mason-null-ls")
-if not mason_null_ls_status then
-	print("mason_null_ls is not installed!")
+local null_ls_status, null_ls = pcall(require, "mason-null-ls")
+if not null_ls_status then
+	print("mason-null-ls is not installed!")
+	return
+end
+
+local dap_status, dap = pcall(require, "mason-nvim-dap")
+if not dap_status then
+	print("mason-nvim-dap is not installed!")
 	return
 end
 
 mason.setup()
 
 -- LSP.
-mason_lspconfig.setup({
+lspconfig.setup({
 	ensure_installed = {
 		"rust_analyzer",
 		"omnisharp",
@@ -36,8 +42,16 @@ mason_lspconfig.setup({
 	automatic_installation = true,
 })
 
--- Other.
-mason_null_ls.setup({
+-- DAP.
+dap.setup({
+	ensure_installed = {
+		"codelldb",
+	},
+	automatic_installation = true,
+})
+
+-- Linters & formatters.
+null_ls.setup({
 	ensure_installed = {
 		-- Formatters.
 		"clang-format",
@@ -45,7 +59,6 @@ mason_null_ls.setup({
 		"stylua",
 
 		-- Linters.
-		"luacheck",
 		"eslint_d",
 		"semgrep",
 	},

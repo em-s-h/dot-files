@@ -31,6 +31,7 @@ if not status then
 	return
 end
 
+-- stylua: ignore start
 return packer.startup(function(use)
 	use("wbthomason/packer.nvim")
 
@@ -38,14 +39,22 @@ return packer.startup(function(use)
 	use("nvim-lua/plenary.nvim")
 
 	-- Visuals.
-	use("lukas-reineke/indent-blankline.nvim")
-	use("nvim-lualine/lualine.nvim") -- Statusline.
-	use("rebelot/kanagawa.nvim") -- Colorscheme.
+    use({ 'rose-pine/neovim', as = 'rose-pine' })   -- Colorscheme
+	use("lukas-reineke/indent-blankline.nvim")      -- Indent line.
+    
+	use("nvim-lualine/lualine.nvim")    -- Status line.
+    use('kevinhwang91/nvim-hlslens')    -- Better word matching.
 
-    -- stylua: ignore start
+    use({                       -- Better folding.
+        'kevinhwang91/nvim-ufo',
+        requires = 'kevinhwang91/promise-async'
+    })
+
 	-- Useful.
 	use("numToStr/Comment.nvim")    -- Easier commenting.
+	use("windwp/nvim-autopairs")    -- Autoclosing.
 	use("tpope/vim-surround")       -- Word surrounding.
+    use('stevearc/oil.nvim')        -- File explorer in buffer.
 
 	-- Autocompletion.
 	use("hrsh7th/cmp-nvim-lsp") -- For lsp servers.
@@ -63,8 +72,8 @@ return packer.startup(function(use)
 	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" })          -- fuzzy finder.
 
 	-- LSP management.
-	use("williamboman/mason-lspconfig.nvim")    -- Bridges gap b/w mason & lspconfig.
-	use("williamboman/mason.nvim")              -- Manages LSP servers, linters & formatters.
+	use("williamboman/mason-lspconfig.nvim")    -- Connect lspconfig to mason.
+	use("williamboman/mason.nvim")              -- Manages LSP servers, linters, formatters & DAP.
 
 	-- LSP configuration.
 	use("neovim/nvim-lspconfig")    -- LSP configuration.
@@ -79,8 +88,12 @@ return packer.startup(function(use)
 	})
 
 	-- Formatting & linting.
-	use("jose-elias-alvarez/null-ls.nvim")  -- Configure formatters & linters.
-	use("jay-babu/mason-null-ls.nvim")      -- Bridges gap b/w mason & null-ls.
+	use("jose-elias-alvarez/null-ls.nvim")  -- Linting & formatting.
+	use("jay-babu/mason-null-ls.nvim")      -- Connect null-ls to mason.
+
+    -- Debugging.
+    use("mfussenegger/nvim-dap")        -- DAP implementation.
+    use("jay-babu/mason-nvim-dap.nvim") -- Connect nvim-dap to mason.
 
 	-- Treesitter configuration.
 	use({
@@ -90,9 +103,6 @@ return packer.startup(function(use)
 			ts_update()
 		end,
 	})
-
-	-- Autoclosing.
-	use("windwp/nvim-autopairs")
 
     -- Kitty.
     use("fladson/vim-kitty")

@@ -7,6 +7,7 @@ alias python='python3'
 # App aliases.
 alias view='nvim -R -u ~/.config/nvim/view_init.lua'
 alias vim='nvim -u ~/.config/nvim/vim_init.lua'
+alias icat="kitty +kitten icat --hold"
 
 alias restore-trash='trash-restore'
 alias empty-trash='trash-empty'
@@ -21,11 +22,11 @@ alias start_ssh='~/dev/scripts/ssh_start.sh'
 alias weather='~/dev/scripts/weather.sh'
 
 # Other aliases.
+alias cale='cal | grep --color -EC6 "\b$(date +%e | sed "s/ //g")"'
 alias fix-bg='feh --bg-scale --randomize ~/media/wallpapers/*'
+
 alias where='whereis'
-alias echo='echo -e'
 alias rm='rm -I'
 
 alias c='clear'
-alias q='exit'
 alias x='exit'

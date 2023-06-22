@@ -12,11 +12,8 @@ keymap.set("n", "N", "Nzz")
 keymap.set("n", "<leader>nh", ":nohl<CR>")  -- Clear search highlights.
 keymap.set("n", "<leader>w", ":w<CR>")      -- Easier writting.
 
-keymap.set("n", "zA", ":%foldopen<CR>") -- Open all folders.
-keymap.set("n", "zC", "zM")             -- Close all folders.
-
 keymap.set("n", "<c-a>", "ggVG") -- Select all.
-keymap.set("n", "P", "O<esc>p")  -- Paste above current line.
+keymap.set("n", "P", "O<esc>pk") -- Paste above current line.
 
 keymap.set("n", "x", '"_x')      -- Remove character w/o copying into register.
 keymap.set("n", "Y", "y$")       -- Yank from cursor to line end.

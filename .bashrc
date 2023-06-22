@@ -2,7 +2,6 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 #
-# bashrc {{{
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -110,30 +109,27 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# }}}
-
 term_count=$(ls /dev/pts/ | grep -ve '[[:alpha:]]' | wc -l)
 
 # Welcome.
-if [[ $term_count -le 2 ]]; then
-
-    # Clear done tasks.
-    if grep -iq '"done": true' ~/.config/please/config.json ; then
-        please clean
-    fi
-
+if grep -iq '"done": true' ~/.config/please/config.json ; then
+    please clean
+else
     please
+fi
+
+if [[ $term_count -le 2 ]]; then
     ~/dev/scripts/other_to_do.sh
 fi
 
 if [[ $term_count -le 1 ]] ; then
-    # Start ssh-agent. {{{
     env=~/.ssh/agent.env
 
-    agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
+    agent_load_env () {
+        test -f "$env" && . "$env" >| /dev/null ;
+    }
 
-    agent_start ()
-    {
+    agent_start () {
         (umask 077; ssh-agent >| "$env")
         . "$env" >| /dev/null ;
     }
@@ -160,7 +156,7 @@ if [[ $term_count -le 1 ]] ; then
 fi
 unset term_count
 
-export VISUAL="nvim -u $HOME/.config/nvim/view_init.lua"
+export VISUAL="nvim -u $HOME/.config/nvim/vim_init.lua"
 export EDITOR="nvim"
 
 export BASH_ENV="$HOME/.bashenv"
