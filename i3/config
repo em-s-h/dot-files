@@ -226,7 +226,6 @@ assign [class="libreoffice-startcenter"] $ws8
 assign [class="Ristretto"] $ws8
 assign [class="Rhythmbox"] $ws8
 assign [class="Parole"] $ws8
-
 # }}}
 
 # Workspace 9 - Settings.
@@ -238,6 +237,10 @@ assign [class="Arandr"] $ws9
 assign [class="VirtualBox Manager"] $ws10
 assign [class="VirtualBox Machine"] $ws10
 assign [title="VirtualBox"] $ws10
+# }}}
+
+# Window specific settings. {{{
+for_window [title = "Picture-in-Picture"] sticky enable
 # }}}
 
 # Resize mode. {{{

@@ -13,9 +13,9 @@ opt.incsearch = true
 opt.magic = true
 
 -- 4. Displaying text.
-opt.sidescrolloff = 10
+opt.sidescrolloff = 5
 opt.sidescroll = 1
-opt.scrolloff = 20
+opt.scrolloff = 25
 opt.scroll = 15
 
 opt.relativenumber = true
@@ -24,8 +24,8 @@ opt.number = true
 opt.wrap = false
 
 -- 5. Syntax, highlighting and spelling.
+opt.colorcolumn = "95,100"
 opt.termguicolors = true
-opt.colorcolumn = "120"
 opt.cursorline = true
 opt.hlsearch = true
 

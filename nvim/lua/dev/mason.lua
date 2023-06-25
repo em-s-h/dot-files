@@ -16,12 +16,6 @@ if not null_ls_status then
 	return
 end
 
-local dap_status, dap = pcall(require, "mason-nvim-dap")
-if not dap_status then
-	print("mason-nvim-dap is not installed!")
-	return
-end
-
 mason.setup()
 
 -- LSP.
@@ -38,14 +32,6 @@ lspconfig.setup({
 
 		"pyright",
 		"lua_ls",
-	},
-	automatic_installation = true,
-})
-
--- DAP.
-dap.setup({
-	ensure_installed = {
-		"codelldb",
 	},
 	automatic_installation = true,
 })

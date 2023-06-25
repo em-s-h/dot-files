@@ -41,7 +41,7 @@ return packer.startup(function(use)
 	-- Visuals.
     use({ 'rose-pine/neovim', as = 'rose-pine' })   -- Colorscheme
 	use("lukas-reineke/indent-blankline.nvim")      -- Indent line.
-    
+
 	use("nvim-lualine/lualine.nvim")    -- Status line.
     use('kevinhwang91/nvim-hlslens')    -- Better word matching.
 
@@ -90,10 +90,6 @@ return packer.startup(function(use)
 	-- Formatting & linting.
 	use("jose-elias-alvarez/null-ls.nvim")  -- Linting & formatting.
 	use("jay-babu/mason-null-ls.nvim")      -- Connect null-ls to mason.
-
-    -- Debugging.
-    use("mfussenegger/nvim-dap")        -- DAP implementation.
-    use("jay-babu/mason-nvim-dap.nvim") -- Connect nvim-dap to mason.
 
 	-- Treesitter configuration.
 	use({

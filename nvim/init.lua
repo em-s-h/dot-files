@@ -28,6 +28,3 @@ require("dev.mason")
 require("dev.lsp.lspconfig")
 require("dev.lsp.lspsaga")
 require("dev.lsp.null-ls")
-
--- DAP.
-

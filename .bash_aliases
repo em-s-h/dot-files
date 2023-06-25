@@ -1,13 +1,11 @@
-# yt-dlp aliases.
-alias yt-mp4='yt-dlp -f mp4 -o'
-
-# Python aliases.
-alias python='python3'
-
 # App aliases.
-alias view='nvim -R -u ~/.config/nvim/view_init.lua'
+alias view='nvim -u ~/.config/nvim/view_init.lua'
 alias vim='nvim -u ~/.config/nvim/vim_init.lua'
 alias icat="kitty +kitten icat --hold"
+
+alias yt-mp4='yt-dlp -f mp4 -o'
+alias python='python3'
+alias xdelta='xdelta3'
 
 alias restore-trash='trash-restore'
 alias empty-trash='trash-empty'
