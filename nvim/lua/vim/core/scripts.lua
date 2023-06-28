@@ -3,7 +3,7 @@
 local api = vim.api
 local opt = vim.opt
 
--- Go to last location when opening a file.
+-- Go to last location when opening a file. {{{
 api.nvim_create_autocmd("BufReadPost", {
 	group = 1,
 
@@ -16,8 +16,9 @@ api.nvim_create_autocmd("BufReadPost", {
 		end
 	end,
 })
+-- }}}
 
--- Set options depending on file type.
+-- Set options depending on file type. {{{
 api.nvim_create_autocmd("FileType", {
 	group = 2,
 
@@ -43,3 +44,4 @@ api.nvim_create_autocmd("FileType", {
 		end
 	end,
 })
+-- }}}

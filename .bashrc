@@ -150,10 +150,6 @@ if [[ $term_count -le 1 ]] ; then
 
     unset input
     unset env
-    # }}}
-
-    # Print weather.
-    ~/dev/scripts/weather.sh
 fi
 unset term_count
 
