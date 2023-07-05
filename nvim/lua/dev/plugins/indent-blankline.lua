@@ -12,6 +12,8 @@ cmd([[highlight IndentBlanklineContextStart guisp=#C678DD gui=underline]])
 indent.setup({
 	filetype_exclude = {
 		"markdown",
+		"bash",
+		"lua",
 	},
 	char = "▎",
 

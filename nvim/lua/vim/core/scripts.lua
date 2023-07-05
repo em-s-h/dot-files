@@ -34,7 +34,8 @@ api.nvim_create_autocmd("FileType", {
 			[1] = "i3config",
 			[2] = "markdown",
 			[3] = "kitty",
-			[4] = "lua",
+			[4] = "text",
+			[5] = "lua",
 		}
 
 		for _, file in ipairs(marker_files) do
@@ -44,4 +45,17 @@ api.nvim_create_autocmd("FileType", {
 		end
 	end,
 })
+-- }}}
+
+-- Change theme based on time of day. {{{
+-- local hr = tonumber(os.date("%H", os.time()))
+--
+-- -- Day between 6am and 6pm
+-- if hr > 6 and hr < 18 then
+-- 	opt.background = "light"
+-- --
+-- else
+-- 	opt.background = "dark"
+-- end
+--
 -- }}}

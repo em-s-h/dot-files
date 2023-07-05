@@ -121,9 +121,6 @@ fi
 
 if [[ $term_count -le 2 ]]; then
     ~/dev/scripts/other_to_do.sh
-fi
-
-if [[ $term_count -le 1 ]] ; then
     env=~/.ssh/agent.env
 
     agent_load_env () {
@@ -148,7 +145,6 @@ if [[ $term_count -le 1 ]] ; then
         ssh-add
     fi
 
-    unset input
     unset env
 fi
 unset term_count

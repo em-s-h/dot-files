@@ -54,7 +54,7 @@ floating_modifier $mod
 # exec {{{
 
 # Set display layout && load random wallpaper.
-exec ~/.screenlayout/main.sh
+exec --no-startup-id ~/.screenlayout/main.sh
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -64,9 +64,10 @@ exec --no-startup-id dex --autostart --environment i3
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-exec setxkbmap -layout "'br(nodeadkeys)' -option 'caps:swapescape'"
+exec --no-startup-id setxkbmap -layout "'br(nodeadkeys)' -option 'caps:swapescape'"
+exec --no-startup-id redshift-gtk
 
-exec compton
+exec --no-startup-id compton
 exec $term
 # }}}
 
