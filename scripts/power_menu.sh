@@ -1,6 +1,6 @@
 #!/bin/bash
 
-options="1. 󰅖 - Close menu \n2.  - Lock screen \n3. ⏾- Suspend \n4. 󰍃 - Log out \n5.  - Reboot \n6. 󰐥 - Poweroff"
+options="1. 󰅖 - Close menu \n2.  - Lock screen \n3. ⏾ - Suspend \n4. 󰍃 - Log out \n5.  - Reboot \n6. 󰐥 - Poweroff"
 input="/tmp/dmenu-input"
 
 echo -e "$options" | rofi -dmenu -i -l 6 -p "Power options:" > "$input"

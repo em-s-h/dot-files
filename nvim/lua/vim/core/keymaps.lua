@@ -18,6 +18,9 @@ keymap.set("n", "P", "O<esc>pk") -- Paste above current line.
 keymap.set("n", "x", '"_x')      -- Remove character w/o copying into register.
 keymap.set("n", "Y", "y$")       -- Yank from cursor to line end.
 
+-- Open oil file explorer on parent directory.
+keymap.set("n", "<leader><BS>", require("oil").open)
+
 -- Tabs {{{
 keymap.set("n", "<leader>tx", ":tabclose<CR>") -- Close tab.
 keymap.set("n", "<leader>to", ":tabnew<CR>")   -- Open tab.

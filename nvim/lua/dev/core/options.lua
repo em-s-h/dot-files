@@ -33,6 +33,9 @@ opt.hlsearch = true
 opt.splitbelow = true
 opt.splitright = true
 
+-- 9. Mouse.
+opt.mouse = ""
+
 -- 11. Messages and info.
 opt.showmode = true
 opt.showcmd = true

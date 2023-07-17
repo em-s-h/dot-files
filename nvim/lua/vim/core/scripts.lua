@@ -43,6 +43,11 @@ api.nvim_create_autocmd("FileType", {
 				marker_fold()
 			end
 		end
+
+		if file_type == "text" then
+			opt.smartindent = false
+			opt.autoindent = false
+		end
 	end,
 })
 -- }}}

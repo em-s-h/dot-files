@@ -1,4 +1,5 @@
 # App aliases.
+alias apt_up='sudo apt update && sudo apt upgrade -y && notify-send -u normal "Updates & upgrades finished."'
 alias view='nvim -u ~/.config/nvim/view_init.lua'
 alias vim='nvim -u ~/.config/nvim/vim_init.lua'
 
@@ -8,13 +9,10 @@ alias yt-mp4='yt-dlp -f mp4 -o'
 alias python='python3'
 alias xdelta='xdelta3'
 
-alias restore-trash='trash-restore'
-alias empty-trash='trash-empty'
-alias ls-trash='trash-list'
-
 # ls aliases.
-alias la='ls -lha --hyperlink=auto --color=auto'
-alias l='ls -lh --hyperlink=auto --color=auto'
+alias li='ls -lh -I "$(cat .ignore 2> /dev/null)" -I "$(cat .gitignore 2> /dev/null)"'
+alias la='ls -lha'
+alias l='ls -lh'
 
 # Script aliases.
 alias start_ssh='~/dev/scripts/ssh_start.sh'
