@@ -36,7 +36,7 @@ opt.splitright = true
 -- 9. Mouse.
 opt.mouse = ""
 
--- 11. Messages and info.
+-- 10. Messages and info.
 opt.showmode = true
 opt.showcmd = true
 

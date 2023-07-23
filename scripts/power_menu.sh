@@ -1,23 +1,44 @@
 #!/bin/bash
 
-options="1. 󰅖 - Close menu \n2.  - Lock screen \n3. ⏾ - Suspend \n4. 󰍃 - Log out \n5.  - Reboot \n6. 󰐥 - Poweroff"
-input="/tmp/dmenu-input"
+options="1. 󰅖 - Close menu
+2.  - Lock screen
+3. ⏾ - Suspend
+4. 󰍃 - Log out
+5.  - Reboot
+6. 󰐥 - Poweroff"
 
-echo -e "$options" | rofi -dmenu -i -l 6 -p "Power options:" > "$input"
-
-input="$(cat $input)"
+input="$(echo -e "$options" | rofi -dmenu -i -l 6 -p "Power options:")"
 
 case "$input" in
     *'1'*) exit 0 
     ;;
     *'2'*) ~/dev/scripts/screen_lock.sh
     ;;
-    *'3'*) ~/dev/scripts/confirm_menu.sh "suspend the computer"
+    *'3'*)
+        input=$(~/dev/scripts/confirm_menu.sh "suspend the computer");
+        if [[ $input == "yes" ]]; then
+            ~/dev/scripts/screen_lock.sh
+            systemctl suspend
+        fi
     ;;
-    *'4'*) ~/dev/scripts/confirm_menu.sh "log out of i3"
+    *'4'*)
+        input=$(~/dev/scripts/confirm_menu.sh "log out of i3");
+        if [[ $input == "yes" ]]; then
+            i3-msg exit
+        fi
     ;;
-    *'5'*) ~/dev/scripts/confirm_menu.sh "reboot the computer"
+    *'5'*)
+        input=$(~/dev/scripts/confirm_menu.sh "reboot the computer");
+        if [[ $input == "yes" ]]; then
+            systemctl reboot
+        fi
     ;;
-    *'6'*) ~/dev/scripts/confirm_menu.sh "poweroff the computer"
+    *'6'*)
+        input=$(~/dev/scripts/confirm_menu.sh "poweroff the computer");
+        if [[ $input == "yes" ]]; then
+            systemctl poweroff
+        fi
     ;;
 esac
+
+# Emilly S.H. :D

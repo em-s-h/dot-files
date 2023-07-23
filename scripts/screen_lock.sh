@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-icon="$HOME/media/pfp/towel.png"
 tmpbg="$HOME/media/screenshots/screen.png"
+icon="$HOME/media/pfp/towel.png"
 
 scrot "$tmpbg"
 

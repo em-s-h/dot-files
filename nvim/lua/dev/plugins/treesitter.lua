@@ -29,6 +29,7 @@ treesitter.setup({
 
 		"python",
 		"bash",
+		"rasi",
 		"lua",
 		"vim",
 	},

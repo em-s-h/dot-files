@@ -36,6 +36,7 @@ api.nvim_create_autocmd("FileType", {
 			[3] = "kitty",
 			[4] = "text",
 			[5] = "lua",
+			[6] = "sh",
 		}
 
 		for _, file in ipairs(marker_files) do

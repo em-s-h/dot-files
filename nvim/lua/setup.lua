@@ -38,8 +38,11 @@ return packer.startup(function(use)
 	-- Lua functions used by other plugins.
 	use("nvim-lua/plenary.nvim")
 
+    -- Colorscheme
+    use({ "rose-pine/neovim", as = "rose-pine" })
+    use("rebelot/kanagawa.nvim")
+
 	-- Visuals.
-    use({ 'rose-pine/neovim', as = 'rose-pine' })   -- Colorscheme
 	use("lukas-reineke/indent-blankline.nvim")      -- Indent line.
 
 	use("nvim-lualine/lualine.nvim")    -- Status line.
