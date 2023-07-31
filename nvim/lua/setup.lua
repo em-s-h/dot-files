@@ -39,8 +39,8 @@ return packer.startup(function(use)
 	use("nvim-lua/plenary.nvim")
 
     -- Colorscheme
-    use({ "rose-pine/neovim", as = "rose-pine" })
-    use("rebelot/kanagawa.nvim")
+    -- use({ "rose-pine/neovim", as = "rose-pine" })
+    use("navarasu/onedark.nvim")
 
 	-- Visuals.
 	use("lukas-reineke/indent-blankline.nvim")      -- Indent line.

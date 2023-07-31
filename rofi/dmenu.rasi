@@ -45,7 +45,7 @@ listview {
     layout:             vertical;
     spacing:            5px;
     columns:            2;
-    lines:              5;
+    lines:              4;
 }
 
 element {

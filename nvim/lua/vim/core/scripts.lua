@@ -35,8 +35,9 @@ api.nvim_create_autocmd("FileType", {
 			[2] = "markdown",
 			[3] = "kitty",
 			[4] = "text",
-			[5] = "lua",
-			[6] = "sh",
+			[5] = "conf",
+			[6] = "lua",
+			[7] = "sh",
 		}
 
 		for _, file in ipairs(marker_files) do
@@ -44,24 +45,6 @@ api.nvim_create_autocmd("FileType", {
 				marker_fold()
 			end
 		end
-
-		if file_type == "text" then
-			opt.smartindent = false
-			opt.autoindent = false
-		end
 	end,
 })
--- }}}
-
--- Change theme based on time of day. {{{
--- local hr = tonumber(os.date("%H", os.time()))
---
--- -- Day between 6am and 6pm
--- if hr > 6 and hr < 18 then
--- 	opt.background = "light"
--- --
--- else
--- 	opt.background = "dark"
--- end
---
 -- }}}

@@ -114,11 +114,6 @@ _G.packer_plugins = {
     path = "/home/esh/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
-  ["kanagawa.nvim"] = {
-    loaded = true,
-    path = "/home/esh/.local/share/nvim/site/pack/packer/start/kanagawa.nvim",
-    url = "https://github.com/rebelot/kanagawa.nvim"
-  },
   ["lspkind.nvim"] = {
     loaded = true,
     path = "/home/esh/.local/share/nvim/site/pack/packer/start/lspkind.nvim",
@@ -194,6 +189,11 @@ _G.packer_plugins = {
     path = "/home/esh/.local/share/nvim/site/pack/packer/start/oil.nvim",
     url = "https://github.com/stevearc/oil.nvim"
   },
+  ["onedark.nvim"] = {
+    loaded = true,
+    path = "/home/esh/.local/share/nvim/site/pack/packer/start/onedark.nvim",
+    url = "https://github.com/navarasu/onedark.nvim"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/esh/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -208,11 +208,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/esh/.local/share/nvim/site/pack/packer/start/promise-async",
     url = "https://github.com/kevinhwang91/promise-async"
-  },
-  ["rose-pine"] = {
-    loaded = true,
-    path = "/home/esh/.local/share/nvim/site/pack/packer/start/rose-pine",
-    url = "https://github.com/rose-pine/neovim"
   },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,

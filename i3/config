@@ -44,9 +44,9 @@ exec $term
 bindsym $mod+Return exec $term
 
 # Screen capture
-bindsym --release Control+Print exec xfce4-screenshooter --region
-bindsym --release Shift+Print exec xfce4-screenshooter --window
-bindsym --release Print exec xfce4-screenshooter --fullscreen
+bindsym --release Control+Print exec scrot -s -f ~/media/screenshots/selection_%Y_%m_%d-%H_%M.png 
+bindsym --release Shift+Print   exec scrot -u ~/media/screenshots/window_%Y_%m_%d-%H_%M.png 
+bindsym --release Print         exec scrot ~/media/screenshots/fullscreen_%Y_%m_%d-%H_%M.png 
 
 # Reload the configuration file
 bindsym $mod+Shift+c reload
@@ -55,16 +55,27 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # }}}
 
-## Volume {{{
-# Use pactl to adjust volume in PulseAudio
-bindsym $mod+F1 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-bindsym $mod+F2 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+## Menus {{{
+# Program launcher
+bindsym $mod+d exec rofi -show run
 
-# Set vol. max.
-bindsym $mod+Shift+F1 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 100% && $refresh_i3status
+# Power manager
+bindsym $mod+Shift+e exec ~/dev/scripts/power_menu.sh
+
+# Keyboard layout menu
+bindsym $mod+Control+k exec ~/dev/scripts/kb_layout_menu.sh
+# }}}
+
+## Audio {{{
+# Use pactl to adjust volume in PulseAudio
+bindsym $mod+F1 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+bindsym $mod+F2 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
 
 # Set vol. min.
-bindsym $mod+Shift+F2 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 0% && $refresh_i3status
+bindsym $mod+Shift+F1 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 0% && $refresh_i3status
+
+# Set vol. max.
+bindsym $mod+Shift+F2 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 100% && $refresh_i3status
 
 # Mute vol.
 bindsym $mod+F3 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
@@ -77,17 +88,6 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-# }}}
-
-## Menus {{{
-# Program launcher
-bindsym $mod+d exec rofi -show run
-
-# Power manager
-bindsym $mod+Shift+e exec ~/dev/scripts/power_menu.sh
-
-# Keyboard layout menu
-bindsym $mod+Control+k exec ~/dev/scripts/kb_layout_menu.sh
 # }}}
 
 ## Layout {{{
@@ -159,7 +159,7 @@ bindsym $mod+6 workspace number $ws6
 bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
+bindsym $mod+0 workspace number $ws10; layout tabbed
 # }}}
 
 # Move focused container to workspace {{{
@@ -182,21 +182,21 @@ workspace 2 gaps inner 10
 
 # Force windows to workspaces {{{
 
-# Workspace 1 - Web browsers {{{
+## Workspace 1 - Web browsers {{{
 assign [class="Brave-browser"] $ws1
 assign [class="firefox"] $ws1
-# }}}
+## }}}
 
-# Workspace 2 - Terminals {{{
+## Workspace 2 - Terminals {{{
 assign [class="Xfce4-terminal"] $ws2
 assign [class="Alacritty"] $ws2
 assign [class="kitty"] $ws2
 
 assign [class="UXTerm"] $ws2
 assign [class="XTerm"] $ws2
-# }}}
+## }}}
 
-# Workspace 3 - Apps {{{
+## Workspace 3 - Apps {{{
 assign [class="Gnome-encfs-manager"] $ws3
 assign [class="Thunar"] $ws3
 assign [class="Godot"] $ws3
@@ -204,9 +204,9 @@ assign [class="Godot"] $ws3
 assign [class="Audacity"] $ws3
 assign [class="kdenlive"] $ws3
 assign [class="krita"] $ws3
-# }}}
+## }}}
 
-# Workspace 4 - Games {{{
+## Workspace 4 - Games {{{
 assign [class="Shattered Pixel Dungeon"] $ws4
 assign [class="duckstation-qt"] $ws4
 assign [class="PPSSPPSDL"] $ws4
@@ -224,27 +224,28 @@ assign [title="Mesen"] $ws4
 assign [class="Hiro"] $ws4
 
 assign [class="retroarch"] $ws4
-# }}}
+## }}}
 
-# Workspace 8 - Media {{{
+## Workspace 8 - Media {{{
 assign [class="libreoffice-startcenter"] $ws8
 assign [class="Ristretto"] $ws8
 assign [class="Rhythmbox"] $ws8
 assign [class="Parole"] $ws8
-# }}}
+assign [class="Atril"] $ws8
+## }}}
 
-# Workspace 9 - Settings {{{
+## Workspace 9 - Settings {{{
 assign [class="Xfce4-settings-manager"] $ws9
 assign [class="Lxappearance"] $ws9
 assign [class="Pavucontrol"] $ws9
 assign [class="Arandr"] $ws9
-# }}}
+## }}}
 
-# Workspace 10 - VMs {{{
+## Workspace 10 - VMs {{{
 assign [class="VirtualBox Manager"] $ws10
 assign [class="VirtualBox Machine"] $ws10
 assign [title="VirtualBox"] $ws10
-# }}}
+## }}}
 
 # }}}
 

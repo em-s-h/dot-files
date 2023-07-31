@@ -1,20 +1,16 @@
 -- luacheck: ignore 113
-require("rose-pine").setup({
-	dark_variant = "moon",
-	variant = "moon",
-})
+require("onedark").setup({ -- {{{
+	ending_tildes = true,
+	style = "darker",
 
-require("kanagawa").setup({
-	functionStyle = { bold = true },
-	typeStyle = { italic = true },
-})
+	code_style = {
+		functions = "italic",
+		keywords = "italic",
+	},
+}) -- }}}
 
-local themes = {
-	[1] = "rose-pine",
-	[2] = "kanagawa-wave",
-}
-
-local theme = "colorscheme " .. themes[math.random(1, 2)]
+local theme = "colorscheme onedark"
+-- local theme = "colorscheme purple"
 
 local status, _ = pcall(vim.cmd, theme)
 if not status then

@@ -12,12 +12,12 @@ input="$(echo -e "$options" | rofi -dmenu -i -l 6 -p "Power options:")"
 case "$input" in
     *'1'*) exit 0 
     ;;
-    *'2'*) ~/dev/scripts/screen_lock.sh
+    *'2'*) ~/dev/scripts/lock_screen.sh
     ;;
     *'3'*)
         input=$(~/dev/scripts/confirm_menu.sh "suspend the computer");
         if [[ $input == "yes" ]]; then
-            ~/dev/scripts/screen_lock.sh
+            ~/dev/scripts/lock_screen.sh
             systemctl suspend
         fi
     ;;

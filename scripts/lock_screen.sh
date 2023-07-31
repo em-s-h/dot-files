@@ -3,7 +3,7 @@
 tmpbg="$HOME/media/screenshots/screen.png"
 icon="$HOME/media/pfp/towel.png"
 
-scrot "$tmpbg"
+scrot -q1 -o "$tmpbg"
 
 convert "$tmpbg" -scale 10% -scale 1000% "$tmpbg"
 convert "$tmpbg" "$icon" -gravity center -composite -matte "$tmpbg"
