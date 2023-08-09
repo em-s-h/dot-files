@@ -30,10 +30,11 @@ exec --no-startup-id ~/.screenlayout/main.sh
 # System tray for NetworkManager
 exec --no-startup-id nm-applet
 
-exec --no-startup-id setxkbmap -layout "'br(nodeadkeys)' -option 'caps:swapescape'"
+exec --no-startup-id setxkbmap -layout 'us' -option 'caps:swapescape'
 exec --no-startup-id redshift-gtk
 
 exec --no-startup-id picom
+exec --no-startup-id dunst
 exec $term
 # }}}
 
@@ -203,6 +204,7 @@ assign [class="Godot"] $ws3
 
 assign [class="Audacity"] $ws3
 assign [class="kdenlive"] $ws3
+assign [class="okular"] $ws3
 assign [class="krita"] $ws3
 ## }}}
 
@@ -227,11 +229,9 @@ assign [class="retroarch"] $ws4
 ## }}}
 
 ## Workspace 8 - Media {{{
-assign [class="libreoffice-startcenter"] $ws8
 assign [class="Ristretto"] $ws8
 assign [class="Rhythmbox"] $ws8
 assign [class="Parole"] $ws8
-assign [class="Atril"] $ws8
 ## }}}
 
 ## Workspace 9 - Settings {{{

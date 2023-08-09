@@ -1,18 +1,19 @@
 #!/bin/bash
 
-options="1.  - Portuguese (Brasil)
-2.  - Portuguese (Brasil, no dead keys)
-3.  - "
+options="1. pt_br \n2. en_us"
+lang=""
 
-input="$(echo -e "$options" | rofi -dmenu -i -l 3 -p "Keyboard layout:")"
+input="$(echo -e "$options" | rofi -dmenu -i -l 2 -p "Keyboard layout:")"
 
 case "$input" in
-    *'1'*) setxkbmap -layout 'br' -option 'caps:swapescape'
+    *'1'*) lang='br'
     ;;
-    *'2'*) setxkbmap -layout 'br(nodeadkeys)' -option 'caps:swapescape'
-    ;;
-    *'3'*) echo "In dev"
+    *'2'*) lang='us'
     ;;
 esac
+
+setxkbmap -layout "$lang" -option "caps:swapescape"
+
+unset options lang input
 
 # Emilly S.H. :D

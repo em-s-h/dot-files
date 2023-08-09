@@ -11,4 +11,6 @@ elif [[ $input = *Yes* ]]; then
     echo "yes"
 fi
 
+unset options input
+
 # Emilly S.H. :D

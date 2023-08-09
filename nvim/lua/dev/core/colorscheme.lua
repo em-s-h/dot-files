@@ -10,7 +10,6 @@ require("onedark").setup({ -- {{{
 }) -- }}}
 
 local theme = "colorscheme onedark"
--- local theme = "colorscheme purple"
 
 local status, _ = pcall(vim.cmd, theme)
 if not status then

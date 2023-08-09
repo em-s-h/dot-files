@@ -10,3 +10,5 @@ convert "$tmpbg" "$icon" -gravity center -composite -matte "$tmpbg"
 
 i3lock -u -i "$tmpbg" 
 rm "$tmpbg"
+
+unset tmpbg icon

@@ -1,11 +1,11 @@
 #!/bin/bash
 
-options="1. 󰅖 - Close menu
-2.  - Lock screen
-3. ⏾ - Suspend
-4. 󰍃 - Log out
-5.  - Reboot
-6. 󰐥 - Poweroff"
+options="1. 󰅖 Close menu
+2.  Lock screen
+3. ⏾ Suspend
+4. 󰍃 Log out
+5.  Reboot
+6. 󰐥 Poweroff"
 
 input="$(echo -e "$options" | rofi -dmenu -i -l 6 -p "Power options:")"
 
@@ -40,5 +40,7 @@ case "$input" in
         fi
     ;;
 esac
+
+unset options input
 
 # Emilly S.H. :D

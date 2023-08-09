@@ -25,85 +25,93 @@ end -- }}}
 
 local hl = { langs = {}, plugins = {} }
 
--- Colors {{{
-local c = {
-	fg = "#a0a8b7",
-	bg0 = "#1f2329",
-	bg1 = "#282c34",
-	bg2 = "#30363f",
-	bg3 = "#323641",
-	bg_d = "#181b20",
-	bg_blue = "#61afef",
-	bg_yellow = "#e8c88c",
+-- old col {{{
 
+-- bg0 = "#121420",
+-- bg1 = "#191b27",
+-- bg2 = "#262834",
+-- bg3 = "#30363f",
+
+-- slate_blue = "#836fff",
+-- grey0 = "#bfbfbf",
+-- grey1 = "#808080",
+-- grey2 = "#404040",
+
+-- }}}
+
+local c = { -- Colors {{{
 	-- Diff {{{
+	diff_added = "#a4ca88",
+	diff_removed = "#e55561",
+	diff_file = "#48b0bd",
+	diff_index_ln = "#4fa6ed",
+
 	diff_add = "#272e23",
 	diff_delete = "#2d2223",
 	diff_change = "#172a3a",
 	diff_text = "#274964",
 	-- }}}
 
-	dark_yellow = "#835d1a",
-	dark_cyan = "#266269",
-	dark_red = "#8b3434",
-	yellow = "#e2b86b",
-	orange = "#cc9057",
-	-- green = "#8ebd6b",
-	green = "#a4ca88",
-	cyan = "#48b0bd",
-	blue = "#4fa6ed",
-	red = "#e55561",
+	fg = "#a0a8b7",
+	bg0 = "#1f2329",
+	bg1 = "#282c34",
+	bg2 = "#30363f",
+	bg3 = "#323641",
 
-	dark_purple = "#7e3992",
-	purple = "#bf68d9",
+	grey0 = "#7a818e",
+	grey1 = "#535965",
+	grey2 = "#404040",
+
+	violet0 = "#b597f0",
+	violet1 = "#8a5fde",
+	violet2 = "#9400d3",
+
+	light_lavander = "#baabc9",
+	slate_blue = "#8f7dff",
 	orchid = "#cd69c9",
-	violet = "#875fd7",
 
-	light_grey = "#8b8b8b",
 	black = "#0e1013",
 	white = "#ececec",
-	grey = "#585858",
 
-	none = "none",
+	none = "NONE",
 } -- }}}
 
 hl.common = { -- {{{
 	-- Other {{{
-	Conceal = { fg = c.grey, bg = c.bg1 },
+	Conceal = { fg = c.grey1, bg = c.bg1 },
+	QuickFixLine = { fg = c.slate_blue, fmt = "underline" },
 	Terminal = { fg = c.fg, bg = c.bg0 },
 	ToolbarLine = { fg = c.fg },
 
 	Folded = { fg = c.fg, bg = c.bg2 },
-	Normal = { fg = c.white, bg = c.bg0 },
-	Comment = { fg = c.grey, bg = c.bg0 },
-	EndOfBuffer = { fg = c.violet, bg = c.bg0 },
-	-- }}}
+	EndOfBuffer = { fg = c.violet1, bg = c.bg0 },
+	Directory = { fg = c.violet1 },
+	VertSplit = { fg = c.bg3 },
 
-	-- Diff {{{
+	ToolbarButton = { fg = c.bg0, bg = c.slate_blue },
+	FloatBorder = { fg = c.grey1, bg = c.bg1 },
+	NormalFloat = { fg = c.fg, bg = c.bg1 },
+
 	DiffAdd = { fg = c.none, bg = c.diff_add },
 	DiffChange = { fg = c.none, bg = c.diff_change },
 	DiffDelete = { fg = c.none, bg = c.diff_delete },
 	DiffText = { fg = c.none, bg = c.diff_text },
-	DiffAdded = c.Green,
-	DiffRemoved = c.Red,
-	DiffFile = c.Cyan,
-	DiffIndexLine = c.grey,
+	DiffAdded = c.diff_added,
+	DiffRemoved = c.diff_removed,
+	DiffFile = c.diff_file,
+	DiffIndexLine = c.diff_index_ln,
 	-- }}}
 
-	-- Column {{{
+	-- Column, Line, Fold {{{
 	CursorColumn = { bg = c.bg1 },
 	ColorColumn = { bg = c.bg1 },
 	SignColumn = { fg = c.fg, bg = c.bg0 },
 	FoldColumn = { fg = c.fg, bg = c.bg1 },
-	-- }}}
 
-	-- Line {{{
-	CursorLineNr = { fg = c.fg },
+	CursorLineNr = { fg = c.white },
 	CursorLine = { bg = c.bg1 },
-	LineNr = { fg = c.light_grey },
-	-- }}}
+	LineNr = { fg = c.grey1 },
 
-	-- Cursor {{{
 	CursorIM = { fmt = "reverse" },
 	vCursor = { fmt = "reverse" },
 	iCursor = { fmt = "reverse" },
@@ -111,92 +119,102 @@ hl.common = { -- {{{
 	Cursor = { fmt = "reverse" },
 	-- }}}
 
-	-- File System {{{
-	Directory = { fg = c.violet },
+	-- Menu, StatusLine, TabLine {{{
+	Pmenu = { fg = c.fg, bg = c.bg1 },
+	PmenuSbar = { fg = c.none, bg = c.bg1 },
+	PmenuSel = { fg = c.white, bg = c.violet1 },
+	PmenuThumb = { fg = c.none, bg = c.grey1 },
+	WildMenu = { fg = c.white, bg = c.violet1 },
+
+	StatusLine = { fg = c.fg, bg = c.bg2 },
+	StatusLineTerm = { fg = c.fg, bg = c.bg2 },
+	StatusLineNC = { fg = c.grey1, bg = c.bg1 },
+	StatusLineTermNC = { fg = c.grey1, bg = c.bg1 },
+
+	TabLine = { fg = c.fg, bg = c.bg1 },
+	TabLineFill = { fg = c.grey1, bg = c.bg1 },
+	TabLineSel = { fg = c.white, bg = c.violet1 },
 	-- }}}
 
-	-- Messages {{{
-	ErrorMsg = { fg = c.red, fmt = "bold" },
-	WarningMsg = { fg = c.yellow, fmt = "bold" },
-	MoreMsg = { fg = c.blue, fmt = "bold" },
+	-- Messages, Spell, Debug {{{
+	ErrorMsg = { fg = c.violet2, fmt = "bold" },
+	WarningMsg = { fg = c.orchid, fmt = "bold" },
+	MoreMsg = { fg = c.slate_blue, fmt = "bold" },
+	Question = { fg = c.violet1 },
+
+	SpellBad = { fg = c.violet2, fmt = "underline", sp = c.violet2 },
+	SpellCap = { fg = c.orchid, fmt = "underline", sp = c.orchid },
+	SpellLocal = { fg = c.slate_blue, fmt = "underline", sp = c.slate_blue },
+	SpellRare = { fg = c.purple, fmt = "underline", sp = c.purple },
+
+	Debug = { fg = c.orchid },
+	debugPC = { fg = c.bg0, bg = c.violet0 },
+	debugBreakpoint = { fg = c.bg0, bg = c.violet2 },
 	-- }}}
 
-	-- Search {{{
-	CurSearch = { fg = c.bg0, bg = c.orange },
-	IncSearch = { fg = c.bg0, bg = c.orange },
-	Search = { fg = c.bg0, bg = c.bg_yellow },
-	Substitute = { fg = c.bg0, bg = c.green },
-	-- }}}
+	-- Text, Visual, Search {{{
+	Comment = { fg = c.grey1, bg = c.bg0 },
+	Normal = { fg = c.white, bg = c.bg0 },
+	NonText = { fg = c.white },
+	SpecialKey = { fg = c.grey2 },
+	Whitespace = { fg = c.grey2 },
 
-	-- MatchParen = { fg = c.none, bg = c.grey },
-	-- NonText = { fg = c.grey },
-	-- Whitespace = { fg = c.grey },
-	-- SpecialKey = { fg = c.grey },
-	-- Pmenu = { fg = c.fg, bg = c.bg1 },
-	-- PmenuSbar = { fg = c.none, bg = c.bg1 },
-	-- PmenuSel = { fg = c.bg0, bg = c.bg_blue },
-	-- WildMenu = { fg = c.bg0, bg = c.blue },
-	-- PmenuThumb = { fg = c.none, bg = c.grey },
-	-- Question = { fg = c.yellow },
-	-- SpellBad = { fg = c.red, fmt = "underline", sp = c.red },
-	-- SpellCap = { fg = c.yellow, fmt = "underline", sp = c.yellow },
-	-- SpellLocal = { fg = c.blue, fmt = "underline", sp = c.blue },
-	-- SpellRare = { fg = c.purple, fmt = "underline", sp = c.purple },
-	-- StatusLine = { fg = c.fg, bg = c.bg2 },
-	-- StatusLineTerm = { fg = c.fg, bg = c.bg2 },
-	-- StatusLineNC = { fg = c.grey, bg = c.bg1 },
-	-- StatusLineTermNC = { fg = c.grey, bg = c.bg1 },
-	-- TabLine = { fg = c.fg, bg = c.bg1 },
-	-- TabLineFill = { fg = c.grey, bg = c.bg1 },
-	-- TabLineSel = { fg = c.bg0, bg = c.fg },
-	-- VertSplit = { fg = c.bg3 },
-	-- Visual = { bg = c.bg3 },
-	-- VisualNOS = { fg = c.none, bg = c.bg2, fmt = "underline" },
-	-- QuickFixLine = { fg = c.blue, fmt = "underline" },
-	-- Debug = { fg = c.yellow },
-	-- debugPC = { fg = c.bg0, bg = c.green },
-	-- debugBreakpoint = { fg = c.bg0, bg = c.red },
-	-- ToolbarButton = { fg = c.bg0, bg = c.bg_blue },
-	-- FloatBorder = { fg = c.grey, bg = c.bg1 },
-	-- NormalFloat = { fg = c.fg, bg = c.bg1 },
+	CurSearch = { fg = c.bg0, bg = c.violet1 },
+	IncSearch = { fg = c.bg0, bg = c.violet1 },
+	Search = { fg = c.bg0, bg = c.violet0 },
+	Substitute = { fg = c.bg0, bg = c.pink },
+	MatchParen = { fg = c.none, bg = c.bg2 },
+
+	Visual = { bg = c.bg3 },
+	VisualNOS = { fg = c.none, bg = c.bg2, fmt = "underline" },
+	-- }}}
 } -- }}}
 
--- hl.syntax = { -- {{{
--- 	String = { fg = c.green, fmt = cfg.code_style.strings },
--- 	Character = colors.Orange,
--- 	Number = colors.Orange,
--- 	Float = colors.Orange,
--- 	Boolean = colors.Orange,
--- 	Type = colors.Yellow,
--- 	Structure = colors.Yellow,
--- 	StorageClass = colors.Yellow,
--- 	Identifier = { fg = c.red, fmt = cfg.code_style.variables },
--- 	Constant = colors.Cyan,
--- 	PreProc = colors.Purple,
--- 	PreCondit = colors.Purple,
--- 	Include = colors.Purple,
--- 	Keyword = { fg = c.purple, fmt = cfg.code_style.keywords },
--- 	Define = colors.Purple,
--- 	Typedef = colors.Purple,
--- 	Exception = colors.Purple,
--- 	Conditional = { fg = c.purple, fmt = cfg.code_style.keywords },
--- 	Repeat = { fg = c.purple, fmt = cfg.code_style.keywords },
--- 	Statement = colors.Purple,
--- 	Macro = colors.Red,
--- 	Error = colors.Purple,
--- 	Label = colors.Purple,
--- 	Special = colors.Red,
--- 	SpecialChar = colors.Red,
--- 	Function = { fg = c.blue, fmt = cfg.code_style.functions },
--- 	Operator = colors.Purple,
--- 	Title = colors.Cyan,
--- 	Tag = colors.Green,
--- 	Delimiter = colors.LightGrey,
--- 	Comment = { fg = c.grey, fmt = cfg.code_style.comments },
--- 	SpecialComment = { fg = c.grey, fmt = cfg.code_style.comments },
--- 	Todo = { fg = c.red, fmt = cfg.code_style.comments },
--- } -- }}}
---
+hl.syntax = { -- {{{
+	-- Literals {{{
+	String = { fg = c.light_lavander },
+	Character = { fg = c.light_lavander },
+	Number = { fg = c.slate_blue },
+	Float = { fg = c.slate_blue },
+	Boolean = { fg = c.slate_blue, fmt = "bold" },
+	-- }}}
+
+	-- Types {{{
+	Type = { fg = c.violet0 },
+	Structure = { fg = c.violet0 },
+	StorageClass = { fg = c.violet0 },
+	Constant = { fg = c.white },
+	-- }}}
+
+	-- Keywords {{{
+	Include = { fg = c.orchid },
+	Keyword = { fg = c.violet0, fmt = "italic" },
+	PreProc = { fg = c.violet1 },
+	PreCondit = { fg = c.violet0 },
+	Define = { fg = c.violet0 },
+	Typedef = { fg = c.violet0 },
+	Exception = { fg = c.violet2 },
+	Conditional = { fg = c.violet1 },
+	Repeat = { fg = c.violet0 },
+	Statement = { fg = c.violet0 },
+	-- }}}
+
+	Identifier = { fg = c.white },
+	-- Macro = colors.Red,
+	-- Error = colors.Purple,
+	-- Label = colors.Purple,
+	-- Special = colors.Red,
+	-- SpecialChar = colors.Red,
+	-- Function = { fg = c.blue, fmt = cfg.code_style.functions },
+	-- Operator = colors.Purple,
+	-- Title = colors.Cyan,
+	-- Tag = colors.Green,
+	-- Delimiter = colors.LightGrey,
+	-- Comment = { fg = c.grey, fmt = cfg.code_style.comments },
+	-- SpecialComment = { fg = c.grey, fmt = cfg.code_style.comments },
+	-- Todo = { fg = c.red, fmt = cfg.code_style.comments },
+} -- }}}
+
 -- if vim.api.nvim_call_function("has", { "nvim-0.8" }) == 1 then -- {{{
 -- 	hl.treesitter = {
 -- 		["@annotation"] = colors.Fg,
@@ -422,7 +440,7 @@ hl.common = { -- {{{
 --
 -- hl.plugins.cmp = { -- {{{
 -- 	CmpItemAbbr = colors.Fg,
--- 	CmpItemAbbrDeprecated = { fg = c.light_grey, fmt = "strikethrough" },
+-- 	CmpItemAbbrDeprecated = { fg = c.grey0, fmt = "strikethrough" },
 -- 	CmpItemAbbrMatch = colors.Cyan,
 -- 	CmpItemAbbrMatchFuzzy = { fg = c.cyan, fmt = "underline" },
 -- 	CmpItemMenu = colors.LightGrey,
@@ -532,7 +550,7 @@ hl.common = { -- {{{
 -- 	vimMapLhs = colors.Fg,
 -- 	vimMapRhs = colors.Blue,
 -- 	vimVar = { fg = c.fg, fmt = cfg.code_style.variables },
--- 	vimCommentTitle = { fg = c.light_grey, fmt = cfg.code_style.comments },
+-- 	vimCommentTitle = { fg = c.grey0, fmt = cfg.code_style.comments },
 -- } -- }}}
 --
 -- local lsp_kind_icons_color = { -- {{{
@@ -566,7 +584,7 @@ hl.common = { -- {{{
 -- 	Snippet = c.red,
 -- 	String = c.green,
 -- 	Struct = c.purple,
--- 	Text = c.light_grey,
+-- 	Text = c.grey0,
 -- 	TypeParameter = c.red,
 -- 	Unit = c.green,
 -- 	Value = c.orange,
@@ -574,3 +592,5 @@ hl.common = { -- {{{
 -- } -- }}}
 
 vim_highlights(hl.common)
+vim_highlights(hl.syntax)
+-- vim_highlights(hl.plugins.lsp)
