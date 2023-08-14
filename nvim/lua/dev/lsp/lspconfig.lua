@@ -55,7 +55,13 @@ for type, icon in pairs(signs) do
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
--- Html server.
+-- Latex server
+lspconfig.texlab.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
+-- Html server
 lspconfig.html.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
@@ -94,7 +100,6 @@ lspconfig.omnisharp.setup({
 
 -- GDscript server.
 lspconfig.gdscript.setup({
-
 	capabilities = capabilities,
 	on_attach = on_attach,
 })

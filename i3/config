@@ -44,11 +44,6 @@ exec $term
 # Start a terminal
 bindsym $mod+Return exec $term
 
-# Screen capture
-bindsym --release Control+Print exec scrot -s -f ~/media/screenshots/selection_%Y_%m_%d-%H_%M.png 
-bindsym --release Shift+Print   exec scrot -u ~/media/screenshots/window_%Y_%m_%d-%H_%M.png 
-bindsym --release Print         exec scrot ~/media/screenshots/fullscreen_%Y_%m_%d-%H_%M.png 
-
 # Reload the configuration file
 bindsym $mod+Shift+c reload
 
@@ -57,6 +52,9 @@ bindsym $mod+Shift+r restart
 # }}}
 
 ## Menus {{{
+# Screen capture
+bindsym --release Print exec ~/dev/scripts/screenshot.sh
+
 # Program launcher
 bindsym $mod+d exec rofi -show run
 
@@ -241,9 +239,11 @@ assign [class="Pavucontrol"] $ws9
 assign [class="Arandr"] $ws9
 ## }}}
 
-## Workspace 10 - VMs {{{
+## Workspace 10 - Net {{{
 assign [class="VirtualBox Manager"] $ws10
 assign [class="VirtualBox Machine"] $ws10
+
+assign [title="PacketTracer"] $ws10
 assign [title="VirtualBox"] $ws10
 ## }}}
 

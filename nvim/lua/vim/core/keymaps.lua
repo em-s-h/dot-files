@@ -11,6 +11,9 @@ keymap.set("n", "N", "Nzz")
 keymap.set("n", "<leader>nh", ":nohl<CR>")  -- Clear search highlights
 keymap.set("n", "<leader>w", ":w<CR>")      -- Easier writting
 
+keymap.set("n", "<leader>]", "<c-a>") -- Increment number
+keymap.set("n", "<leader>[", "<c-x>") -- Decrement number
+
 keymap.set("n", "<c-a>", "ggVG")    -- Select all
 keymap.set("n", "x", '"_x')         -- Remove character w/o copying into register
 keymap.set("n", "Y", "y$")          -- Yank from cursor to line end

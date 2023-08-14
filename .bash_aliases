@@ -8,7 +8,7 @@ alias apt_up='sudo apt update && sudo apt upgrade -y && dunstify -u normal "apt_
 alias vim='nvim -u ~/.config/nvim/vim_init.lua'
 alias vi='vim'
 
-alias icat="kitty +kitten icat --hold"
+alias icat="kitty +kitten icat"
 alias yt-mp4='yt-dlp -f mp4 -o'
 
 alias python='python3'

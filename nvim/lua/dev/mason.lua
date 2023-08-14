@@ -25,6 +25,7 @@ lspconfig.setup({
 		"omnisharp",
 		"clangd",
 		"bashls",
+		"texlab",
 
 		"tsserver",
 		"cssls",
@@ -41,7 +42,7 @@ null_ls.setup({
 	ensure_installed = {
 		-- Formatters.
 		"clang-format",
-		"rustfmt",
+		"latexindent",
 		"stylua",
 
 		-- Linters.

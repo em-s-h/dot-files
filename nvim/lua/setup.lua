@@ -38,26 +38,26 @@ return packer.startup(function(use)
 	-- Lua functions used by other plugins.
 	use("nvim-lua/plenary.nvim")
 
-    -- Colorscheme
-    -- use({ "rose-pine/neovim", as = "rose-pine" })
-    use("navarasu/onedark.nvim")
-
 	-- Visuals.
-	use("lukas-reineke/indent-blankline.nvim")      -- Indent line.
+    use("navarasu/onedark.nvim")                -- Colorscheme
+	use("lukas-reineke/indent-blankline.nvim")  -- Indent line.
 
 	use("nvim-lualine/lualine.nvim")    -- Status line.
-    use('kevinhwang91/nvim-hlslens')    -- Better word matching.
+    use("kevinhwang91/nvim-hlslens")    -- Better word matching.
 
     use({                       -- Better folding.
-        'kevinhwang91/nvim-ufo',
-        requires = 'kevinhwang91/promise-async'
+        "kevinhwang91/nvim-ufo",
+        requires = "kevinhwang91/promise-async"
     })
+
+    -- Kitty.
+    use("fladson/vim-kitty")
 
 	-- Useful.
 	use("numToStr/Comment.nvim")    -- Easier commenting.
 	use("windwp/nvim-autopairs")    -- Autoclosing.
 	use("tpope/vim-surround")       -- Word surrounding.
-    use('stevearc/oil.nvim')        -- File explorer in buffer.
+    use("stevearc/oil.nvim")        -- File explorer in buffer.
 
 	-- Autocompletion.
 	use("hrsh7th/cmp-nvim-lsp") -- For lsp servers.
@@ -102,9 +102,6 @@ return packer.startup(function(use)
 			ts_update()
 		end,
 	})
-
-    -- Kitty.
-    use("fladson/vim-kitty")
 
 	-- stylua: ignore end
 	if packer_bootstrap then

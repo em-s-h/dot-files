@@ -15,7 +15,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
 	sources = {
 		formatting.clang_format,
-		formatting.rustfmt,
+		formatting.latexindent,
 		formatting.stylua,
 
 		diagnostics.semgrep,
