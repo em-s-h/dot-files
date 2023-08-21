@@ -136,16 +136,16 @@ bindsym $mod+Shift+l move right
 # Workspaces {{{
 
 # Variables {{{
-set $ws1 "1: 󰈹 "
-set $ws2 "2:  "
-set $ws3 "3:  "
-set $ws4 "4: 󰮂 "
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8:  "
-set $ws9 "9:  "
-set $ws10 "10: VM "
+set $ws1  "1: 󰈹 "
+set $ws2  "2:  "
+set $ws3  "3:  "
+set $ws4  "4: 󰮂 "
+set $ws5  "5"
+set $ws6  "6"
+set $ws7  "7"
+set $ws8  "8:  "
+set $ws9  "9:  "
+set $ws10 "10: Net "
 # }}} 
 
 # Switch to workspace {{{
@@ -199,15 +199,19 @@ assign [class="XTerm"] $ws2
 assign [class="Gnome-encfs-manager"] $ws3
 assign [class="Thunar"] $ws3
 assign [class="Godot"] $ws3
+assign [class="steam"] $ws3
 
 assign [class="Audacity"] $ws3
 assign [class="kdenlive"] $ws3
-assign [class="okular"] $ws3
 assign [class="krita"] $ws3
+
+assign [class="Zathura"] $ws3
+assign [class="okular"] $ws3
 ## }}}
 
 ## Workspace 4 - Games {{{
 assign [class="Shattered Pixel Dungeon"] $ws4
+assign [class="Terraria.bin.x86_64"] $ws4
 assign [class="duckstation-qt"] $ws4
 assign [class="PPSSPPSDL"] $ws4
 assign [class="pcsx2-qt"] $ws4
@@ -243,13 +247,14 @@ assign [class="Arandr"] $ws9
 assign [class="VirtualBox Manager"] $ws10
 assign [class="VirtualBox Machine"] $ws10
 
-assign [title="PacketTracer"] $ws10
-assign [title="VirtualBox"] $ws10
+assign [class="PacketTracer"] $ws10
+assign [class="VirtualBox"] $ws10
 ## }}}
 
 # }}}
 
 # Window specific settings {{{
+for_window [class = "Terraria.bin.x86_64"] floating toggle
 for_window [title = "Picture-in-Picture"] sticky enable
 # }}}
 

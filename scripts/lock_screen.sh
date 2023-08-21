@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-tmpbg="$HOME/media/screenshots/screen.png"
-icon="$HOME/media/pfp/towel.png"
+tmpbg="$HOME/pics/screenshots/screen.png"
+icon="$HOME/pics/pfp/towel.png"
 
 scrot -q1 -o "$tmpbg"
 

@@ -9,7 +9,7 @@ keymap.set("n", "N", "Nzz")
 
 -- stylua: ignore start
 keymap.set("n", "<leader>nh", ":nohl<CR>")  -- Clear search highlights
-keymap.set("n", "<leader>w", ":w<CR>")      -- Easier writting
+keymap.set("n", "<leader>w", ":w<CR>")      -- Easier write to file
 
 keymap.set("n", "<leader>]", "<c-a>") -- Increment number
 keymap.set("n", "<leader>[", "<c-x>") -- Decrement number
@@ -19,7 +19,7 @@ keymap.set("n", "x", '"_x')         -- Remove character w/o copying into registe
 keymap.set("n", "Y", "y$")          -- Yank from cursor to line end
 
 -- Open oil file explorer on parent directory
-keymap.set("n", "<leader><BS>", require("oil").open)
+keymap.set("n", "<leader><bs>", require("oil").open)
 
 -- Tabs {{{
 keymap.set("n", "<leader>tx", ":tabclose<CR>") -- Close tab

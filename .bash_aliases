@@ -6,7 +6,7 @@
 # App aliases.
 alias apt_up='sudo apt update && sudo apt upgrade -y && dunstify -u normal "apt_up" "Updates & upgrades finished."'
 alias vim='nvim -u ~/.config/nvim/vim_init.lua'
-alias vi='vim'
+alias vi='nvim -u ~/.config/nvim/vi_init.lua'
 
 alias icat="kitty +kitten icat"
 alias yt-mp4='yt-dlp -f mp4 -o'
@@ -15,10 +15,10 @@ alias python='python3'
 alias xdelta='xdelta3'
 
 # ls aliases.
-alias lai='ls -lha -I "$(cat .ignore 2> /dev/null)" -I "$(cat .gitignore 2> /dev/null)"'
-alias li='ls -lh -I "$(cat .ignore 2> /dev/null)" -I "$(cat .gitignore 2> /dev/null)"'
-alias la='ls -lha'
-alias l='ls -lh'
+alias lai='ls -alph --color=auto -I "$(cat .ignore 2> /dev/null)" -I "$(cat .gitignore 2> /dev/null)"'
+alias li='ls -lph --color=auto -I "$(cat .ignore 2> /dev/null)" -I "$(cat .gitignore 2> /dev/null)"'
+alias la='ls -alph --color=auto'
+alias l='ls -lph --color=auto'
 
 # Script aliases.
 alias start_ssh='~/dev/scripts/ssh_start.sh'
@@ -27,8 +27,8 @@ alias weather='~/dev/scripts/weather.sh'
 # Other aliases.
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias cale='cal | grep --color -EC6 "\b$(date +%e | sed "s/ //g")"'
-alias fix-bg='feh --bg-scale --randomize ~/media/wallpapers/*'
 
+alias dir='echo "This is not Windows"'
 alias where='whereis'
 alias rm='rm -i'
 

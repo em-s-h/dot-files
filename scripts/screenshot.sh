@@ -8,15 +8,15 @@ input="$(echo -e "$options" | rofi -dmenu -i -l 3 -p "Capture:")"
 
 case "$input" in
     *'1'*)
-        scrot        ~/media/screenshots/fullscreen_%Y_%m_%d-%H_%M.png &&
+        scrot       ~/pics/screenshots/fullscreen_%Y_%m_%d-%H_%M.png &&
         notify-send -u normal -t 2000 "Screen captured!"
     ;;
     *'2'*)
-        scrot -u     ~/media/screenshots/window_%Y_%m_%d-%H_%M.png &&
+        scrot -u    ~/pics/screenshots/window_%Y_%m_%d-%H_%M.png &&
         notify-send -u normal -t 2000 "Window captured!"
     ;;
     *'3'*)
-        scrot -s -f  ~/media/screenshots/selection_%Y_%m_%d-%H_%M.png &&
+        scrot -s -f ~/pics/screenshots/selection_%Y_%m_%d-%H_%M.png &&
         notify-send -u normal -t 2000 "Selection captured!"
     ;;
 esac
