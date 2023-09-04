@@ -14,12 +14,7 @@ case "$input" in
     ;;
     *'2'*) ~/dev/scripts/lock_screen.sh
     ;;
-    *'3'*)
-        input=$(~/dev/scripts/confirm_menu.sh "suspend the computer");
-        if [[ $input == "yes" ]]; then
-            ~/dev/scripts/lock_screen.sh
-            systemctl suspend
-        fi
+    *'3'*) ~/dev/scripts/lock_screen.sh && systemctl suspend
     ;;
     *'4'*)
         input=$(~/dev/scripts/confirm_menu.sh "log out of i3");

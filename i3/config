@@ -53,16 +53,16 @@ bindsym $mod+Shift+r restart
 
 ## Menus {{{
 # Screen capture
-bindsym --release Print exec ~/dev/scripts/screenshot.sh
+bindsym --release Print exec ~/dev/scripts/screenshot_menu.sh &> ~/.logs/print_menu.log
 
 # Program launcher
 bindsym $mod+d exec rofi -show run
 
 # Power manager
-bindsym $mod+Shift+e exec ~/dev/scripts/power_menu.sh
+bindsym $mod+Shift+e exec ~/dev/scripts/power_menu.sh &> ~/.logs/power_menu.log
 
 # Keyboard layout menu
-bindsym $mod+Control+k exec ~/dev/scripts/kb_layout_menu.sh
+bindsym $mod+Control+k exec ~/dev/scripts/kb_layout_menu.sh &> ~/.logs/kb_layout_menu.log
 # }}}
 
 ## Audio {{{
@@ -149,7 +149,7 @@ set $ws10 "10: Net "
 # }}} 
 
 # Switch to workspace {{{
-bindsym $mod+1 workspace number $ws1
+bindsym $mod+1 workspace number $ws1; layout tabbed
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3; layout tabbed
 bindsym $mod+4 workspace number $ws4
@@ -197,12 +197,14 @@ assign [class="XTerm"] $ws2
 
 ## Workspace 3 - Apps {{{
 assign [class="Gnome-encfs-manager"] $ws3
+assign [class="libreoffice-calc"] $ws3
 assign [class="Thunar"] $ws3
 assign [class="Godot"] $ws3
 assign [class="steam"] $ws3
 
 assign [class="Audacity"] $ws3
 assign [class="kdenlive"] $ws3
+assign [class="draw.io"] $ws3
 assign [class="krita"] $ws3
 
 assign [class="Zathura"] $ws3
@@ -285,7 +287,8 @@ mode "resize" {
 # Bar & colors {{{
 # Colors
 
-set $bg-color 	         #191421
+#set $bg-color 	         #191421
+set $bg-color 	         #211a2b
 set $inactive-bg-color   #191421
 set $text-color          #ab47bc
 set $inactive-text-color #787f8e

@@ -31,13 +31,14 @@ api.nvim_create_autocmd("FileType", {
 		end
 
 		local marker_files = {
-			[1] = "i3config",
-			[2] = "markdown",
-			[3] = "kitty",
-			[4] = "text",
-			[5] = "conf",
-			[6] = "lua",
-			[7] = "sh",
+			[1] = "javascript",
+			[2] = "i3config",
+			[3] = "markdown",
+			[4] = "kitty",
+			[5] = "text",
+			[6] = "conf",
+			[7] = "lua",
+			[8] = "sh",
 		}
 
 		for _, file in ipairs(marker_files) do

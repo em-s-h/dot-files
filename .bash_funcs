@@ -1,0 +1,50 @@
+#!/bin/bash
+# ~/.bash_funcs
+
+# apt_up {{{
+apt_up ()
+{
+    sudo apt update &&
+    sudo apt upgrade -y &&
+    notify-send -u normal "apt_up" "Updates & upgrades finished."
+}
+# }}}
+
+# mksh {{{
+mksh ()
+{
+    arg1="${1:?Please provide a name to the file}"
+    arg1="${arg1//.sh/}.sh"
+
+    touch "$arg1"
+    chmod 755 "$arg1"
+
+    echo '#!/bin/bash' > "$arg1"
+    echo ''           >> "$arg1"
+    unset arg1
+}
+# }}}
+
+# pomodoro {{{
+pomo() {
+    focus=${1:?'pomodoro [time(min)] [break time(min)]'}
+    focus=$(( $focus * 60 ))
+
+    break="${2:?'pomodoro [time(min)] [break time(min)]'}"
+    break=$(( $break * 60 ))
+
+    while true; do
+        date +"%H:%M"
+        sleep "${focus}"
+
+        notify-send -u normal -t 3000 -a pomo "Take a break" "Break time: $break"
+        mpv ~/music/jams/songs/playlist.m3u --shuffle= &
+
+        sleep "${break}"
+        killall mpv
+        notify-send -u critical -t 5000 -a pomo "Break over"
+    done
+
+    unset focus break
+}
+# }}}

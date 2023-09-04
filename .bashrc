@@ -3,28 +3,24 @@
 # |------------------------------------------|
 # ~/.bashrc
 
-# Main. {{{
-# If not running interactively, don't do anything.
+# Main {{{
+# If not running interactively, don't do anything
 case $- in
     *i*) ;;
       *) return;;
 esac
 
-# Make less more friendly for non-text input files.
+# Make less more friendly for non-text input files
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# Enable color support of ls and also add handy aliases
+# Enable color support
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
-
-# Alias definitions.
-. ~/.bash_aliases
 
 # Enable programmable completion features.
 if ! shopt -oq posix; then
@@ -35,12 +31,21 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-. "$HOME/.local/kitty.app/lib/kitty/shell-integration/bash/kitty.bash"
-. "$HOME/.cargo/env"
 # }}}
 
-# Variables. {{{
+# Source {{{
+. "$HOME/.local/kitty.app/lib/kitty/shell-integration/bash/kitty.bash"
+. "$HOME/.bash_completions/please.sh"
+. "$HOME/.cargo/env"
+
+# Functions
+. ~/.bash_funcs
+
+# Aliases
+. ~/.bash_aliases
+# }}}
+
+# Variables {{{
 # Don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
 
@@ -50,13 +55,13 @@ HISTSIZE=1000
 
 # Colored GCC warnings and errors.
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-export BASH_ENV="$HOME/.bashenv"
 
-export VISUAL="nvim -u $HOME/.config/nvim/vim_init.lua"
-export EDITOR="nvim"
+export EDITOR="nvim -u ~/.config/nvim/vi_init.lua --noplugins"
+export VISUAL="nvim -u ~/.config/nvim/vim_init.lua"
+export SUDO_EDITOR="$EDITOR"
 # }}}
 
-# Prompt. {{{
+# Prompt {{{
 # Set chroot variable for prompt
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
@@ -79,34 +84,49 @@ PS1='\[\e[38;2;218;112;214m\]$(exstat)\[\e[38;2;148;0;211m\]\[\e[97;48;2;148;
 # PS1='\[\e[30;48;5;81;1m\] $(spwd) \[\e[0;38;5;81;48;5;86m\]\[\e[30;1m\] \u \[\e[0;38;5;86;48;5;140m\]\[\e[30;1m\] \$ \[\e[0;38;5;140m\] \[\e[0m\]'
 # }}}
 
-# shopt. {{{
+# Config {{{
 shopt -s checkwinsize
 shopt -s histappend
 shopt -s globstar
 shopt -s cdspell
 shopt -s autocd
+set -o vi
 # }}}
 
-# Welcome. {{{
-term_count=$(ls /dev/pts/ | grep -ve '[[:alpha:]]' | wc -l)
+# Welcome {{{
+important_count=$(grep -icE 'study|homework|important' ~/.config/please/config.json)
+done_count=$(grep -ic '"done": true' ~/.config/please/config.json)
+term_count=$(ls /dev/pts/ | grep -vcE '[[:alpha:]]')
 
-if grep -iq '"done": true' ~/.config/please/config.json ; then
+if (( $done_count >= 3 )) ; then
     please clean
 else
     please
 fi
 
-important_task=$(grep -icE 'study|homework' ~/.config/please/config.json)
-
-if (( $important_task >= 1 )); then
+if (( $important_count >= 1 )); then
     red='\033[0;31m'
     nc='\033[0m'
 
-    echo -e "${red} ! READ THE TO-DO LIST ! ${nc}"
-    sleep 2
+    if (( $important_count > 3)); then
+        echo -e "${red}" \
+        '
+ _  ______ _____  ___ ______   _____ _   _  _____   _____ _____       ______ _____   _     _____ _____ _____   _ 
+| | | ___ \  ___|/ _ \|  _  \ |_   _| | | ||  ___| |_   _|  _  |      |  _  \  _  | | |   |_   _/  ___|_   _| | |
+| | | |_/ / |__ / /_\ \ | | |   | | | |_| || |__     | | | | | |______| | | | | | | | |     | | \ `--.  | |   | |
+| | |    /|  __||  _  | | | |   | | |  _  ||  __|    | | | | | |______| | | | | | | | |     | |  `--. \ | |   | |
+|_| | |\ \| |___| | | | |/ /    | | | | | || |___    | | \ \_/ /      | |/ /\ \_/ / | |_____| |_/\__/ / | |   |_|
+(_) \_| \_\____/\_| |_/___/     \_/ \_| |_/\____/    \_/  \___/       |___/  \___/  \_____/\___/\____/  \_/   (_)
+        ' \
+        "${nc}"
+        sleep 3
+    else
+        echo -e "${red} ! READ THE TO-DO LIST ! ${nc}"
+        sleep 2
+    fi
 
     if (( $term_count <= 2 )); then
-        ~/dev/scripts/other_to_do.sh
+        ~/dev/scripts/other_to_do.sh ask
 
         # ssh agent. {{{
         env=~/.ssh/agent.env
@@ -136,21 +156,8 @@ if (( $important_task >= 1 )); then
     fi
     unset nc red
 fi
-unset term_count important_task
+unset term_count important_count done_count
 # }}}
 
-# Pomodoro. {{{
-function pomo() {
-    arg1=$1
-    shift
-    args="$*"
+# Emilly S.H. :D
 
-    min=${arg1:?Example: pomo 15 Take a break}
-    sec=$((min * 60))
-    msg="${args:?Example: pomo 15 Take a break}"
-
-    while true; do
-        date '+%H:%M' && sleep "${sec:?}" && notify-send -u critical -t 0 -a pomo "${msg:?}"
-    done
-}
-# }}}

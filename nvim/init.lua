@@ -2,7 +2,17 @@
 require("setup")
 
 -- My configs.
-require("dev.core.colorscheme")
+require("onedark").setup({ -- {{{
+	ending_tildes = true,
+	style = "darker",
+
+	code_style = {
+		functions = "italic",
+		keywords = "italic",
+	},
+}) -- }}}
+vim.cmd("colorscheme onedark")
+
 require("dev.core.options")
 require("dev.core.keymaps")
 require("dev.core.scripts")

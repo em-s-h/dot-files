@@ -1,13 +1,4 @@
 -- luacheck: ignore 113
-require("onedark").setup({ -- {{{
-	ending_tildes = true,
-	style = "darker",
-
-	code_style = {
-		functions = "italic",
-		keywords = "italic",
-	},
-}) -- }}}
 
 local theme = "colorscheme onedark"
 

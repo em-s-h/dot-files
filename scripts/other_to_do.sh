@@ -2,8 +2,10 @@
 
 input="$1"
 
-if [[ ! $input = [yY]* ]] ; then
+if [[ $input = ask ]] ; then
     read -p "Do you wish to see other stuff to-do? (y/n): " input
+else
+    input='y'
 fi
 
 if [[ $input = [yY]* ]] ; then
