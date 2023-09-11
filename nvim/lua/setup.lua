@@ -39,8 +39,8 @@ return packer.startup(function(use)
 	use("nvim-lua/plenary.nvim")
 
 	-- Visuals.
-    use("navarasu/onedark.nvim")                -- Colorscheme
 	use("lukas-reineke/indent-blankline.nvim")  -- Indent line.
+    use("navarasu/onedark.nvim")                -- Colorscheme
 
 	use("nvim-lualine/lualine.nvim")    -- Status line.
     use("kevinhwang91/nvim-hlslens")    -- Better word matching.

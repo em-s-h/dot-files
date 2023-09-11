@@ -23,7 +23,7 @@ alias   l='ls -lph  --color=auto'
 
 # Other aliases.
 alias dir='echo "This is not Windows"'
-alias test_net='ping 8.8.8.8 -ai 4'
+alias test_net='ping 8.8.8.8 -a'
 alias weather='curl wttr.in'
 alias cal='ncal -b'
 
