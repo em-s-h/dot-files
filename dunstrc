@@ -1,0 +1,57 @@
+[global]
+font = "FiraCode Nerd Font Mono 10"
+
+separator_color = frame
+corner_radius   = 0
+line_height     = 1
+
+frame_width = 2
+alignment   = center
+padding     = 4
+
+# How to calculate x position for a centered window:
+# (monitor_width /2) - (window_width /2)
+geometry    = "270x35+825+34"
+format      = "<b>%s</b>\n%b"
+
+word_wrap   = true
+markup      = full
+follow      = keyboard
+
+browser = /usr/bin/firefox -new-tab
+dmenu   = /usr/bin/dmenu -p dunst:
+
+[shortcuts]
+close_all   = ctrl+shift+space
+close       = ctrl+space
+
+history = ctrl+grave
+context = ctrl+shift+period
+
+[urgency_low]
+#frame_color = "#3B7C87"
+#foreground  = "#3B7C87"
+
+frame_color = "#baabc9"
+foreground  = "#baabc9"
+background  = "#191311"
+timeout     = 4
+
+[urgency_normal]
+#frame_color = "#5B8234"
+#foreground  = "#5B8234"
+
+frame_color = "#8a5fde"
+foreground  = "#8a5fde"
+background  = "#191311"
+timeout     = 6
+
+[urgency_critical]
+frame_color = "#b7472a"
+foreground  = "#b7472a"
+background  = "#191311"
+timeout     = 8
+
+[notify_sound]
+    summary = "*"
+    script = /home/esh/dev/scripts/notify.sh

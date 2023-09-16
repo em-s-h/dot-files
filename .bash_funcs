@@ -19,8 +19,7 @@ mksh ()
     touch "$arg1"
     chmod 755 "$arg1"
 
-    echo '#!/bin/bash' > "$arg1"
-    echo ''           >> "$arg1"
+    echo -e '#!/bin/bash \n' > "$arg1"
     unset arg1
 }
 # }}}

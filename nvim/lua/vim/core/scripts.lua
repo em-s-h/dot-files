@@ -3,9 +3,12 @@
 local api = vim.api
 local opt = vim.opt
 
--- Go to last location when opening a file. {{{
+-- Set cursor to the last location when opening a file. {{{
+local augroup = api.nvim_create_augroup("SetCursorLocation", {})
+api.nvim_clear_autocmds({ group = augroup })
+
 api.nvim_create_autocmd("BufReadPost", {
-	group = 1,
+	group = augroup,
 
 	callback = function()
 		local mark = api.nvim_buf_get_mark(0, '"')
@@ -19,8 +22,11 @@ api.nvim_create_autocmd("BufReadPost", {
 -- }}}
 
 -- Set options depending on file type. {{{
+augroup = api.nvim_create_augroup("SetFileFolding", {})
+api.nvim_clear_autocmds({ group = augroup })
+
 api.nvim_create_autocmd("FileType", {
-	group = 2,
+	group = augroup,
 
 	callback = function()
 		local file_type = vim.bo.filetype

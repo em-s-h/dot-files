@@ -258,6 +258,7 @@ assign [class="VirtualBox"] $ws10
 # Window specific settings {{{
 for_window [class = "Terraria.bin.x86_64"] floating toggle
 for_window [title = "Picture-in-Picture"] sticky enable
+for_window [class = "xdelta_lui"] floating toggle
 # }}}
 
 # Resize mode {{{

@@ -10,12 +10,6 @@ if not lspconf_status then
 	return
 end
 
-local null_ls_status, null_ls = pcall(require, "mason-null-ls")
-if not null_ls_status then
-	print("mason-null-ls is not installed!")
-	return
-end
-
 mason.setup()
 
 -- LSP.
@@ -24,8 +18,6 @@ lspconfig.setup({
 		"rust_analyzer",
 		"omnisharp",
 		"clangd",
-		"bashls",
-		"texlab",
 
 		"tsserver",
 		"cssls",
@@ -33,21 +25,6 @@ lspconfig.setup({
 
 		"pyright",
 		"lua_ls",
-	},
-	automatic_installation = true,
-})
-
--- Linters & formatters.
-null_ls.setup({
-	ensure_installed = {
-		-- Formatters.
-		"clang-format",
-		"latexindent",
-		"stylua",
-
-		-- Linters.
-		"eslint_d",
-		"semgrep",
 	},
 	automatic_installation = true,
 })

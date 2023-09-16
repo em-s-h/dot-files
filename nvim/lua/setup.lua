@@ -90,10 +90,6 @@ return packer.startup(function(use)
 		},
 	})
 
-	-- Formatting & linting.
-	use("jose-elias-alvarez/null-ls.nvim")  -- Linting & formatting.
-	use("jay-babu/mason-null-ls.nvim")      -- Connect null-ls to mason.
-
 	-- Treesitter configuration.
 	use({
 		"nvim-treesitter/nvim-treesitter",

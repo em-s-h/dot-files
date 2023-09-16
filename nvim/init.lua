@@ -1,18 +1,19 @@
 -- Plugin setup.
 require("setup")
 
--- My configs.
-require("onedark").setup({ -- {{{
-	ending_tildes = true,
-	style = "darker",
+-- My configs. -- {{{
+require("onedark").setup({
+    ending_tildes = true,
+    style = "darker",
 
-	code_style = {
-		functions = "italic",
-		keywords = "italic",
-	},
-}) -- }}}
+    code_style = {
+        functions = "italic",
+        keywords = "italic",
+    },
+})
+-- }}}
+
 vim.cmd("colorscheme onedark")
-
 require("dev.core.options")
 require("dev.core.keymaps")
 require("dev.core.scripts")
@@ -37,4 +38,3 @@ require("dev.plugins.oil")
 -- LSP.
 require("dev.lsp.lspconfig")
 require("dev.lsp.lspsaga")
-require("dev.lsp.null-ls")
