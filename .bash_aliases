@@ -22,12 +22,12 @@ alias  la='ls -alph --color=auto'
 alias   l='ls -lph  --color=auto'
 
 # Other aliases.
-alias dir='echo "This is not Windows"'
 alias test_net='ping 8.8.8.8 -a'
 alias weather='curl wttr.in'
+alias dir='echo "This is not Windows"'
 alias cal='ncal -b'
 
 alias where='whereis'
 alias rm='rm -i'
-alias c='clear'
+alias c='printf "\033c"'
 alias x='exit'
