@@ -149,11 +149,6 @@ _G.packer_plugins = {
     path = "/home/esh/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
-  ["nvim-hlslens"] = {
-    loaded = true,
-    path = "/home/esh/.local/share/nvim/site/pack/packer/start/nvim-hlslens",
-    url = "https://github.com/kevinhwang91/nvim-hlslens"
-  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/esh/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",

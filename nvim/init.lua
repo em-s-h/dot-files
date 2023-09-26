@@ -1,7 +1,7 @@
 -- Plugin setup.
 require("setup")
 
--- My configs. -- {{{
+-- Colorscheme -- {{{
 require("onedark").setup({
     ending_tildes = true,
     style = "darker",
@@ -25,13 +25,12 @@ require("dev.mason")
 require("dev.plugins.indent-blankline")
 require("dev.plugins.treesitter")
 require("dev.plugins.telescope")
-require("dev.plugins.autopairs")
 
+require("dev.plugins.autopairs")
 require("dev.plugins.nvim-cmp")
 require("dev.plugins.lualine")
-require("dev.plugins.comment")
 
-require("dev.plugins.hlslens")
+require("dev.plugins.comment")
 require("dev.plugins.ufo")
 require("dev.plugins.oil")
 

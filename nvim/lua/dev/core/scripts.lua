@@ -23,7 +23,7 @@ api.nvim_create_autocmd("BufWritePre", {
 
     callback = function()
         vim.lsp.buf.format()
-        vim.cmd("%foldclose")
+        vim.cmd("silent! %foldclose")
         vim.cmd("silent! foldopen")
     end,
 })

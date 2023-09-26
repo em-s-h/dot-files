@@ -4,16 +4,12 @@
 font pango:FiraCode Nerd Font Mono 10
 title_align center
 
-default_floating_border pixel 4
+default_floating_border pixel 5
 hide_edge_borders both
 
 focus_follows_mouse no
 mouse_warping none
-focus_wrapping no
-
-smart_gaps on
-gaps inner 0
-gaps outer 0
+focus_wrapping yes
 
 set $refresh_i3status killall -SIGUSR1 i3status -c ~/.config/i3/i3status.conf
 set $term kitty
@@ -173,9 +169,6 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 # }}}
-
-# Settings
-workspace 2 gaps inner 10
 
 # }}}
 

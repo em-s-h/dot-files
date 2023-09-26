@@ -1,7 +1,7 @@
 -- luacheck: ignore 212
 -- luacheck: ignore 113
 
-local opt = vim.opt -- More concise
+local opt = vim.opt
 
 -- 1. Important
 opt.compatible = false

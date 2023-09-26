@@ -68,20 +68,10 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# Exit status
-exstat ()
-{
-    ret=$?
-
-    if [[ $ret != 0 ]]; then
-        printf "[$ret] "
-    fi
-}
-
 if [[ $(tty) = *tty* ]]; then
-    PS1='\[\e[38;2;218;112;214m\]$(exstat)\[\e[38;2;148;0;211m\]\[\e[97;48;2;148;0;211m\] $(spwd) \[\e[0;38;2;148;0;211m\] \[\e[38;2;131;111;255m\]\u@\l \[\e[38;2;224;102;255m\]\$ \[\e[0m\]'
+    PS1='\[\e[38;2;148;0;211m\]\[\e[97;48;2;148;0;211m\] $(spwd) \[\e[0;38;2;148;0;211m\] \[\e[38;2;131;111;255m\]\u@\l \[\e[38;2;224;102;255m\]\$ \[\e[0m\]'
 else
-    PS1='\[\e[38;2;218;112;214m\]$(exstat)\[\e[38;2;148;0;211m\]\[\e[97;48;2;148;0;211m\] $(spwd) \[\e[0;38;2;148;0;211m\] \[\e[38;2;131;111;255m\]\u\[\e[38;2;224;102;255m\]\$ \[\e[0m\]'
+    PS1='\[\e[38;2;148;0;211m\]\[\e[97;48;2;148;0;211m\] $(spwd) \[\e[0;38;2;148;0;211m\] \[\e[38;2;131;111;255m\]\u\[\e[38;2;224;102;255m\]\$ \[\e[0m\]'
 fi
 
 # Old prompts
@@ -107,12 +97,12 @@ fi
 if [ ! -f /tmp/screen_layout_chosen ]; then
     input='n'
     read -p "Choose a screen layout to apply:
-1. Top.sh
-2. Other.sh
+1. upper.sh
+2. other.sh
 : " input
 
     case "$input" in
-        *'1'*) ~/.screenlayout/top.sh
+        *'1'*) ~/.screenlayout/upper.sh
         ;;
         *'2'*) ~/.screenlayout/other.sh
         ;;
