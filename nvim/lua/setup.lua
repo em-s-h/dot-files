@@ -39,11 +39,11 @@ return packer.startup(function(use)
     use("nvim-lua/plenary.nvim")
 
     -- Visuals.
-    use("lukas-reineke/indent-blankline.nvim") -- Indent line.
-    use("navarasu/onedark.nvim")            -- Colorscheme
+    -- use("lukas-reineke/indent-blankline.nvim") -- Indent line.
+    use("navarasu/onedark.nvim")     -- Colorscheme
 
-    use("nvim-lualine/lualine.nvim")        -- Status line.
-    use({                                   -- Better folding.
+    use("nvim-lualine/lualine.nvim") -- Status line.
+    use({                            -- Better folding.
         "kevinhwang91/nvim-ufo",
         requires = "kevinhwang91/promise-async"
     })
@@ -54,33 +54,33 @@ return packer.startup(function(use)
     -- Useful.
     use("numToStr/Comment.nvim") -- Easier commenting.
     use("windwp/nvim-autopairs") -- Autoclosing.
-    use("tpope/vim-surround") -- Word surrounding.
-    use("stevearc/oil.nvim")  -- File explorer in buffer.
+    use("tpope/vim-surround")    -- Word surrounding.
+    use("stevearc/oil.nvim")     -- File explorer in buffer.
 
     -- Autocompletion.
     use("hrsh7th/cmp-nvim-lsp") -- For lsp servers.
-    use("hrsh7th/cmp-buffer") -- For text in buffer.
-    use("hrsh7th/cmp-path")  -- For file system paths
-    use("hrsh7th/nvim-cmp")  -- Autocompletion plugin.
+    use("hrsh7th/cmp-buffer")   -- For text in buffer.
+    use("hrsh7th/cmp-path")     -- For file system paths
+    use("hrsh7th/nvim-cmp")     -- Autocompletion plugin.
 
     -- Snippets.
     use("rafamadriz/friendly-snippets") -- Useful snippets.
-    use("saadparwaiz1/cmp_luasnip")  -- Show snippets in autocomp.
-    use("L3MON4D3/LuaSnip")          -- Snippet engine.
+    use("saadparwaiz1/cmp_luasnip")     -- Show snippets in autocomp.
+    use("L3MON4D3/LuaSnip")             -- Snippet engine.
 
     -- fuzzy finding w/ telescope.
     use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- Better sorting performance.
-    use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" })     -- fuzzy finder.
+    use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" })        -- fuzzy finder.
 
     -- LSP management.
     use("williamboman/mason-lspconfig.nvim") -- Connect lspconfig to mason.
-    use("williamboman/mason.nvim")        -- Manages LSP servers, linters, formatters & DAP.
+    use("williamboman/mason.nvim")           -- Manages LSP servers, linters, formatters & DAP.
 
     -- LSP configuration.
     use("neovim/nvim-lspconfig") -- LSP configuration.
-    use("onsails/lspkind.nvim") -- VS-Code like icons for autocompletion.
+    use("onsails/lspkind.nvim")  -- VS-Code like icons for autocompletion.
     use({
-        "glepnir/lspsaga.nvim", -- Enhanced LSP UIs.
+        "glepnir/lspsaga.nvim",  -- Enhanced LSP UIs.
         branch = "main",
         requires = {
             { "nvim-treesitter/nvim-treesitter" },

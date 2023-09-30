@@ -53,5 +53,5 @@ background  = "#191311"
 timeout     = 8
 
 [notify_sound]
-    summary = "*"
-    script = /home/esh/dev/scripts/notify.sh
+summary = "*"
+script = ~/.config/dunst/notify.sh

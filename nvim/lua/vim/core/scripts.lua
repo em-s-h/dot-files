@@ -45,6 +45,7 @@ api.nvim_create_autocmd("FileType", {
 			[6] = "conf",
 			[7] = "lua",
 			[8] = "sh",
+            [9] = "dosini"
 		}
 
 		for _, file in ipairs(marker_files) do
