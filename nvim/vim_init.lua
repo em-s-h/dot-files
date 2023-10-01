@@ -1,3 +1,6 @@
+-- Plugin setup.
+require("setup")
+
 -- Colorscheme -- {{{
 require("onedark").setup({
     ending_tildes = true,

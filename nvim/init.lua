@@ -18,7 +18,7 @@ require("dev.core.options")
 require("dev.core.keymaps")
 require("dev.core.scripts")
 
--- Packet manager.
+-- Lsp manager.
 require("dev.mason")
 
 -- Plugins.

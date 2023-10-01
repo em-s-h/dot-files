@@ -1,104 +1,92 @@
 -- luacheck: ignore 113
 
--- Auto install packer if not installed.
-local ensure_packer = function()
-    local fn = vim.fn
-    local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-
-    if fn.empty(fn.glob(install_path)) > 0 then
-        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-        vim.cmd([[packadd packer.nvim]])
-        return true
-    end
-
-    return false
-end
-
-local packer_bootstrap = ensure_packer() -- True if packer was just installed.
-
--- Autocommand that reloads neovim and installs/updates/removes plugins
--- when file is saved.
-vim.cmd([[
-    augroup packer_user_config
-        autocmd!
-        autocmd BufWritePost setup.lua source <afile> | PackerSync
-    augroup end
-]])
-
-local status, packer = pcall(require, "packer")
-if not status then
-    print("packer is not installed!")
-    return
-end
-
--- stylua: ignore start
-return packer.startup(function(use)
-    use("wbthomason/packer.nvim")
-
-    -- Lua functions used by other plugins.
-    use("nvim-lua/plenary.nvim")
-
-    -- Visuals.
-    -- use("lukas-reineke/indent-blankline.nvim") -- Indent line.
-    use("navarasu/onedark.nvim")     -- Colorscheme
-
-    use("nvim-lualine/lualine.nvim") -- Status line.
-    use({                            -- Better folding.
-        "kevinhwang91/nvim-ufo",
-        requires = "kevinhwang91/promise-async"
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
     })
+end
+vim.opt.rtp:prepend(lazypath)
 
-    -- Kitty.
-    use("fladson/vim-kitty")
+require("lazy").setup(
+    {
+        -- Lua functions used by other plugins
+        "nvim-lua/plenary.nvim",
 
-    -- Useful.
-    use("numToStr/Comment.nvim") -- Easier commenting.
-    use("windwp/nvim-autopairs") -- Autoclosing.
-    use("tpope/vim-surround")    -- Word surrounding.
-    use("stevearc/oil.nvim")     -- File explorer in buffer.
-
-    -- Autocompletion.
-    use("hrsh7th/cmp-nvim-lsp") -- For lsp servers.
-    use("hrsh7th/cmp-buffer")   -- For text in buffer.
-    use("hrsh7th/cmp-path")     -- For file system paths
-    use("hrsh7th/nvim-cmp")     -- Autocompletion plugin.
-
-    -- Snippets.
-    use("rafamadriz/friendly-snippets") -- Useful snippets.
-    use("saadparwaiz1/cmp_luasnip")     -- Show snippets in autocomp.
-    use("L3MON4D3/LuaSnip")             -- Snippet engine.
-
-    -- fuzzy finding w/ telescope.
-    use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- Better sorting performance.
-    use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" })        -- fuzzy finder.
-
-    -- LSP management.
-    use("williamboman/mason-lspconfig.nvim") -- Connect lspconfig to mason.
-    use("williamboman/mason.nvim")           -- Manages LSP servers, linters, formatters & DAP.
-
-    -- LSP configuration.
-    use("neovim/nvim-lspconfig") -- LSP configuration.
-    use("onsails/lspkind.nvim")  -- VS-Code like icons for autocompletion.
-    use({
-        "glepnir/lspsaga.nvim",  -- Enhanced LSP UIs.
-        branch = "main",
-        requires = {
-            { "nvim-treesitter/nvim-treesitter" },
-            { "nvim-tree/nvim-web-devicons" },
+        -- Visuals
+        {
+            "lukas-reineke/indent-blankline.nvim", -- Indent line
+            version = "v2.20.8",
+            lazy = false,
+            pin = true
         },
-    })
+        "nvim-lualine/lualine.nvim", -- Status line
+        "navarasu/onedark.nvim",     -- Colorscheme
 
-    -- Treesitter configuration.
-    use({
-        "nvim-treesitter/nvim-treesitter",
-        run = function()
-            local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
-            ts_update()
-        end,
-    })
+        {
+            "kevinhwang91/nvim-ufo", -- Better folding
+            dependencies = { "kevinhwang91/promise-async" }
+        },
 
-    -- stylua: ignore end
-    if packer_bootstrap then
-        require("packer").sync()
-    end
-end)
+        -- Kitty
+        "fladson/vim-kitty",
+
+        -- Useful
+        "numToStr/Comment.nvim", -- Easier commenting
+        "windwp/nvim-autopairs", -- Autoclosing
+        "tpope/vim-surround",    -- Word surrounding
+        "stevearc/oil.nvim",     -- File explorer in buffer
+
+        -- Autocompletion
+        "hrsh7th/cmp-nvim-lsp", -- For lsp servers
+        "hrsh7th/cmp-buffer",   -- For text in buffer
+        "hrsh7th/cmp-path",     -- For file system paths
+        "hrsh7th/nvim-cmp",     -- Autocompletion plugin
+
+        -- Snippets
+        "rafamadriz/friendly-snippets", -- Useful snippets
+        "saadparwaiz1/cmp_luasnip",     -- Show snippets in autocomp
+        "L3MON4D3/LuaSnip",             -- Snippet engine
+
+        -- Telescope
+        { "nvim-telescope/telescope.nvim", branch = "0.1.x" }, -- Telescope
+        {
+            'nvim-telescope/telescope-fzf-native.nvim',        -- Better sorting performance
+            build =
+            'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+        },
+
+        -- LSP management
+        "williamboman/mason-lspconfig.nvim", -- Connect lspconfig to mason
+        "williamboman/mason.nvim",           -- Manages LSP servers, linters, formatters & DAP
+
+        -- LSP configuration
+        "neovim/nvim-lspconfig",    -- LSP configuration
+        "onsails/lspkind.nvim",     -- Icons for autocompletion window
+        {
+            "nvimdev/lspsaga.nvim", -- Enhanced LSP UIs
+            dependencies = {
+                "nvim-treesitter/nvim-treesitter",
+                "nvim-tree/nvim-web-devicons",
+            },
+        },
+
+        -- Treesitter configuration
+        {
+            "nvim-treesitter/nvim-treesitter",
+            build = function()
+                local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
+                ts_update()
+            end,
+        },
+    },
+    {
+        defaults = { lazy = true }
+    }
+)
