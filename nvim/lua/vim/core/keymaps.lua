@@ -1,19 +1,17 @@
 -- luacheck: ignore 113
 
-local keymap = vim.keymap -- More concise
+local keymap = vim.keymap
 vim.g.mapleader = " "
 
 -- Center vertically during a search
 keymap.set("n", "n", "nzz")
 keymap.set("n", "N", "Nzz")
 
--- stylua: ignore start
 keymap.set("n", "<leader>nh", ":nohl<CR>") -- Clear search highlights
 keymap.set("n", "<leader>w", ":w<CR>")     -- Easier write to file
 
 keymap.set("n", "<leader>]", "<c-a>")      -- Increment number
 keymap.set("n", "<leader>[", "<c-x>")      -- Decrement number
-keymap.set("n", "U", "<c-r>")              -- Map redo to 'U'
 
 keymap.set("n", "<c-a>", "ggVG")           -- Select all
 keymap.set("n", "x", '"_x')                -- Remove character w/o copying into register
@@ -50,4 +48,3 @@ keymap.set("n", "<leader>sk", "<C-w>k")      -- Top split
 keymap.set("n", "<leader>sj", "<C-w>j")      -- Bottom split
 keymap.set("n", "<leader>sl", "<C-w>l")      -- Right split
 -- }}}
--- stylua: ignore end

@@ -1,5 +1,4 @@
 -- luacheck: ignore 113
--- More concise.
 local api = vim.api
 local opt = vim.opt
 

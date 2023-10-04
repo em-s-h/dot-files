@@ -13,8 +13,6 @@ if not cmp_lsp_status then
 	return
 end
 
--- stylua: ignore start
--- More concise.
 local keymap = vim.keymap
 
 -- Enable keybindings when a LSP server is available.
@@ -41,8 +39,6 @@ local on_attach = function(client, bufnr)
 	keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts)  -- Smart rename.
 	keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)        -- Show documentation for what is under cursor.
 end
-
--- stylua: ignore end
 
 -- Used to enable autocompletion.
 local capabilities = cmp_nvim_lsp.default_capabilities()
