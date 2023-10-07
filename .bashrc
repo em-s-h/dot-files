@@ -37,7 +37,13 @@ fi
 # Source {{{
 . "$HOME/.local/kitty.app/lib/kitty/shell-integration/bash/kitty.bash"
 . "$HOME/.bash_completions/please.sh"
-. "$HOME/.cargo/env"
+
+if [[ -d "$HOME/.cargo" ]]; then
+    . "$HOME/.cargo/env"
+else
+    curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh &&
+    . "$HOME/.cargo/env"
+fi
 
 # Functions
 . ~/.bash_funcs
@@ -59,15 +65,9 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 
 export EDITOR="nvim -u ~/.config/nvim/vi_init.lua --noplugins"
 export VISUAL="nvim -u ~/.config/nvim/vim_init.lua"
-export SUDO_EDITOR="$EDITOR"
 # }}}
 
 # Prompt {{{
-# Set chroot variable for prompt
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-
 if [[ $(tty) = *tty* ]]; then
     PS1='\[\e[38;2;148;0;211m\]\[\e[97;48;2;148;0;211m\] $(spwd) \[\e[0;38;2;148;0;211m\] \[\e[38;2;131;111;255m\]\u@\l \[\e[38;2;224;102;255m\]\$ \[\e[0m\]'
 else
@@ -85,6 +85,8 @@ shopt -s histappend
 shopt -s globstar
 shopt -s cdspell
 shopt -s autocd
+
+set -o noclobber
 set -o vi
 # }}}
 
@@ -194,4 +196,3 @@ unset term_count important_count done_count
 # }}}
 
 # Emilly S.H. :D
-

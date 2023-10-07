@@ -29,5 +29,6 @@ alias cal='ncal -b'
 
 alias where='whereis'
 alias rm='rm -i'
-alias c='printf "\033c"'
+# alias c='printf "\033c"' # True clear
+alias c='clear'
 alias x='exit'
