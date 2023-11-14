@@ -1,0 +1,34 @@
+# ~/.bash_aliases
+
+# General
+alias test_net='ping 8.8.8.8 -a'
+alias weather='curl wttr.in'
+alias dir='echo "This is not Windows"'
+
+alias where='whereis'
+alias rm='rm -i'
+alias c='clear'
+alias x='exit'
+
+# Color
+alias grep='grep --color=auto'
+alias ls='ls --color=auto'
+
+# ls
+alias li='ls -lph  -I "$(cat .ignore 2> /dev/null)" -I "$(cat .gitignore 2> /dev/null)"'
+alias la='ls -alph'
+alias  l='ls -lph '
+
+# Apps
+alias bvim='/usr/bin/vim'
+alias vi='nvim -u ~/.config/nvim/vi_init.lua --noplugins'
+alias vim='nvim -u ~/.config/nvim/vim_init.lua'
+
+alias shatteredPD='java -jar ~/games/shatteredPD.jar'
+alias plantuml='java -jar ~/apps/plantuml.jar'
+alias icat='kitty +kitten icat'
+
+alias python='python3'
+alias xdelta='xdelta3'
+alias pip='pip3'
+

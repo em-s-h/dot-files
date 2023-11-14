@@ -21,37 +21,30 @@ api.nvim_create_autocmd("BufReadPost", {
 -- }}}
 
 -- Set options depending on file type. {{{
-augroup = api.nvim_create_augroup("SetFileFolding", {})
-api.nvim_clear_autocmds({ group = augroup })
-
-api.nvim_create_autocmd("FileType", {
-	group = augroup,
-
-	callback = function()
-		local file_type = vim.bo.filetype
-		local marker_fold = function()
-			opt.foldmarker = "{{{,}}}"
-			opt.foldmethod = "marker"
-			opt.foldlevel = 0
-		end
-
-		local marker_files = {
-			[1] = "javascript",
-			[2] = "i3config",
-			[3] = "markdown",
-			[4] = "kitty",
-			[5] = "text",
-			[6] = "conf",
-			[7] = "lua",
-			[8] = "sh",
-            [9] = "dosini"
-		}
-
-		for _, file in ipairs(marker_files) do
-			if file == file_type then
-				marker_fold()
-			end
-		end
-	end,
-})
+-- augroup = api.nvim_create_augroup("SetFileFolding", {})
+-- api.nvim_clear_autocmds({ group = augroup })
+--
+-- api.nvim_create_autocmd("FileType", {
+-- 	group = augroup,
+--
+-- 	callback = function()
+-- 		local file_type = vim.bo.filetype
+-- 		local indent_fold = function()
+-- 			opt.foldmethod = "indent"
+--             opt.foldlevelstart = 99
+-- 			opt.foldlevel = 99
+-- 		end
+--
+-- 		local indent_files = {
+--             [1] = "csharp",
+-- 			[2] = "rust",
+-- 		}
+--
+-- 		for _, file in ipairs(indent_files) do
+-- 			if file == file_type then
+-- 				indent_fold()
+-- 			end
+-- 		end
+-- 	end,
+-- })
 -- }}}

@@ -14,6 +14,7 @@ keymap.set("n", "<leader>]", "<c-a>")      -- Increment number
 keymap.set("n", "<leader>[", "<c-x>")      -- Decrement number
 
 keymap.set("n", "<c-a>", "ggVG")           -- Select all
+keymap.set("n", "U", "<c-r>")              -- Map 'U' to redo
 keymap.set("n", "x", '"_x')                -- Remove character w/o copying into register
 keymap.set("n", "Y", "y$")                 -- Yank from cursor to line end
 

@@ -40,10 +40,7 @@ require("lazy").setup(
         "numToStr/Comment.nvim", -- Easier commenting
         "windwp/nvim-autopairs", -- Autoclosing
         "tpope/vim-surround",    -- Word surrounding
-        {
-            "stevearc/oil.nvim", -- File explorer in buffer
-            lazy = true
-        },
+        "stevearc/oil.nvim", -- File explorer in buffer
 
         -- Autocompletion
         "hrsh7th/cmp-nvim-lsp", -- For lsp servers
