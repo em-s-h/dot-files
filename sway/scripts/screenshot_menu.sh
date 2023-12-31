@@ -4,10 +4,11 @@ options="1. Screen
 2. Window
 3. Selection"
 
-input="$(echo -e "$options" | rofi -dmenu -i -l 3 -p 'Capture:')"
+input="$(echo -e "$options" | rofi -dmenu -i -p 'Capture:')"
 
-file_name="$(rofi -dmenu -p 'File name:')"
-path="${HOME}/pics/screenshots/${file_name}.png"
+[[ -z $input ]] && exit
+
+path=~/pics/screenshots/tmp/tmp.png
 type="${input/[1-9]\. /}"
 
 case "$input" in
@@ -24,7 +25,12 @@ case "$input" in
     *) exit ;;
 esac
 
-[[ $? == 0 ]] && dunstify -u normal -t 4500 "$type captured!" "Saved to $path"
-unset options input file_name path
+[[ $? -eq 0 ]] && dunstify -u normal -t 3000 "$type captured!" "Temporarily saved to $path"
+
+file_name="$(rofi -dmenu -p 'File name:')"
+new_path="${path//tmp*/}${file_name}.png"
+mv "$path" "$new_path"
+
+[[ $? -eq 0 ]] && dunstify -u normal -t 4500 "$file_name saved!" "Moved to $new_path"
 
 # Emilly S.H. :D

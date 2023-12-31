@@ -17,9 +17,9 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup(
     {
         -- Lua functions used by other plugins
-        { "nvim-lua/plenary.nvim", lazy = true },
+        "nvim-lua/plenary.nvim",
 
-        -- Visuals
+        -- Visuals {{{
         {
             "lukas-reineke/indent-blankline.nvim",
             main = "ibl",
@@ -32,21 +32,24 @@ require("lazy").setup(
             "kevinhwang91/nvim-ufo", -- Better folding
             dependencies = { "kevinhwang91/promise-async" }
         },
+        -- }}}
 
         -- Kitty
         "fladson/vim-kitty",
 
-        -- Useful
+        -- Useful {{{
         "numToStr/Comment.nvim", -- Easier commenting
         "windwp/nvim-autopairs", -- Autoclosing
         "tpope/vim-surround",    -- Word surrounding
-        "stevearc/oil.nvim", -- File explorer in buffer
+        "stevearc/oil.nvim",     -- File explorer in buffer
+        -- }}}
 
-        -- Autocompletion
+        -- Autocompletion {{{
         "hrsh7th/cmp-nvim-lsp", -- For lsp servers
         "hrsh7th/cmp-buffer",   -- For text in buffer
         "hrsh7th/cmp-path",     -- For file system paths
         "hrsh7th/nvim-cmp",     -- Autocompletion plugin
+        -- }}}
 
         -- Snippets
         "rafamadriz/friendly-snippets", -- Useful snippets
@@ -57,13 +60,11 @@ require("lazy").setup(
         {
             "nvim-telescope/telescope.nvim",
             branch = "0.1.x",
-            lazy = true
         },
 
         -- Better sorting performance for Telescope
         {
             'nvim-telescope/telescope-fzf-native.nvim',
-            lazy = true,
             build =
             'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
         },
@@ -86,7 +87,6 @@ require("lazy").setup(
         -- Treesitter configuration
         {
             "nvim-treesitter/nvim-treesitter",
-            lazy = true,
             build = function()
                 local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
                 ts_update()

@@ -8,7 +8,7 @@
     background-color:   #191421dd;
     border-color:       #cd69de;
     text-color:         #888888;
-    font:               "FiraCode Nerd Font 11";
+    font:               "IntoneMono Nerd Font 11";
 }
 
 window {

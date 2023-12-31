@@ -9,7 +9,7 @@ options="1. 󰅖 Close menu
 5.  Reboot
 6. 󰐥 Poweroff"
 
-input="$(echo -e "$options" | rofi -dmenu -i -l 6 -p "Power options:")"
+input="$(echo -e "$options" | rofi -dmenu -i -l 4 -p "Power options:")"
 
 case "$input" in
     *'2'*) ./lock_screen.sh
@@ -30,7 +30,5 @@ case "$input" in
     ;;
     *) exit ;;
 esac
-
-unset options input
 
 # Emilly S.H. :D

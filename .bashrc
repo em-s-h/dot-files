@@ -28,13 +28,17 @@ trap clr_hist EXIT
 
 # Sourcing {{{
 # Functions
-[[ -f ~/.config/bash/bash_funcs ]] && . ~/.config/bash/bash_funcs
+[[ -f ~/.config/bash/functions ]] && . ~/.config/bash/functions
 
 # Aliases
-[[ -f ~/.config/bash/bash_aliases ]] && . ~/.config/bash/bash_aliases
+[[ -f ~/.config/bash/aliases ]] && . ~/.config/bash/aliases
 
 # Completions
-[[ -d ~/.config/bash/bash_completions ]] && . ~/.config/bash/bash_completions/*
+if [[ -d ~/.config/bash/completions ]]; then
+    for f in ~/.config/bash/completions/*; do
+        . "$f"
+    done
+fi
 
 # Command not found
 . /usr/share/doc/pkgfile/command-not-found.bash
@@ -57,9 +61,11 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export EDITOR="nvim -u ~/.config/nvim/vi_init.lua --noplugins"
 export VISUAL="nvim -u ~/.config/nvim/vim_init.lua"
 export SUDO_EDITOR="$EDITOR"
+export GIT_EDITOR="$EDITOR"
 # }}}
 
 # Prompt {{{
+# man terminfo - For more info on tput args
 RED=$(tput setaf 1) # Red
 GRN=$(tput setaf 2) # Green
 YEL=$(tput setaf 3) # Yellow
@@ -68,16 +74,24 @@ MAG=$(tput setaf 5) # Magenta
 CYA=$(tput setaf 6) # Cyan
 WHT=$(tput setaf 7) # White
 BLK=$(tput setaf 8) # Black
-# BLK=$(tput setaf 0) # Black wrs
 
 BLD=$(tput bold)    # Bold
+ITL=$(tput sitm)    # Italic
 UL=$(tput smul)     # Underline
-NC=$(tput sgr0)     # No color
+NC=$(tput sgr0)     # No color & format
 
-PS1='\[$MAG\]┌< \[$BLK$BLD\]$(spwd)\[$NC$MAG\] > \[$RED\]\u\[$WHT\]@\[$RED\]\l \n \[$NC$MAG\]| \[$RED\]\! \[$MAG\]>\[$YEL\] \$ \[$NC\]'
+myjobs() {
+    local jbs=$(jobs | wc -l)
+    if [[ $jbs > 0 ]]; then
+        printf " ${jbs}j "
+    else
+        printf "-"
+    fi
+}
+
+PS1='\[$MAG\]┌< \[$BLK$ITL$BLD\]$(spwd)\[$NC$MAG\] >-<\[$YEL\]$(myjobs)\[$MAG\]>-< \[$RED\]\!! \[$MAG\]> \[$RED\]\u\[$WHT\]@\[$RED\]\l \n \[$NC$MAG\]> \[$YEL\]\$ \[$NC\]'
 
 # Old prompts
-# PS1='\[$MAG\]┌< \[$BLU$BLD\]$(spwd) \[$MAG\]> \[$RED\]\u\[$NC\]@\[$RED\]\l \n\[$MAG\]└< \[$RED\]\! \[$MAG\]>\[$YEL\] \$ \[$NC\]'
 #                 r   g   b
 # PS1=' \[\e[38;2;148;0;211m\]\[\e[97;48;2;148;0;211m\] $(spwd) \[\e[0;38;2;148;0;211m\] \[\e[38;2;131;111;255m\]\u\[\e[38;2;224;102;255m\]\$ \[\e[0m\]'
 # PS1='\[\e[30;48;5;81;1m\] $(spwd) \[\e[0;38;5;81;48;5;86m\]\[\e[30;1m\] \u \[\e[0;38;5;86;48;5;140m\]\[\e[30;1m\] \$ \[\e[0;38;5;140m\] \[\e[0m\]'
@@ -99,6 +113,37 @@ if [[ $(tty) = *tty* ]]; then
     echo "tty detected, no annoying messages"
     return
 fi
+
+# To-do {{{
+important_count=$(grep -icE 'study|homework|important' ~/.local/share/tsk/tasks)
+done_count=$(grep -c '\[X\]' ~/.local/share/tsk/tasks)
+term_count=$(ls /dev/pts/ | grep -vcE '[[:alpha:]]')
+
+## Read the to-do list warning {{{
+if (( $important_count >= 1 )); then
+    if (( $important_count > 3)); then
+        echo -e "${RED}" \
+        '
+ _  ______ _____  ___ ______   _____ _   _  _____   _____ _____       ______ _____   _     _____ _____ _____   _ 
+| | | ___ \  ___|/ _ \|  _  \ |_   _| | | ||  ___| |_   _|  _  |      |  _  \  _  | | |   |_   _/  ___|_   _| | |
+| | | |_/ / |__ / /_\ \ | | |   | | | |_| || |__     | | | | | |______| | | | | | | | |     | | \ `--.  | |   | |
+| | |    /|  __||  _  | | | |   | | |  _  ||  __|    | | | | | |______| | | | | | | | |     | |  `--. \ | |   | |
+|_| | |\ \| |___| | | | |/ /    | | | | | || |___    | | \ \_/ /      | |/ /\ \_/ / | |_____| |_/\__/ / | |   |_|
+(_) \_| \_\____/\_| |_/___/     \_/ \_| |_/\____/    \_/  \___/       |___/  \___/  \_____/\___/\____/  \_/   (_)
+        ' \
+        "${NC}"
+    else
+        echo -e "${RED} ! READ THE TO-DO LIST ! ${NC}"
+    fi
+fi
+## }}}
+
+if (( $done_count >= 2 )) ; then
+    tsk clear
+else
+    tsk
+fi
+# }}}
 
 # ssh agent. {{{
 env=~/.ssh/agent.env
@@ -125,52 +170,5 @@ elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
 fi
 # }}}
 
-# To-do {{{
-important_count=$(grep -icE 'study|homework|important' ~/.config/please/config.json)
-done_count=$(grep -ic '"done": true' ~/.config/please/config.json)
-term_count=$(ls /dev/pts/ | grep -vcE '[[:alpha:]]')
-
-if (( $done_count >= 2 )) ; then
-    please clean
-else
-    please
-fi
-
-## Read the to-do list warning {{{
-if (( $important_count >= 1 )); then
-    if (( $important_count > 3)); then
-        echo -e "${RED}" \
-        '
- _  ______ _____  ___ ______   _____ _   _  _____   _____ _____       ______ _____   _     _____ _____ _____   _ 
-| | | ___ \  ___|/ _ \|  _  \ |_   _| | | ||  ___| |_   _|  _  |      |  _  \  _  | | |   |_   _/  ___|_   _| | |
-| | | |_/ / |__ / /_\ \ | | |   | | | |_| || |__     | | | | | |______| | | | | | | | |     | | \ `--.  | |   | |
-| | |    /|  __||  _  | | | |   | | |  _  ||  __|    | | | | | |______| | | | | | | | |     | |  `--. \ | |   | |
-|_| | |\ \| |___| | | | |/ /    | | | | | || |___    | | \ \_/ /      | |/ /\ \_/ / | |_____| |_/\__/ / | |   |_|
-(_) \_| \_\____/\_| |_/___/     \_/ \_| |_/\____/    \_/  \___/       |___/  \___/  \_____/\___/\____/  \_/   (_)
-        ' \
-        "${NC}"
-        sleep 3
-    else
-        echo -e "${RED} ! READ THE TO-DO LIST ! ${NC}"
-        sleep 2
-    fi
-fi
-## }}}
-
-## Other to-dos {{{
-if (( $term_count <= 2 )); then
-    input='n'
-    read -p "Do you wish to see other stuff to-do? (y/n): " input
-
-    if [[ $input = [yY]* ]] ; then
-        cd ~/notes/to_dos/
-
-        glow
-        cd - > /dev/null
-    fi
-fi
-## }}}
-
-# }}}
-
+sleep 2
 # Emilly S.H. :D

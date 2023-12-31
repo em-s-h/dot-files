@@ -52,7 +52,7 @@ opt.completeopt = "menu,menuone,noinsert,noselect,preview"
 opt.backspace = "indent,eol,start"
 
 opt.undofile = true
-opt.undodir = "/home/esh/.local/state/nvim/undo/"
+opt.undodir = vim.env.HOME .. "/.local/state/nvim/undo/"
 
 -- 13. Tabs & indenting
 opt.preserveindent = true
@@ -72,14 +72,14 @@ opt.foldmarker = "{{{,}}}"
 opt.foldcolumn = '1'
 
 opt.foldlevelstart = 99
-opt.foldenable = false
+opt.foldenable = true
 opt.foldlevel = 99
 
 -- 18. The swap file
 opt.updatetime = 250
 
 -- 19. Command line editing
-opt.wildignore = "*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx"
+opt.wildignore = "*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx,*.svg"
 
 -- 24. Various
 opt.signcolumn = "yes"

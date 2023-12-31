@@ -10,6 +10,4 @@ else
     exit
 fi
 
-unset options input
-
 # Emilly S.H. :D

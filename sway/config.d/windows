@@ -1,0 +1,64 @@
+## sway window configuration
+
+# Workspace 1 - Firefox
+assign [app_id = "firefox"] workspace number 1
+
+# Workspace 2 - Kitty 
+assign [app_id = "kitty"] workspace number 2
+
+# Workspace 3 - Apps {{{
+assign [class = "Godot"] workspace number 3
+
+assign [app_id = "Audacity"] workspace number 3
+assign [app_id = "kdenlive"] workspace number 3
+assign [class = "krita"] workspace number 3
+
+assign [app_id = "libreoffice.*"] workspace number 3
+assign [app_id = ".*xdelta-lui"] workspace number 3
+# }}}
+
+# Workspace 4 - Games {{{
+assign [app_id = "duckstation-qt"] workspace number 4
+assign [class = "PPSSPPSDL"] workspace number 4
+assign [app_id = "pcsx2-qt"] workspace number 4
+
+assign [app_id = "snes9x-gtk"] workspace number 4
+assign [app_id = "mGBA-qt"] workspace number 4
+assign [app_id = "melonDS"] workspace number 4
+assign [class = "Citra"] workspace number 4
+
+assign [class = "dolphin-emu"] workspace number 4
+assign [app_id = "Mednaffe"] workspace number 4
+assign [app_id = "Mednafen"] workspace number 4
+assign [app_id = "redream"] workspace number 4
+
+assign [app_id = "Shattered Pixel Dungeon"] workspace number 4
+assign [app_id = "NetHack"] workspace number 4
+assign [title = "Steam"] workspace number 4
+# }}}
+
+# Workspace 8 - Media {{{
+assign [app_id = ".*zathura.*"] workspace number 8
+assign [app_id = "okular"] workspace number 8
+assign [app_id = "mpv"] workspace number 8
+# }}}
+
+# Workspace 9 - Settings {{{
+# }}}
+
+# Workspace 10 - Net {{{
+assign [app_id = "VirtualBox Manager"] workspace number 10
+assign [app_id = "VirtualBox Machine"] workspace number 10
+
+assign [app_id = "PacketTracer"] workspace number 10
+assign [app_id = "VirtualBox"] workspace number 10
+# }}}
+
+for_window [title = ".*"] inhibit_idle fullscreen
+for_window [title = "Special Offers"] kill
+
+for_window [title = "Picture-in-Picture"] floating enable; sticky enable
+for_window [app_id = ".*xdelta-lui.*"] floating enable
+for_window [title = "Terraria:.*"] floating enable
+
+for_window [instance = "Godot_ProjectList"] floating enable
