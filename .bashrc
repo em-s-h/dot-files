@@ -17,6 +17,7 @@ esac
 
 # Clear history after exiting {{{
 clr_hist() {
+    echo "Clearing history..."
     clear
     reset
     history -c
@@ -66,30 +67,53 @@ export GIT_EDITOR="$EDITOR"
 
 # Prompt {{{
 # man terminfo - For more info on tput args
+BLA=$(tput setaf 0) # Black
 RED=$(tput setaf 1) # Red
-GRN=$(tput setaf 2) # Green
+GRE=$(tput setaf 2) # Green
 YEL=$(tput setaf 3) # Yellow
 BLU=$(tput setaf 4) # Blue
 MAG=$(tput setaf 5) # Magenta
 CYA=$(tput setaf 6) # Cyan
-WHT=$(tput setaf 7) # White
-BLK=$(tput setaf 8) # Black
+WHI=$(tput setaf 7) # White
 
-BLD=$(tput bold)    # Bold
-ITL=$(tput sitm)    # Italic
+BOL=$(tput bold)    # Bold
+ITA=$(tput sitm)    # Italic
 UL=$(tput smul)     # Underline
 NC=$(tput sgr0)     # No color & format
 
-myjobs() {
-    local jbs=$(jobs | wc -l)
-    if [[ $jbs > 0 ]]; then
-        printf " ${jbs}j "
-    else
-        printf "-"
+# Workaround to be able to maintain the exit code of the previous cmd
+# since spwd will return 0 if it doesn't fail
+_pwd() {
+    # {{{
+    local exit_c=$?
+    printf "<${CYA}${ITA} $(spwd) ${NC}${BLU}>"
+    $(exit ${exit_c})
+}
+# }}}
+
+_exit() {
+    # {{{
+    local ret=$?
+    if [[ $ret -ne 0 ]]; then
+        printf "($RED $ret ${MAG})"
+    else 
+        printf "${MAG}-"
     fi
 }
+# }}}
 
-PS1='\[$MAG\]┌< \[$BLK$ITL$BLD\]$(spwd)\[$NC$MAG\] >-<\[$YEL\]$(myjobs)\[$MAG\]>-< \[$RED\]\!! \[$MAG\]> \[$RED\]\u\[$WHT\]@\[$RED\]\l \n \[$NC$MAG\]> \[$YEL\]\$ \[$NC\]'
+_job() {
+    # {{{
+    local jbs=$(jobs | wc -l)
+    if [[ $jbs -gt 0 ]]; then
+        printf "($GRE ${jbs}j ${MAG})"
+    else
+        printf "${MAG}-"
+    fi
+}
+# }}}
+
+PS1='\[$BLU\]┌\[$(_pwd)\] \[$(_job)\] \u\[$WHI\]:\[$BLU\]\! \n \[$NC$BLU\]> \[$MAG\]\$ \[$NC\]'
 
 # Old prompts
 #                 r   g   b
@@ -98,14 +122,13 @@ PS1='\[$MAG\]┌< \[$BLK$ITL$BLD\]$(spwd)\[$NC$MAG\] >-<\[$YEL\]$(myjobs)\[$MAG\
 # PS1='\[\e[30;48;5;81;1m\] $(spwd) \[\e[0;38;5;81;48;5;86m\]\[\e[30;1m\] \u \[\e[0;38;5;86;48;5;140m\]\[\e[30;1m\] \$ \[\e[0;38;5;140m\] \[\e[0m\]'
 # }}}
 
-# Config {{{
+# shopt {{{
 shopt -s checkwinsize
 shopt -s histappend
 shopt -s globstar
 shopt -s cdspell
 shopt -s autocd
 
-set -o noclobber
 set -o vi
 # }}}
 
@@ -117,7 +140,7 @@ fi
 # To-do {{{
 important_count=$(grep -icE 'study|homework|important' ~/.local/share/tsk/tasks)
 done_count=$(grep -c '\[X\]' ~/.local/share/tsk/tasks)
-term_count=$(ls /dev/pts/ | grep -vcE '[[:alpha:]]')
+time_s=0
 
 ## Read the to-do list warning {{{
 if (( $important_count >= 1 )); then
@@ -132,17 +155,15 @@ if (( $important_count >= 1 )); then
 (_) \_| \_\____/\_| |_/___/     \_/ \_| |_/\____/    \_/  \___/       |___/  \___/  \_____/\___/\____/  \_/   (_)
         ' \
         "${NC}"
+        time_s=3
     else
         echo -e "${RED} ! READ THE TO-DO LIST ! ${NC}"
+        time_s=2
     fi
 fi
 ## }}}
 
-if (( $done_count >= 2 )) ; then
-    tsk clear
-else
-    tsk
-fi
+tsk
 # }}}
 
 # ssh agent. {{{
@@ -170,5 +191,6 @@ elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
 fi
 # }}}
 
-sleep 2
-# Emilly S.H. :D
+sleep $time_s
+
+# Emilly M.S.H. ;D

@@ -11,10 +11,12 @@ alias grep='grep --color=auto'
 alias ls='ls --color=auto'
 
 # Utils
+alias stop='kill -s sigstop'
+alias cont='kill -s sigcont'
+
 alias la='ls -alph'
 alias l='ls -lph'
 
-alias man='echo "Try tldr"; man'
 alias where='whereis'
 alias rm='rm -i'
 alias df='df -h'
@@ -25,8 +27,13 @@ alias x='exit'
 alias vi='nvim -u ~/.config/nvim/vi_init.lua --noplugins'
 alias vim='nvim -u ~/.config/nvim/vim_init.lua'
 alias bvim='/usr/bin/vim'
+alias hx='helix'
 
+alias git-pu='git add . && git commit && git push '
 alias icat='kitty +kitten icat'
 alias python='python3'
 alias xdelta='xdelta3'
+
+alias duckstation='duckstation-qt'
+alias pcsx2='pcsx2-qt'
 

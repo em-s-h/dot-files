@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 options="1. Screen
 2. Window
@@ -7,9 +8,10 @@ options="1. Screen
 input="$(echo -e "$options" | rofi -dmenu -i -p 'Capture:')"
 
 [[ -z $input ]] && exit
-
-path=~/pics/screenshots/tmp/tmp.png
 type="${input/[1-9]\. /}"
+
+file=$(date +"%y-%m-%d_%H-%M-%S.png")
+path="${HOME}/pics/screenshots/$file"
 
 case "$input" in
     *'1'*)
@@ -25,12 +27,6 @@ case "$input" in
     *) exit ;;
 esac
 
-[[ $? -eq 0 ]] && dunstify -u normal -t 3000 "$type captured!" "Temporarily saved to $path"
-
-file_name="$(rofi -dmenu -p 'File name:')"
-new_path="${path//tmp*/}${file_name}.png"
-mv "$path" "$new_path"
-
-[[ $? -eq 0 ]] && dunstify -u normal -t 4500 "$file_name saved!" "Moved to $new_path"
+[[ $? -eq 0 ]] && dunstify -u normal -t 4500 "$type captured!" "Saved to $path"
 
 # Emilly S.H. :D

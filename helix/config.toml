@@ -1,0 +1,51 @@
+# Config
+theme = "bogster"
+
+[editor]
+line-number = "relative"
+bufferline = "multiple"
+idle-timeout = 200
+
+rulers = [95, 100]
+color-modes = true
+cursorline = true
+text-width = 100
+
+middle-click-paste = false
+mouse = false
+
+[editor.statusline]
+left = ["mode", "spinner", "file-name", "file-modification-indicator", "diagnostics"] 
+center = ["read-only-indicator"]
+right = ["selections", "register", "position-percentage", "position", "file-encoding"]
+
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.indent-guides]
+skip-levels = 1
+render = true
+char = "▎"
+
+[editor.smart-tab]
+enable = false
+
+# Keymaps
+[keys.normal]
+Y = ["select_mode", "goto_line_end", "yank"]
+"space" = {w = ":w"}
+
+[keys.insert]
+up = "no_op"
+down = "no_op"
+left = "no_op"
+right = "no_op"
+pageup = "no_op"
+pagedown = "no_op"
+home = "no_op"
+end = "no_op"
+

@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 options="󰅖 - No \n - Yes, $1"
 

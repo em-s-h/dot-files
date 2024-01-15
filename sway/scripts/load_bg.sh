@@ -1,5 +1,4 @@
 #!/bin/bash
-
 killall -q swaybg
 
 cd ~/pics/wallpapers

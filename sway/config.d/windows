@@ -14,6 +14,8 @@ assign [app_id = "kdenlive"] workspace number 3
 assign [class = "krita"] workspace number 3
 
 assign [app_id = "libreoffice.*"] workspace number 3
+assign [app_id = "soffice.*"] workspace number 3
+assign [title = "LibreOfiice"] workspace number 3
 assign [app_id = ".*xdelta-lui"] workspace number 3
 # }}}
 
@@ -54,6 +56,9 @@ assign [app_id = "PacketTracer"] workspace number 10
 assign [app_id = "VirtualBox"] workspace number 10
 # }}}
 
+for_window [instance = ".*Godot.*"] floating enable
+for_window [title = ".*Godot Engine.*" instance = ".*Godot.*"] floating disable
+
 for_window [title = ".*"] inhibit_idle fullscreen
 for_window [title = "Special Offers"] kill
 
@@ -61,4 +66,3 @@ for_window [title = "Picture-in-Picture"] floating enable; sticky enable
 for_window [app_id = ".*xdelta-lui.*"] floating enable
 for_window [title = "Terraria:.*"] floating enable
 
-for_window [instance = "Godot_ProjectList"] floating enable

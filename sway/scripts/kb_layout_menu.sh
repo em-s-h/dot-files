@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 current=$(swaymsg -t get_inputs | jq 'map(select(has("xkb_active_layout_name")))[0].xkb_active_layout_name')
 options="1. en_us \n2. pt_br"

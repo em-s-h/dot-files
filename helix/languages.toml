@@ -1,0 +1,19 @@
+[language-server.godot]
+command = "nc"
+args = ["127.0.0.1", "6005"]
+
+[[language]]
+name = "gdscript"
+indent = {tab-width = 4, unit = "    "}
+language-servers = ["godot"]
+
+[language-server.rust-analyzer.config.check]
+command = "clippy"
+
+[[language]]
+name = "rust"
+indent = {tab-width = 4, unit = "    "}
+
+[[language]]
+name = "bash"
+indent = {tab-width = 4, unit = "    "}

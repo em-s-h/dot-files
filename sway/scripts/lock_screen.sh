@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 sway input "type:keyboard" xkb_switch_layout 0
 
 tmpbg=/tmp/tmp_screen.png
