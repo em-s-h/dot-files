@@ -18,7 +18,7 @@ case "$input" in
     *'3'*) ./lock_screen.sh && sudo systemctl suspend
     ;;
     *'4'*)
-        input=$(./confirm_menu.sh "log out of i3");
+        input=$(./confirm_menu.sh "log out of sway");
         [[ $input == "yes" ]] && swaymsg exit
     ;;
     *'5'*)

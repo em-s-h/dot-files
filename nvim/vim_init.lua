@@ -21,10 +21,8 @@ require("vim.core.scripts")
 require("dev.plugins.indent-blankline")
 require("dev.plugins.treesitter")
 require("dev.plugins.autopairs")
-
 require("vim.plugins.nvim-cmp")
+
 require("dev.plugins.lualine")
 require("dev.plugins.comment")
-
-require("dev.plugins.ufo")
 require("dev.plugins.oil")

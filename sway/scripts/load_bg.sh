@@ -18,7 +18,7 @@ if [[ $new_bg -lt 10 ]]; then
 fi
 new_bg=$(ls . | grep -E "^${new_bg}-")
 
-echo "$(date +'%D') - $new_bg" >> ~/.logs/load_bg.log
+echo "$(date +'%Y_%m_%d') - $new_bg" >> ~/.logs/load_bg.log
 swaybg -i $new_bg -m fill &
 
 # Emilly S.H. :D

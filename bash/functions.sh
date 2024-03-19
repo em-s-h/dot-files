@@ -1,5 +1,11 @@
-#!/bin/bash
-# ~/.bash_funcs
+up_mirrors () {
+    # {{{
+    local tmp_file="$(mktemp)" && \
+        rate-mirrors --save=$tmp_file --protocol=https --max-jumps=5 arch && \
+        sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-back && \
+        sudo mv $tmp_file /etc/pacman.d/mirrorlist
+}
+# }}}
 
 yt-ogg () {
 # {{{
@@ -31,13 +37,10 @@ mksh () {
 }
 # }}}
 
-up_mirrors () {
+filel() {
     # {{{
-    local tmp_file="$(mktemp)" && \
-        rate-mirrors --save=$tmp_file --protocol=https --max-jumps=5 arch && \
-        sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-back && \
-        sudo mv $tmp_file /etc/pacman.d/mirrorlist
+    file "$@" | sed "s/,/,\n/g"
 }
 # }}}
 
-# Emilly S.H. :D
+# Emilly M.S.H. :D

@@ -1,6 +1,6 @@
-colorscheme habamax
-"
-"
+colorscheme darkblue
+
+
 " Options. {{{
 
 " 1. Important

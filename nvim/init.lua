@@ -23,14 +23,13 @@ require("dev.mason")
 -- Plugins.
 require("dev.plugins.indent-blankline")
 require("dev.plugins.treesitter")
-require("dev.plugins.telescope")
+-- require("dev.plugins.telescope") // Unused
 
 require("dev.plugins.autopairs")
 require("dev.plugins.nvim-cmp")
 require("dev.plugins.lualine")
 
 require("dev.plugins.comment")
-require("dev.plugins.ufo")
 require("dev.plugins.oil")
 
 -- LSP.

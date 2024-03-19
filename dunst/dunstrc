@@ -1,6 +1,7 @@
 [global]
-font = "FiraCode Nerd Font 10"
+font = "IntoneMono Nerd Font 10"
 
+#enable_posix_regex = true
 separator_color = frame
 corner_radius   = 0
 line_height     = 1
@@ -27,29 +28,35 @@ history = ctrl+grave
 context = ctrl+shift+period
 
 [urgency_low]
-#frame_color = "#3B7C87"
-#foreground  = "#3B7C87"
-
-frame_color = "#baabc9"
-foreground  = "#baabc9"
+# {{{
+script = ~/.config/dunst/low.sh
+frame_color = "#d9d9d9"
+foreground  = "#d9d9d9"
 background  = "#191311"
 timeout     = 4
+# }}}
 
 [urgency_normal]
-#frame_color = "#5B8234"
-#foreground  = "#5B8234"
-
-frame_color = "#8a5fde"
-foreground  = "#8a5fde"
+# {{{
+script = ~/.config/dunst/norm.sh
+frame_color = "#7979b8"
+foreground  = "#7979b8"
 background  = "#191311"
 timeout     = 6
+# }}}
 
 [urgency_critical]
-frame_color = "#b7472a"
-foreground  = "#b7472a"
+# {{{
+script = ~/.config/dunst/crit.sh
+frame_color = "#b87979"
+foreground  = "#b87979"
 background  = "#191311"
 timeout     = 8
+# }}}
 
-[notify_sound]
-summary = "*"
-script = ~/.config/dunst/notify.sh
+[success]
+# {{{
+frame_color = "#79b879"
+foreground  = "#79b879"
+summary = "*success*"
+# }}}

@@ -67,13 +67,10 @@ opt.shiftwidth = 4
 opt.tabstop = 4
 
 -- 14. Folding
+opt.foldenable = true
 opt.foldmethod = "marker"
 opt.foldmarker = "{{{,}}}"
 opt.foldcolumn = '1'
-
-opt.foldlevelstart = 99
-opt.foldenable = true
-opt.foldlevel = 99
 
 -- 18. The swap file
 opt.updatetime = 250

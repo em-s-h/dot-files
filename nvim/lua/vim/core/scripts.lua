@@ -2,7 +2,7 @@
 local api = vim.api
 local opt = vim.opt
 
--- Set cursor to the last location when opening a file. {{{
+-- Set cursor to previous location when opening a file. {{{
 local augroup = api.nvim_create_augroup("SetCursorLocation", {})
 api.nvim_clear_autocmds({ group = augroup })
 

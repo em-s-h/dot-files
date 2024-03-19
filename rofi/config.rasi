@@ -1,4 +1,13 @@
 configuration {
+  	kb-accept-entry: "Return,KP_Enter";  
+  	kb-remove-char-back: "BackSpace";  
+  	kb-mode-complete: "";  
+  	kb-remove-to-eol: "";  
+
+  	kb-row-up: "Up,Control+k";  
+  	kb-row-down: "Down,Control+j";  
+  	kb-row-left: "Control+h";  
+  	kb-row-right: "Control+l";  
     timeout {
         action: "kb-cancel";
         delay:  0;
@@ -10,5 +19,4 @@ configuration {
     }
 }
 
-// @theme "~/.config/rofi/arthur.rasi"
 @theme "~/.config/rofi/dmenu.rasi"

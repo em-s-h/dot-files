@@ -28,10 +28,10 @@ set $urgent-bg-color     #e53935
 ### }}}
 
 ### Settings {{{
-font pango:IntoneMono Nerd Font Mono 11
+font pango:IntoneMono Nerd Font Mono 10
 title_align center
 
-default_floating_border pixel 5
+default_floating_border normal 5
 hide_edge_borders both
 
 focus_follows_mouse no
@@ -67,7 +67,7 @@ input "type:keyboard" {
     xkb_layout us,br
     xkb_options caps:swapescape
 
-    repeat_delay 450
+    repeat_delay 440
     repeat_rate 35
 }
 ### }}}
@@ -76,7 +76,7 @@ input "type:keyboard" {
 # exec_always ~/.config/polybar/launch.sh
 bar {
     font pango:IntoneMono Nerd Font 10
-    separator_symbol " :: "
+    separator_symbol "}-{"
     position top
 
     status_command i3status -c ~/.config/sway/i3status.conf

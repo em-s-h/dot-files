@@ -17,7 +17,6 @@ esac
 
 # Clear history after exiting {{{
 clr_hist() {
-    echo "Clearing history..."
     clear
     reset
     history -c
@@ -28,11 +27,14 @@ trap clr_hist EXIT
 # }}}
 
 # Sourcing {{{
+# Git prompt
+[[ -f ~/.config/bash/git-prompt.sh ]] && . ~/.config/bash/git-prompt.sh
+
 # Functions
-[[ -f ~/.config/bash/functions ]] && . ~/.config/bash/functions
+[[ -f ~/.config/bash/functions.sh ]] && . ~/.config/bash/functions.sh
 
 # Aliases
-[[ -f ~/.config/bash/aliases ]] && . ~/.config/bash/aliases
+[[ -f ~/.config/bash/aliases.sh ]] && . ~/.config/bash/aliases.sh
 
 # Completions
 if [[ -d ~/.config/bash/completions ]]; then
@@ -46,6 +48,21 @@ fi
 # }}}
 
 # Variables {{{
+# man terminfo
+BLA=$(tput setaf 0) # Black
+RED=$(tput setaf 1) # Red
+GRE=$(tput setaf 2) # Green
+YEL=$(tput setaf 3) # Yellow
+BLU=$(tput setaf 4) # Blue
+MAG=$(tput setaf 5) # Magenta
+CYA=$(tput setaf 6) # Cyan
+WHI=$(tput setaf 7) # White
+
+BOL=$(tput bold)    # Bold
+ITA=$(tput sitm)    # Italic
+UL=$(tput smul)     # Underline
+NC=$(tput sgr0)     # No color & format
+
 # Don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
 
@@ -66,23 +83,7 @@ export GIT_EDITOR="$EDITOR"
 # }}}
 
 # Prompt {{{
-# man terminfo - For more info on tput args
-BLA=$(tput setaf 0) # Black
-RED=$(tput setaf 1) # Red
-GRE=$(tput setaf 2) # Green
-YEL=$(tput setaf 3) # Yellow
-BLU=$(tput setaf 4) # Blue
-MAG=$(tput setaf 5) # Magenta
-CYA=$(tput setaf 6) # Cyan
-WHI=$(tput setaf 7) # White
-
-BOL=$(tput bold)    # Bold
-ITA=$(tput sitm)    # Italic
-UL=$(tput smul)     # Underline
-NC=$(tput sgr0)     # No color & format
-
-# Workaround to be able to maintain the exit code of the previous cmd
-# since spwd will return 0 if it doesn't fail
+# Workaround to maintain the exit code of the terminal cmd
 _pwd() {
     # {{{
     local exit_c=$?
@@ -91,13 +92,13 @@ _pwd() {
 }
 # }}}
 
-_exit() {
+_branch() {
     # {{{
-    local ret=$?
-    if [[ $ret -ne 0 ]]; then
-        printf "($RED $ret ${MAG})"
+    local branch=$(__git_ps1 "%s")
+    if [[ -z $branch ]]; then
+        printf "${BLA}null"
     else 
-        printf "${MAG}-"
+        printf "${BLU}$branch"
     fi
 }
 # }}}
@@ -113,7 +114,7 @@ _job() {
 }
 # }}}
 
-PS1='\[$BLU\]┌\[$(_pwd)\] \[$(_job)\] \u\[$WHI\]:\[$BLU\]\! \n \[$NC$BLU\]> \[$MAG\]\$ \[$NC\]'
+PS1='\[$BLU\]┌\[$(_pwd)\] \[$(_job)\] \u\[$WHI\]:\[$(_branch)\] \n \[$NC$BLU\]> \[$CYA\]\! \[$MAG\]\$ \[$NC\]'
 
 # Old prompts
 #                 r   g   b
@@ -133,7 +134,7 @@ set -o vi
 # }}}
 
 if [[ $(tty) = *tty* ]]; then
-    echo "tty detected, no annoying messages"
+    echo "${CYA}tty${NC} detected, no annoying messages"
     return
 fi
 
@@ -163,7 +164,7 @@ if (( $important_count >= 1 )); then
 fi
 ## }}}
 
-tsk
+tsk print
 # }}}
 
 # ssh agent. {{{

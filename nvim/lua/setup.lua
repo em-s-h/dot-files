@@ -27,11 +27,6 @@ require("lazy").setup(
         },
         "nvim-lualine/lualine.nvim", -- Status line
         "navarasu/onedark.nvim",     -- Colorscheme
-
-        {
-            "kevinhwang91/nvim-ufo", -- Better folding
-            dependencies = { "kevinhwang91/promise-async" }
-        },
         -- }}}
 
         -- Kitty
@@ -56,18 +51,19 @@ require("lazy").setup(
         "saadparwaiz1/cmp_luasnip",     -- Show snippets in autocomp
         "L3MON4D3/LuaSnip",             -- Snippet engine
 
-        -- Telescope
-        {
-            "nvim-telescope/telescope.nvim",
-            branch = "0.1.x",
-        },
-
-        -- Better sorting performance for Telescope
-        {
-            'nvim-telescope/telescope-fzf-native.nvim',
-            build =
-            'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
-        },
+        -- Telescope (Unused) {{{
+        -- {
+        --     "nvim-telescope/telescope.nvim",
+        --     branch = "0.1.x",
+        -- },
+        --
+        -- -- Better sorting performance for Telescope
+        -- {
+        --     'nvim-telescope/telescope-fzf-native.nvim',
+        --     build =
+        --     'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+        -- },
+        -- }}}
 
         -- LSP management
         "williamboman/mason-lspconfig.nvim", -- Connect lspconfig to mason
