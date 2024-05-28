@@ -17,8 +17,10 @@ require("dev.core.options")
 require("dev.core.keymaps")
 require("dev.core.scripts")
 
--- Lsp manager.
-require("dev.mason")
+-- LSP.
+require("dev.lsp.mason")
+require("dev.lsp.none-ls")
+require("dev.lsp.lspsaga")
 
 -- Plugins.
 require("dev.plugins.indent-blankline")
@@ -31,7 +33,3 @@ require("dev.plugins.lualine")
 
 require("dev.plugins.comment")
 require("dev.plugins.oil")
-
--- LSP.
-require("dev.lsp.lspconfig")
-require("dev.lsp.lspsaga")

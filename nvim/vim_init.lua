@@ -4,7 +4,7 @@ require("setup")
 -- Colorscheme -- {{{
 require("onedark").setup({
     ending_tildes = true,
-    style = "deep",
+    style = "darker",
 
     code_style = {
         functions = "italic",

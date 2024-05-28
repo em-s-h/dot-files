@@ -10,26 +10,26 @@ options="1. 󰅖 Close menu
 5.  Reboot
 6. 󰐥 Poweroff"
 
-input="$(echo -e "$options" | rofi -dmenu -i -l 4 -p "Power options:")"
+input="$(echo -e "$options" | rofi -dmenu -i -l 4 -p "Power options:" | cut -c -1)"
 
-case "$input" in
-    *'2'*) ./lock_screen.sh
+case $input in
+    2) ./lock_screen.sh
     ;;
-    *'3'*) ./lock_screen.sh && sudo systemctl suspend
+    3) ./lock_screen.sh && sudo systemctl suspend
     ;;
-    *'4'*)
+    4)
         input=$(./confirm_menu.sh "log out of sway");
         [[ $input == "yes" ]] && swaymsg exit
     ;;
-    *'5'*)
+    5)
         input=$(./confirm_menu.sh "reboot the computer");
         [[ $input == "yes" ]] && sudo reboot
     ;;
-    *'6'*)
+    6)
         input=$(./confirm_menu.sh "poweroff the computer");
         [[ $input == "yes" ]] && sudo poweroff
     ;;
     *) exit ;;
 esac
 
-# Emilly S.H. :D
+# Emilly M.S.H

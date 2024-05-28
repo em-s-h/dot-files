@@ -5,10 +5,6 @@ options="󰅖 - No \n - Yes, $1"
 
 input="$(echo -e "$options" | rofi -dmenu -i -p "Are you sure you want to $1?")"
 
-if [[ $input = *Yes* ]]; then
-    echo "yes"
-else
-    exit
-fi
+[[ $input =~ "Yes" ]] && echo "yes"
 
-# Emilly S.H. :D
+# Emilly M.S.H

@@ -6,8 +6,8 @@
 
 * {
     background-color:   #191421dd;
-    border-color:       #cd69de;
-    text-color:         #888888;
+    border-color:       #bf8bff;
+    text-color:         #999999;
     font:               "IntoneMono Nerd Font 11";
 }
 
@@ -28,7 +28,7 @@ horibox {
 prompt {
     background-color:   inherit;
     padding:            0em 0.3em 0em 0em;
-    text-color:         #cd69de;
+    text-color:         #bf8bff;
 }
 
 entry {
@@ -50,13 +50,13 @@ listview {
 
 element {
     background-color:   #00000000;
-    padding:            0px 2px;
+    padding:            0px 4px;
 }
 
 element selected {
     background-color:   #00000000;
     border-color:       inherit;
-    text-color:         #cd69de;
+    text-color:         #bf8bff;
     border:             1px;
 }
 

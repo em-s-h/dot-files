@@ -5,7 +5,7 @@
 
 ### Variables {{{
 # Modifier key
-set $mod Mod1
+set $mod Mod4
 
 # Direction keys, like vim
 set $left  h
@@ -20,10 +20,10 @@ set $term kitty
 set $menu exec rofi -show run
 
 # Colors
-set $bg-color            #211a2b
+set $text-color          #bf8bff
+set $bg-color            #221b2c
+set $inactive-text-color #777777
 set $inactive-bg-color   #191421
-set $text-color          #ab47bc
-set $inactive-text-color #787f8e
 set $urgent-bg-color     #e53935
 ### }}}
 
@@ -36,7 +36,10 @@ hide_edge_borders both
 
 focus_follows_mouse no
 mouse_warping none
-focus_wrapping no
+# focus_wrapping no
+
+# Floating modifier
+floating_modifier Mod4
 
 bindsym button1 nop
 bindsym button2 nop
@@ -57,6 +60,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 output eDP-1 disable
 output eDP1 disable
 
+output HDMI-A-1 mode 1920x1080
 output HDMI-1 mode 1920x1080
 output HDMI1 mode 1920x1080
 ### }}}

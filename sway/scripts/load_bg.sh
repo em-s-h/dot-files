@@ -1,5 +1,9 @@
 #!/bin/bash
-killall -q swaybg
+set -e
+
+if pgrep swaybg; then
+    killall -q swaybg
+fi
 
 cd ~/pics/wallpapers
 
@@ -19,6 +23,6 @@ fi
 new_bg=$(ls . | grep -E "^${new_bg}-")
 
 echo "$(date +'%Y_%m_%d') - $new_bg" >> ~/.logs/load_bg.log
-swaybg -i $new_bg -m fill &
+swaybg -i "$new_bg" -m fill &
 
-# Emilly S.H. :D
+# Emilly M.S.H

@@ -49,19 +49,19 @@ fi
 
 # Variables {{{
 # man terminfo
-BLA=$(tput setaf 0) # Black
-RED=$(tput setaf 1) # Red
-GRE=$(tput setaf 2) # Green
-YEL=$(tput setaf 3) # Yellow
-BLU=$(tput setaf 4) # Blue
-MAG=$(tput setaf 5) # Magenta
-CYA=$(tput setaf 6) # Cyan
-WHI=$(tput setaf 7) # White
+export BLA=$(tput setaf 0) # Black
+export RED=$(tput setaf 1) # Red
+export GRE=$(tput setaf 2) # Green
+export YEL=$(tput setaf 3) # Yellow
+export BLU=$(tput setaf 4) # Blue
+export MAG=$(tput setaf 5) # Magenta
+export CYA=$(tput setaf 6) # Cyan
+export WHI=$(tput setaf 7) # White
 
-BOL=$(tput bold)    # Bold
-ITA=$(tput sitm)    # Italic
-UL=$(tput smul)     # Underline
-NC=$(tput sgr0)     # No color & format
+export BOL=$(tput bold)    # Bold
+export ITA=$(tput sitm)    # Italic
+export UL=$(tput smul)     # Underline
+export NC=$(tput sgr0)     # No color & format
 
 # Don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
@@ -69,6 +69,9 @@ HISTCONTROL=ignoreboth
 # Set history length.
 HISTFILESIZE=2000
 HISTSIZE=1000
+
+# Setup defaults to bc
+export BC_ENV_ARGS="/home/esh/.config/bc/setup"
 
 # Colored GCC warnings and errors.
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
@@ -87,7 +90,7 @@ export GIT_EDITOR="$EDITOR"
 _pwd() {
     # {{{
     local exit_c=$?
-    printf "<${CYA}${ITA} $(spwd) ${NC}${BLU}>"
+    printf "{${CYA}${ITA}$(spwd)${NC}${BLU}}"
     $(exit ${exit_c})
 }
 # }}}
@@ -114,7 +117,7 @@ _job() {
 }
 # }}}
 
-PS1='\[$BLU\]┌\[$(_pwd)\] \[$(_job)\] \u\[$WHI\]:\[$(_branch)\] \n \[$NC$BLU\]> \[$CYA\]\! \[$MAG\]\$ \[$NC\]'
+PS1='\[$BLU\]┌\[$(_pwd)\] \[$(_job)\] git\[$WHI\]:\[$(_branch)\] \n\[$NC$BLU\]} \[$CYA\]\! \[$MAG\]\$ \[$NC\]'
 
 # Old prompts
 #                 r   g   b
@@ -134,38 +137,11 @@ set -o vi
 # }}}
 
 if [[ $(tty) = *tty* ]]; then
-    echo "${CYA}tty${NC} detected, no annoying messages"
+    echo "${RED}tty${NC} detected, no annoying messages"
     return
 fi
 
-# To-do {{{
-important_count=$(grep -icE 'study|homework|important' ~/.local/share/tsk/tasks)
-done_count=$(grep -c '\[X\]' ~/.local/share/tsk/tasks)
-time_s=0
-
-## Read the to-do list warning {{{
-if (( $important_count >= 1 )); then
-    if (( $important_count > 3)); then
-        echo -e "${RED}" \
-        '
- _  ______ _____  ___ ______   _____ _   _  _____   _____ _____       ______ _____   _     _____ _____ _____   _ 
-| | | ___ \  ___|/ _ \|  _  \ |_   _| | | ||  ___| |_   _|  _  |      |  _  \  _  | | |   |_   _/  ___|_   _| | |
-| | | |_/ / |__ / /_\ \ | | |   | | | |_| || |__     | | | | | |______| | | | | | | | |     | | \ `--.  | |   | |
-| | |    /|  __||  _  | | | |   | | |  _  ||  __|    | | | | | |______| | | | | | | | |     | |  `--. \ | |   | |
-|_| | |\ \| |___| | | | |/ /    | | | | | || |___    | | \ \_/ /      | |/ /\ \_/ / | |_____| |_/\__/ / | |   |_|
-(_) \_| \_\____/\_| |_/___/     \_/ \_| |_/\____/    \_/  \___/       |___/  \___/  \_____/\___/\____/  \_/   (_)
-        ' \
-        "${NC}"
-        time_s=3
-    else
-        echo -e "${RED} ! READ THE TO-DO LIST ! ${NC}"
-        time_s=2
-    fi
-fi
-## }}}
-
-tsk print
-# }}}
+~/.local/bin/clear.sh
 
 # ssh agent. {{{
 env=~/.ssh/agent.env
@@ -191,7 +167,5 @@ elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
     ssh-add
 fi
 # }}}
-
-sleep $time_s
 
 # Emilly M.S.H. ;D

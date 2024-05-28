@@ -33,7 +33,7 @@ mksh () {
     chmod 755 "$arg1"
 
     echo -e '#!/bin/bash \n' >| "$arg1"
-    vim "$arg1"
+    /usr/bin/nvim "$arg1"
 }
 # }}}
 

@@ -13,22 +13,22 @@ bindsym $mod+Shift+c reload
 # Kill focused window
 bindsym $mod+Shift+q kill
 
-# Floating modifier
-floating_modifier Mod4
-# }}}
-
-# Menus: {{{
 # Screen capture
-bindsym --release Mod4+Shift+s exec ~/.config/sway/scripts/screenshot_menu.sh
+bindsym --release Mod4+Shift+s exec "grimshot --notify --cursor save anything ~/pics/screenshots/$(date +'%y-%m-%d_%H-%M-%S.png')"
 
 # Power manager
 bindsym $mod+Shift+e exec ~/.config/sway/scripts/power_menu.sh
+# }}}
 
-# Keyboard layout menu
+# Misc {{{
+# Keyboard layout
 bindsym $mod+Control+k exec ~/.config/sway/scripts/kb_layout_menu.sh
 
-# Steam games menu
-bindsym $mod+Shift+g exec ~/.config/sway/scripts/games_menu.sh
+# Swap audio outputs
+bindsym $mod+Control+a exec ~/.config/sway/scripts/swap_audio_outputs.sh
+
+# Games
+bindsym $mod+Control+g exec ~/.config/sway/scripts/games_menu.sh
 # }}}
 
 # Sound: {{{
@@ -72,7 +72,7 @@ bindsym $mod+Shift+$right move right
 # Switch to workspace
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2;layout tabbed
-bindsym $mod+3 workspace number 3;layout tabbed
+bindsym $mod+3 workspace number 3
 bindsym $mod+4 workspace number 4;layout tabbed
 bindsym $mod+5 workspace number 5;layout tabbed
 bindsym $mod+6 workspace number 6

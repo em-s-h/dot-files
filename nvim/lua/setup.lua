@@ -65,11 +65,13 @@ require("lazy").setup(
         -- },
         -- }}}
 
-        -- LSP management
+        -- LSP
         "williamboman/mason-lspconfig.nvim", -- Connect lspconfig to mason
         "williamboman/mason.nvim",           -- Manages LSP servers, linters, formatters & DAP
 
-        -- LSP configuration
+        "jay-babu/mason-null-ls.nvim",
+        "nvimtools/none-ls.nvim",
+
         "neovim/nvim-lspconfig",    -- LSP configuration
         "onsails/lspkind.nvim",     -- Icons for autocompletion window
         {

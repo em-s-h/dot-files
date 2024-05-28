@@ -2,18 +2,15 @@
 set -e
 
 current=$(swaymsg -t get_inputs | jq 'map(select(has("xkb_active_layout_name")))[0].xkb_active_layout_name')
-options="1. en_us \n2. pt_br"
 
-input="$(echo -e "$options" | rofi -dmenu -i -p "Current ${current}:")"
+input="$(echo -e "1. en_us \n2. pt_br" | rofi -dmenu -i -p "Current ${current}:" | cut -c -1)"
 
-case "$input" in
-    *'1'*) id=0
-    ;;
-    *'2'*) id=1
-    ;;
-    *) exit ;;
-esac
+if [[ $input -eq 1 ]]; then
+    id=0
+elif [[ $input -eq 2 ]]; then
+    id=1
+fi
 
 sway input "type:keyboard" xkb_switch_layout $id
 
-# Emilly S.H. :D
+# Emilly M.S.H

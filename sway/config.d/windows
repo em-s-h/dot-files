@@ -8,18 +8,19 @@ assign [app_id = "firefox"] workspace number 2
 
 # Workspace 3 - Apps {{{
 assign [class = "Godot"] workspace number 3
-assign [app_id = "gdvim"] workspace number 3
-
-assign [app_id = "Audacity"] workspace number 3
-assign [app_id = "kdenlive"] workspace number 3
-assign [class = "krita"] workspace number 3
+#assign [app_id = "gdvim"] workspace number 3
 
 assign [app_id = "libreoffice.*"] workspace number 3
+assign [app_id = "org.kde.*"] workspace number 3
 assign [app_id = "soffice.*"] workspace number 3
 assign [title = "LibreOfiice"] workspace number 3
 # }}}
 
 # Workspace 4 - Other apps {{{
+assign [app_id = "Audacity"] workspace number 4
+assign [app_id = "kdenlive"] workspace number 4
+assign [class = "krita"] workspace number 4
+
 assign [app_id = ".*xdelta-lui"] workspace number 4
 # }}}
 
@@ -29,7 +30,8 @@ assign [class = "PPSSPPSDL"] workspace number 5
 assign [app_id = "pcsx2-qt"] workspace number 5
 
 assign [app_id = "snes9x-gtk"] workspace number 5
-assign [app_id = "mGBA-qt"] workspace number 5
+assign [class = "Snes9x-gtk"] workspace number 5
+assign [app_id = "io.mgba.mGBA"] workspace number 5
 assign [app_id = "melonDS"] workspace number 5
 assign [class = "Citra"] workspace number 5
 
@@ -38,6 +40,7 @@ assign [app_id = "Mednaffe"] workspace number 5
 assign [app_id = "Mednafen"] workspace number 5
 assign [app_id = "redream"] workspace number 5
 
+assign [class = "Mother.*"] workspace number 5
 assign [app_id = "Shattered Pixel Dungeon"] workspace number 5
 assign [app_id = "NetHack"] workspace number 5
 
@@ -47,6 +50,7 @@ assign [instance = "steam_app_.*"] workspace number 5
 
 # Workspace 8 - Media {{{
 assign [app_id = ".*zathura.*"] workspace number 8
+assign [app_id = "gwenview"] workspace number 8
 assign [app_id = "okular"] workspace number 8
 assign [app_id = "mpv"] workspace number 8
 # }}}
@@ -74,7 +78,6 @@ for_window [app_id = ".*xdelta-lui.*"] floating enable
 for_window [instance = "steam_app_.*"] floating enable
 for_window [instance = "steamwebhelper"] floating enable
 
-for_window [title = "Steam" instance = "steamwebhelper"] floating disable
 for_window [title = ".*Dialog.*" instance = "steamwebhelper"] floating enable
 for_window [title = ".*Settings.*" instance = "steamwebhelper"] floating enable
 

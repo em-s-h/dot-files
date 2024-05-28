@@ -10,13 +10,20 @@ keymap.set("n", "N", "Nzz")
 keymap.set("n", "<leader>nh", ":nohl<CR>") -- Clear search highlights
 keymap.set("n", "<leader>w", ":w<CR>")     -- Easier write to file
 
-keymap.set("n", "<leader>]", "<c-a>")      -- Increment number
-keymap.set("n", "<leader>[", "<c-x>")      -- Decrement number
+keymap.set("n", "<leader>]", "<c-a>")   -- Increment number
+keymap.set("n", "<leader>[", "<c-x>")   -- Decrement number
 
-keymap.set("n", "<c-a>", "ggVG")           -- Select all
-keymap.set("n", "U", "<c-r>")              -- Map 'U' to redo
-keymap.set("n", "x", '"_x')                -- Remove character w/o copying into register
-keymap.set("n", "Y", "y$")                 -- Yank from cursor to line end
+keymap.set("n", "<c-a>", "ggVG")        -- Select all
+keymap.set("n", "U", "<c-r>")           -- Map 'U' to redo
+keymap.set("n", "x", '"_x')             -- Remove character w/o copying into register
+keymap.set("n", "Y", "y$")              -- Yank from cursor to line end
+
+-- Move lines up & down
+keymap.set("v", "<a-j>", ":m '>+1<CR>gv=gv")  
+keymap.set("v", "<a-k>", ":m-2<CR>gv=gv")
+
+keymap.set("n", "<a-k>", ":m-2<CR>==")
+keymap.set("n", "<a-j>", ":m+<CR>==")
 
 -- "0": Go to start of line ; "^": Go to first character
 -- Invert "0" & "^"
@@ -29,6 +36,9 @@ keymap.set("n", "<leader>to", ":tabnew<CR>")   -- Open tab
 
 keymap.set("n", "<leader>tp", ":tabp<CR>")     -- Next tab
 keymap.set("n", "<leader>tn", ":tabn<CR>")     -- Prev tab
+
+keymap.set("n", "<leader>t>", ":+tabmove<CR>")     -- Move tab right
+keymap.set("n", "<leader>t<", ":-tabmove<CR>")     -- Move tab left 
 -- }}}
 
 -- Splits {{{

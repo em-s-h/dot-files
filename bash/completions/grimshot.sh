@@ -1,8 +1,8 @@
 #!/bin/bash
 
 _grimshot_bash_comp() {
-    local req_target="copy save savecopy"
     local first_char=$(cut -c -1 <<< "${COMP_WORDS[1]}")
+    local req_target="copy save savecopy"
 
     local target_pos=3
     local cmd_index=1
