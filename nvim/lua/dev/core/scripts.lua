@@ -58,17 +58,19 @@ keymap.set("n", "a", function()
 end, { expr = true })
 -- }}}
 
--- -- Format file after saving. {{{
--- augroup = api.nvim_create_augroup("LspFormatting", {})
--- api.nvim_clear_autocmds({ group = augroup })
---
--- api.nvim_create_autocmd("BufWritePre", {
---     group = augroup,
---
---     callback = function()
---         vim.lsp.buf.format()
---         vim.cmd("silent! %foldclose")
---         vim.cmd("silent! foldopen")
---     end,
--- })
--- -- }}}
+-- Format file after saving. {{{
+augroup = api.nvim_create_augroup("CustomLspFormatting", {})
+api.nvim_clear_autocmds({ group = augroup })
+
+api.nvim_create_autocmd("BufWritePre", {
+    group = augroup,
+
+    callback = function()
+        if vim.bo.filetype == "rust" then
+            vim.lsp.buf.format()
+            vim.cmd("silent! %foldclose")
+            vim.cmd("silent! foldopen")
+        end
+    end,
+})
+-- }}}

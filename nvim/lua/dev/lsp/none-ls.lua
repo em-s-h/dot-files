@@ -10,7 +10,6 @@ local formatting = null_ls.builtins.formatting
 local lsp_format = function(bufnr)
     vim.lsp.buf.format {
         filter = function(client)
-            -- apply whatever logic you want (in this example, we'll only use null-ls)
             return client.name == "null-ls"
         end,
         bufnr = bufnr,
@@ -35,11 +34,10 @@ local null_ls_on_attach = function(client, bufnr)
 end
 
 null_ls.setup {
+    debug = true,
     on_attach = null_ls_on_attach,
     sources = {
 		formatting.clang_format,
-        formatting.gdformat,
-		formatting.rustfmt,
 		formatting.stylua,
     },
 }

@@ -21,7 +21,7 @@ _tsk_comp() {
 
     # Complete "add" sub-options
     elif [[ ${COMP_WORDS[1]} == "add" && ${#COMP_WORDS[@]} -eq 3 ]]; then
-        COMPREPLY=( $(compgen -W "-top -bot" -- "${COMP_WORDS[COMP_CWORD]}") )
+        COMPREPLY=( $(compgen -W "-top -bot -sub" -- "${COMP_WORDS[COMP_CWORD]}") )
 
     # Normal complete
     elif [[ ${#COMP_WORDS[@]} -le 2 ]]; then

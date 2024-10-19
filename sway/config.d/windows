@@ -2,35 +2,40 @@
 
 # Workspace 1 - Kitty 
 assign [app_id = "kitty"] workspace number 1
+assign [app_id = "gdvim"] workspace number 1
 
 # Workspace 2 - Firefox
 assign [app_id = "firefox"] workspace number 2
 
-# Workspace 3 - Apps {{{
+# Workspace 3 - Godot
 assign [class = "Godot"] workspace number 3
-#assign [app_id = "gdvim"] workspace number 3
-
-assign [app_id = "libreoffice.*"] workspace number 3
-assign [app_id = "org.kde.*"] workspace number 3
-assign [app_id = "soffice.*"] workspace number 3
-assign [title = "LibreOfiice"] workspace number 3
-# }}}
+assign [app_id = "org.godotengine.*"] workspace number 3
 
 # Workspace 4 - Other apps {{{
-assign [app_id = "Audacity"] workspace number 4
 assign [app_id = "kdenlive"] workspace number 4
+assign [app_id = "audacity"] workspace number 4
 assign [class = "krita"] workspace number 4
+assign [class = "code-oss"] workspace number 4
+assign [app_id = "ktorrent"] workspace number 4
+
+assign [app_id = "libreoffice.*"] workspace number 4
+assign [app_id = "soffice.*"] workspace number 4
+assign [title = "libreOfiice"] workspace number 4
+assign [title = "LibreOfiice"] workspace number 4
 
 assign [app_id = ".*xdelta-lui"] workspace number 4
 # }}}
 
 # Workspace 5 - Emulation + Games {{{
 assign [app_id = "duckstation-qt"] workspace number 5
+assign [class = "duckstation-qt"] workspace number 5
+assign [class = "AppRun.wrapped"] workspace number 5
 assign [class = "PPSSPPSDL"] workspace number 5
 assign [app_id = "pcsx2-qt"] workspace number 5
 
 assign [app_id = "snes9x-gtk"] workspace number 5
 assign [class = "Snes9x-gtk"] workspace number 5
+assign [class = "Hiro"] workspace number 5
 assign [app_id = "io.mgba.mGBA"] workspace number 5
 assign [app_id = "melonDS"] workspace number 5
 assign [class = "Citra"] workspace number 5
@@ -51,7 +56,7 @@ assign [instance = "steam_app_.*"] workspace number 5
 # Workspace 8 - Media {{{
 assign [app_id = ".*zathura.*"] workspace number 8
 assign [app_id = "gwenview"] workspace number 8
-assign [app_id = "okular"] workspace number 8
+assign [app_id = ".*okular"] workspace number 8
 assign [app_id = "mpv"] workspace number 8
 # }}}
 
@@ -66,18 +71,32 @@ assign [app_id = "PacketTracer"] workspace number 10
 assign [app_id = "VirtualBox"] workspace number 10
 # }}}
 
+for_window [title = ".*"] inhibit_idle fullscreen
+for_window [title = ".*"] border none
+
+for_window [app_id = "org.pulseaudio.pavucontrol"] floating enable; sticky enable
+for_window [app_id = "org.pulseaudio.pavucontrol"] move position 73ppt 0 
+for_window [title = "Picture-in-Picture"] floating enable; sticky enable
+for_window [app_id = "xdg-desktop-portal-gtk"] floating enable
+for_window [app_id = ".*xdelta-lui.*"] floating enable
+for_window [title = "Terraria:.*"] floating enable
+
+for_window [class = "duckstation-qt"] floating enable
+for_window [class = "AppRun.wrapped"] floating enable
+for_window [app_id = "io.mgba.mGBA"] floating enable
+for_window [class = "PPSSPPSDL"] floating enable
+for_window [app_id = "melonDS"] floating enable
+for_window [class = "Hiro"] floating enable
+
+for_window [app_id = "org.godotengine.*"] floating enable
 for_window [instance = ".*Godot.*"] floating enable
+
+for_window [title = ".*Godot Engine.*" app_id = "org.godotengine.*"] floating disable
 for_window [title = ".*Godot Engine.*" instance = ".*Godot.*"] floating disable
 
-for_window [title = ".*"] inhibit_idle fullscreen
+for_window [instance = "steamwebhelper"] floating enable
+for_window [instance = "steam_app_.*"] floating enable
 for_window [title = "Special Offers"] kill
 
-for_window [title = "Picture-in-Picture"] floating enable; sticky enable
-for_window [app_id = ".*xdelta-lui.*"] floating enable
-
-for_window [instance = "steam_app_.*"] floating enable
-for_window [instance = "steamwebhelper"] floating enable
-
-for_window [title = ".*Dialog.*" instance = "steamwebhelper"] floating enable
-for_window [title = ".*Settings.*" instance = "steamwebhelper"] floating enable
+for_window [title = "Steam" instance = "steamwebhelper"] floating disable
 

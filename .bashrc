@@ -134,6 +134,7 @@ shopt -s cdspell
 shopt -s autocd
 
 set -o vi
+set -C
 # }}}
 
 if [[ $(tty) = *tty* ]]; then

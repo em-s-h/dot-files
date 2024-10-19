@@ -1,0 +1,173 @@
+/* def {{{ */
+* {
+    font-family: IntoneMono Nerd Font;
+    font-size: 13px;
+}
+
+window#waybar {
+    background-color: rgba(50, 50, 60, 0.5);
+    border-bottom: 3px solid rgba(100, 100, 125, 0.5);
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+button:hover {
+    background: inherit;
+    box-shadow: inherit;
+    text-shadow: inherit;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+/* }}} */
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#custom-zram,
+#custom-linux,
+#custom-gammastep,
+#clock,
+#window,
+#battery,
+#cpu,
+#mode,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon,
+#language,
+#mpd {
+    background-color: rgba(50, 50, 75, 0.4);
+    padding: 0 10px;
+    color: #ffffff;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+/* Workspace {{{ */
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #ffffff;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces button.focused {
+    background-color: rgba(95, 69, 127, 0.5);
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+#workspaces button.urgent {
+    background-color: #e53935;
+}
+/* }}} */
+
+#mode {
+    background-color: rgba(50, 50, 75, 0.5);
+    box-shadow: inset 0 -3px #ffffff;
+    color: #dfafff;
+}
+
+#window {
+    background-color: rgba(50, 50, 75, 0.7);
+    padding: 0 5px;
+    color: #bf8bff;
+}
+
+/* CPU {{{ */
+#cpu.warning,
+#custom-zram.warning,
+#memory.swap.warning,
+#memory.warning {
+    background-color: rgba(240, 195, 15, 0.6);
+    color: #000000;
+}
+
+#cpu.critical,
+#custom-zram.critical,
+#custom-linux.critical,
+#memory.swap.critical,
+#memory.critical {
+    background-color: rgba(230, 55, 50, 1);
+    color: #ffffff;
+}
+/* }}} */
+
+#network.disconnected {
+    background-color: rgba(230, 55, 50, 0.6);
+}
+
+/* Audio {{{ */
+#wireplumber:hover,
+#pulseaudio:hover,
+#wireplumber.muted,
+#pulseaudio.muted {
+    background-color: rgba(50, 50, 75, 0.6);
+}
+/* }}} */
+
+/* Tray {{{ */
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    background-color: rgba(240, 195, 15, 0.6);
+    -gtk-icon-effect: highlight;
+}
+/* }}} */
+
+#custom-gammastep.on,
+#idle_inhibitor.activated {
+    background-color: rgba(235, 240, 240, 0.6);
+    color: #000000;
+}
+
+#language {
+    padding: 0 5px;
+    margin: 0 5px;
+    min-width: 16px;
+}

@@ -1,3 +1,15 @@
+# Bash functions
+
+aurinstall() {
+# {{{
+    read -p "Have you verified the build files? (Y/n) " prompt
+    if [[ $prompt != [Yy]* ]]; then
+        vi ./PKGBUILD -p
+    fi
+    makepkg -sirc
+}
+# }}}
+
 up_mirrors () {
     # {{{
     local tmp_file="$(mktemp)" && \
@@ -7,13 +19,37 @@ up_mirrors () {
 }
 # }}}
 
+pacupdate() {
+# {{{
+    read -p "Do you wish to update the mirrors? (Y/n) " prompt
+    if [[ $prompt = [Yy]* ]]; then
+        up_mirrors
+    fi
+    sudo pacman -Syu
+}
+# }}}
+
 yt-ogg () {
 # {{{
     local tmp=/tmp/tmp.wav
-    local file_name="${1/\.ogg/}"
-    local url="$2"
+    local file_name="${1?Missing file name}"
+    local file_name="${file_name//.ogg/}"
+    local url="${2?Missing url}"
 
     yt-dlp -x --audio-format wav --audio-quality 0 -o "$tmp" "$url"
+    ffmpeg -i "$tmp" "${file_name}.ogg"
+    rm "$tmp"
+}
+# }}}
+
+yt-ogg-sect () {
+# {{{
+    local tmp=/tmp/tmp.wav
+    local sect="${1?Missing section}"
+    local file_name="${2?Missing file name}"
+    local url="${3?Missing url}"
+
+    yt-dlp -x --audio-format wav --audio-quality 0 --download-sections "$sect" -o "$tmp" "$url"
     ffmpeg -i "$tmp" "${file_name}.ogg"
     rm "$tmp"
 }

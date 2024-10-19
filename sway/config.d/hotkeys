@@ -1,0 +1,8 @@
+mode "hotkeys" {
+    bindsym e exec ~/.config/sway/hotkey.sh
+    bindsym d exec echo 0 >| /tmp/hotkey_continue
+
+    bindsym Escape mode "default"; exec echo 0 >| /tmp/hotkey_continue
+}
+bindsym $mod+Shift+P mode "hotkeys"
+

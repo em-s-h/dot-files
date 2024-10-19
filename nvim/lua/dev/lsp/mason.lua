@@ -17,39 +17,6 @@ if not lspconf_status then
 end
 
 local keymap = vim.keymap
--- lsp servers {{{
-local servers = {
-    rust_analyzer = {},
-    omnisharp = {},
-    gdscript = {},
-    
-    -- tsserver = {},
-    -- cssls = {},
-    -- html = {},
-
-    pyright = {},
-    clangd = {},
-
-    lua_ls = {
-        Lua = {
-            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim).
-            runtime = {
-                version = "LuaJIT",
-                path = vim.split(package.path, ";"),
-            },
-
-            -- Make language server aware of runtime files.
-            workspace = {
-                library = vim.api.nvim_get_runtime_file("", true),
-                checkThirdParty = false
-            },
-
-            -- Do not send telemetry data containing a randomized but unique identifier.
-            telemetry = { enable = false },
-        },
-    },
-}
--- }}}
 
 mason.setup()
 
@@ -58,8 +25,7 @@ lspconfig.setup({
     automatic_installation = true,
 })
 
--- Enable keybindings when a LSP server is available. {{{
-local on_attach = function(client, bufnr)
+local on_attach = function(client, bufnr) -- {{{
     -- Keybind options.
     local opts = { noremap = true, silent = true, buffer = bufnr }
 
@@ -84,9 +50,28 @@ local on_attach = function(client, bufnr)
 end
 -- }}}
 
--- Used to enable autocompletion.
+-- Capabilities {{{
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+
+capabilities.textDocument.completion.completionItem = {
+    documentationFormat = { "markdown", "plaintext" },
+    snippetSupport = true,
+    preselectSupport = true,
+    insertReplaceSupport = true,
+    labelDetailsSupport = true,
+    deprecatedSupport = true,
+    commitCharactersSupport = true,
+    tagSupport = { valueSet = { 1 } },
+    resolveSupport = {
+        properties = {
+            "documentation",
+            "detail",
+            "additionalTextEdits",
+        },
+    },
+}
+-- }}}
 
 -- Change the Diagnostic symbols in the sign column (gutter).
 local signs = { Error = " ", Warn = " ", Hint = "ﴞ ", Info = " " }
@@ -96,10 +81,47 @@ for type, icon in pairs(signs) do
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
-for server, opts in pairs(servers) do
+require("lspconfig").lua_ls.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    settings = {
+        Lua = {
+            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim).
+            runtime = {
+                version = "LuaJIT",
+                path = vim.split(package.path, ";"),
+            },
+
+            -- Make language server aware of runtime files.
+            workspace = {
+                library = vim.api.nvim_get_runtime_file("", true),
+                checkThirdParty = false
+            },
+
+            -- Do not send telemetry data containing a randomized but unique identifier.
+            telemetry = { enable = false },
+        },
+    }
+}
+
+-- lsp servers {{{
+local servers = {
+    "rust_analyzer",
+    "omnisharp",
+    "gdscript",
+
+    -- tsserver = {},
+    -- cssls = {},
+    -- html = {},
+
+    "pyright",
+    "clangd",
+}
+-- }}}
+
+for _, server in ipairs(servers) do
     require("lspconfig")[server].setup {
         capabilities = capabilities,
         on_attach = on_attach,
-        settings = opts,
     }
 end

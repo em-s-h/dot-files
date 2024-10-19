@@ -31,8 +31,9 @@ set $urgent-bg-color     #e53935
 font pango:IntoneMono Nerd Font Mono 10
 title_align center
 
-default_floating_border normal 5
+default_floating_border none
 hide_edge_borders both
+default_border none
 
 focus_follows_mouse no
 mouse_warping none
@@ -68,6 +69,7 @@ output HDMI1 mode 1920x1080
 ### Input configuration {{{
 # Get the names of inputs: swaymsg -t get_inputs
 input "type:keyboard" {
+    xkb_file ~/.config/xkb/no_num_lock.xkb
     xkb_layout us,br
     xkb_options caps:swapescape
 
@@ -79,40 +81,42 @@ input "type:keyboard" {
 ### Status Bar {{{
 # exec_always ~/.config/polybar/launch.sh
 bar {
-    font pango:IntoneMono Nerd Font 10
-    separator_symbol "}-{"
-    position top
-
-    status_command i3status -c ~/.config/sway/i3status.conf
-
-    bindsym button1 nop
-    bindsym button2 nop
-    bindsym button3 nop
-    bindsym button4 nop
-    bindsym button5 nop
-
-    colors {
-        statusline #ffffff
-        background $inactive-bg-color
-        separator $text-color
-
-        #                  border             background         text
-        focused_workspace  $text-color        $bg-color          $text-color
-        inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-        urgent_workspace   $urgent-bg-color   $urgent-bg-color   #ffffff
-    }
+    swaybar_command waybar
+    # font pango:IntoneMono Nerd Font 10
+    # icon_theme adwaita
+    # separator_symbol "}-{"
+    # position top
+    #
+    # status_command i3status -c ~/.config/sway/i3status.conf
+    #
+    # bindsym button1 nop
+    # bindsym button2 nop
+    # bindsym button3 nop
+    # bindsym button4 nop
+    # bindsym button5 nop
+    #
+    # colors {
+    #     statusline #ffffff
+    #     background $inactive-bg-color
+    #     separator $text-color
+    #
+    #     #                  border             background         text
+    #     focused_workspace  $text-color        $bg-color          $text-color
+    #     inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+    #     urgent_workspace   $urgent-bg-color   $urgent-bg-color   #ffffff
+    # }
 }
 ### }}}
 
 ### Idle configuration {{{
 exec swayidle -w \
-         timeout 600 '~/.config/sway/scripts/lock_screen.sh' \
-         timeout 900 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         timeout 180 '~/.config/sway/scripts/lock_screen.sh' \
+         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep '~/.config/sway/scripts/lock_screen.sh'
 ### }}}
 
 ### exec {{{
-exec gammastep
+exec "gammastep -r"
 exec dunst
 exec $term
 

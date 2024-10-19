@@ -14,7 +14,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+q kill
 
 # Screen capture
-bindsym --release Mod4+Shift+s exec "grimshot --notify --cursor save anything ~/pics/screenshots/$(date +'%y-%m-%d_%H-%M-%S.png')"
+bindsym --release $mod+Control+s exec "grimshot --notify --cursor save anything ~/pics/screenshots/$(date +'%y-%m-%d_%H-%M-%S.png')"
+bindsym --release $mod+Shift+s exec "grimshot --notify --cursor save output ~/pics/screenshots/$(date +'%y-%m-%d_%H-%M-%S.png')"
 
 # Power manager
 bindsym $mod+Shift+e exec ~/.config/sway/scripts/power_menu.sh
@@ -27,8 +28,8 @@ bindsym $mod+Control+k exec ~/.config/sway/scripts/kb_layout_menu.sh
 # Swap audio outputs
 bindsym $mod+Control+a exec ~/.config/sway/scripts/swap_audio_outputs.sh
 
-# Games
-bindsym $mod+Control+g exec ~/.config/sway/scripts/games_menu.sh
+# Gammastep
+bindsym $mod+Control+g exec ~/.config/sway/scripts/gammastep_toggle.sh
 # }}}
 
 # Sound: {{{
@@ -119,3 +120,11 @@ bindsym $mod+space focus mode_toggle
 # Move focus to the parent container
 bindsym $mod+a focus parent
 # }}}
+
+# Left click
+bindsym Pause exec ydotool click 0x40
+bindsym --release Pause exec ydotool click 0x80
+
+# Right click
+bindsym Print exec ydotool click 0x41
+bindsym --release Print exec ydotool click 0x81

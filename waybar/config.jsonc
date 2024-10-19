@@ -1,0 +1,148 @@
+// -*- mode: jsonc -*-
+{
+    "spacing": 4,
+
+    "modules-left": [
+        "sway/window",
+        "sway/workspaces",
+        "sway/mode",
+        "sway/language",
+        "custom/linux",
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "custom/gammastep",
+        "idle_inhibitor",
+        "cpu",
+        "memory",
+        "memory#swap",
+        "custom/zram",
+        "pulseaudio",
+        "network",
+        "tray"
+    ],
+
+    "sway/workspaces": { // {{{
+        "disable-scroll": true,
+        "disable-click": true,
+        "warp-on-scroll": false,
+        "all-outputs": true,
+
+        "format": "{name}: {icon} ",
+        "format-icons": {
+            "1": "",
+            "2": "󰈹",
+            "3": "",
+            "4": "",
+            "5": "󰮂",
+            "8": "",
+            "10": "vm",
+            "urgent": "!!",
+            "default": "<>"
+        }
+    },
+    // }}}
+
+    "sway/mode": {
+        "format": "mode: <span style=\"italic\">{}</span>"
+    },
+
+    "sway/window": {
+        "max-length": 15,
+    },
+
+    "tray": {
+        "spacing": 5
+    },
+
+    "idle_inhibitor": { // {{{
+        "format": "{icon} ",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    // }}}
+
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%a, %d/%m %H:%M}",
+        "interval": 60
+    },
+
+    "cpu": { // {{{
+        "format": "cpu: {usage}%",
+        "interval": 10,
+        "states": {
+            "warning": 75,
+            "critical": 90
+        }
+    },
+    // }}}
+
+    "memory": { // {{{
+        "format": "ram: {percentage}%",
+        "tooltip": false,
+        "interval": 10,
+        "states": {
+            "warning": 80,
+            "critical": 90
+        }
+    },
+    // }}}
+
+    "memory#swap": { // {{{
+        "format": "swp: {swapPercentage}%",
+        "tooltip": false,
+        "interval": 15
+    },
+    // }}}
+
+    "custom/zram": { // {{{
+        "exec": "~/.config/waybar/scripts/zram.sh",
+        "return-type": "json",
+        "interval": 15
+    },
+    // }}}
+
+    "custom/linux": { // {{{
+        "exec": "~/.config/waybar/scripts/linux.sh",
+        "return-type": "json",
+        "interval": 3200
+    },
+    // }}}
+
+    "custom/gammastep": { // {{{
+        "exec": "~/.config/waybar/scripts/gammastep_label.sh",
+        "on-click": "~/.config/sway/scripts/gammastep_toggle.sh",
+        "return-type": "json",
+        "interval": "once",
+        "signal": 8
+    },
+    // }}}
+
+    "pulseaudio": { // {{{
+        "format": "V: {volume}%",
+        "format-muted": "M ({volume}%)",
+
+        "format-bluetooth": "Bt: {volume}%",
+        "format-bluetooth-muted": "M (Bt: {volume}%)",
+
+        "format-source": "Mic: {volume}%",
+        "format-source-muted": "M (Mic: {volume}%)",
+        "interval": 10,
+        "on-click": "if [[ $(pgrep -c pavucontrol) -ge 1 ]]; then pkill pavucontrol; else pavucontrol; fi"
+    },
+    // }}}
+
+    "network": { // {{{
+        "format-wifi": "{ifname}: up",
+        "format-ethernet": "E: {ipaddr}",
+        "format-disconnected": "dwn",
+        "tooltip-format": "{signalStrenght}\n{frequency}",
+        "interval": 10
+    }
+    // }}}
+}
